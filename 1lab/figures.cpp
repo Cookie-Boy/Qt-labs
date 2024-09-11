@@ -1,104 +1,42 @@
 #include "figures.h"
 #include <QtMath>
 
-void Rectangle::setWidth(double width)
-{
-    this->width = width;
-}
-
-double Rectangle::getWidth()
-{
-    return this->width;
-}
-
-void Rectangle::setLength(double length)
-{
-    this->length = length;
-}
-
-double Rectangle::getLength()
-{
-    return this->length;
-}
-
-void Parallelogram::setHeight(double height)
-{
-    this->height = height;
-}
-
-double Parallelogram::getHeight()
-{
-    return this->height;
-}
-
-void Triangle::setLength(double length)
-{
-    this->length = length;
-}
-
-double Triangle::getLength()
-{
-    return this->length;
-}
-
-void Triangle::setHeight(double height)
-{
-    this->height = height;
-}
-
-double Triangle::getHeight()
-{
-    return this->height;
-}
-
-void Circle::setRadius(double radius)
-{
-    this->radius = radius;
-}
-
-double Circle::getRadius()
-{
-    return this->radius;
-}
-
-void Sector::setAngle(double angle)
-{
-    this->angle = angle;
-}
-
-double Sector::getAngle()
-{
-    return this->angle;
-}
-
-double Figure::getSquare()
+double Figure::getArea(double a)
 {
     return 0;
 }
 
-double Rectangle::getSquare()
+double Figure::getArea(double a, double b)
 {
-    return this->width * this->length;
+    return 0;
 }
 
-double Parallelogram::getSquare()
+double Figure::getArea(double a, double b, double c)
 {
-    return this->width * this->height;
+    return 0;
 }
 
-double Triangle::getSquare()
+double Rectangle::getArea(double a, double b)
 {
-    return (this->length * this->height) / 2;
+    return a * b;
 }
 
-double Circle::getSquare()
+double Triangle::getArea(double a, double b)
 {
-    return M_PI * (this->radius * this->radius);
+    return (a * b) / 2;
 }
 
-double Sector::getSquare()
+double Trapezium::getArea(double a, double b, double c)
 {
-    return (M_PI * (this->radius * this->radius) * this->angle) / 360;
+    return (a + b) * c / 2;
 }
 
+double Circle::getArea(double a)
+{
+    return M_PI * (a * a);
+}
 
+double Sector::getArea(double a, double b)
+{
+    return (M_PI * (a * a) * b) / 360;
+}

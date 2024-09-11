@@ -6,71 +6,50 @@ class Figure
 public:
     virtual ~Figure() { }
 protected:
-    virtual double getSquare();
+    virtual double getArea(double a, double b, double c);
+    virtual double getArea(double a, double b);
+    virtual double getArea(double a);
 };
 
 class Rectangle : public Figure
 {
 public:
-    double width;
-    double length;
-
-    double getSquare() override;
-
-protected:
-
-    void setWidth(double width);
-    double getWidth();
-    void setLength(double length);
-    double getLength();
+    double getArea(double a, double b) override;
 };
 
 class Parallelogram : public Rectangle
 {
-public:
-    double height;
-    double getSquare() override;
-protected:
-    void setHeight(double height);
-    double getHeight();
+
 };
 
-class Rhombus : public Parallelogram
+class Trapezium : public Figure
 {
+public:
+    double getArea(double a, double b, double c) override;
+};
 
+class Rhombus : public Figure
+{
+public:
+    double getArea(double a, double b) override;
 };
 
 class Triangle : public Figure
 {
-    double length;
-    double height;
-    double getSquare() override;
-
-protected:
-    void setLength(double length);
-    double getLength();
-    void setHeight(double height);
-    double getHeight();
+public:
+    double getArea(double a, double b) override;
 };
 
 class Circle : public Figure
 {
 public:
-    double radius;
-    double getSquare() override;
-protected:
-    void setRadius(double radius);
-    double getRadius();
+    double getArea(double a) override;
 };
 
-class Sector : public Circle
+class Sector : public Figure
 {
 public:
-    double angle;
-    double getSquare() override;
-protected:
-    void setAngle(double angle);
-    double getAngle();
+    double getArea(double a, double b) override;
 };
 
 #endif // FIGURES_H

@@ -18,10 +18,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    Rectangle rectangle;
+    Figure selectedFigure;
 
 private slots:
-    void change();
+    void onComboBoxChanged(int index);
+//    void changeArea();
 };
 
 #endif // MAINWINDOW_H

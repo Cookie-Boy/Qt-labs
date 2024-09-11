@@ -104,7 +104,8 @@ compiler_rcc_make_all: debug/qrc_resources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_resources.cpp
 debug/qrc_resources.cpp: ../1lab/resources.qrc \
-		D:/Programs/Qt/5.12.4/mingw73_64/bin/rcc.exe
+		D:/Programs/Qt/5.12.4/mingw73_64/bin/rcc.exe \
+		../1lab/images/KVADROBER.png
 	D:\Programs\Qt\5.12.4\mingw73_64\bin\rcc.exe -name resources ..\1lab\resources.qrc -o debug\qrc_resources.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
@@ -223,6 +224,7 @@ debug/moc_mainwindow.cpp: ../1lab/mainwindow.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qtouchdevice.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qtabwidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qicon.h \
+		../1lab/figures.h \
 		debug/moc_predefs.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/bin/moc.exe
 	D:\Programs\Qt\5.12.4\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/build-1lab-Desktop_Qt_5_12_4_MinGW_64_bit-Debug/debug/moc_predefs.h" -ID:/Programs/Qt/5.12.4/mingw73_64/mkspecs/win32-g++ -I"C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/1lab" -ID:/Programs/Qt/5.12.4/mingw73_64/include -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtGui -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtANGLE -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtCore -I. -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Programs/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\1lab\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -384,6 +386,7 @@ debug/main.o: ../1lab/main.cpp ../1lab/mainwindow.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qtouchdevice.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qtabwidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qicon.h \
+		../1lab/figures.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QApplication \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qapplication.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -500,6 +503,7 @@ debug/mainwindow.o: ../1lab/mainwindow.cpp ../1lab/mainwindow.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qtouchdevice.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qtabwidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qicon.h \
+		../1lab/figures.h \
 		ui_mainwindow.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtCore/QVariant \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QAction \
@@ -512,9 +516,22 @@ debug/mainwindow.o: ../1lab/mainwindow.cpp ../1lab/mainwindow.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qdesktopwidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qguiapplication.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qinputmethod.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QComboBox \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qcombobox.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qstyleoption.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qabstractspinbox.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qvalidator.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtCore/qregularexpression.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qslider.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qabstractslider.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qstyle.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qtabbar.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qrubberband.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qframe.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtCore/qabstractitemmodel.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QLabel \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qlabel.h \
-		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qframe.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QLineEdit \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qlineedit.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/qtextcursor.h \
@@ -529,7 +546,8 @@ debug/mainwindow.o: ../1lab/mainwindow.cpp ../1lab/mainwindow.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qstatusbar.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QToolBar \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qtoolbar.h \
-		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QWidget
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QWidget \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/QPixmap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\1lab\mainwindow.cpp
 
 debug/qrc_resources.o: debug/qrc_resources.cpp 
