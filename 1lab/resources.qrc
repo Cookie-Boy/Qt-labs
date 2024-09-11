@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/KVADROBER.png</file>
+    </qresource>
+</RCC>

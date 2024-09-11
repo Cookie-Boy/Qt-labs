@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">none</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLineEdit" name="a_rect">
     <property name="geometry">
@@ -23,27 +26,14 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">0</string>
+    </property>
     <property name="inputMask">
      <string>DDDDD</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>100</y>
-      <width>251</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../images/KVADROBER.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="square_rect">
+   <widget class="QLabel" name="square_area">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -102,6 +92,72 @@
     <property name="text">
      <string>b</string>
     </property>
+   </widget>
+   <widget class="QLabel" name="square">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>130</y>
+      <width>201</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/KVADROBER.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>140</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Квадрат</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Прямоугольник</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Параллелограмм</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Ромб</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Треугольник</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Трапеция</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Круг</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Сектор</string>
+     </property>
+    </item>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>

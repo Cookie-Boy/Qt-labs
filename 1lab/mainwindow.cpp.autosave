@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     int h = ui->square->height();
     ui->square->setPixmap(pix.scaled(w, h, Qt::KeepAspectRatio));
 
-    connect(ui->a_rect, SIGNAL(textChanged(" ")), this, SLOT(change()));
+    connect(ui->a_rect, SIGNAL(textC    hanged(" ")), this, SLOT(change()));
 }
 
 MainWindow::~MainWindow()

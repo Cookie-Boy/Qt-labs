@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "figures.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Rectangle rectangle;
+
+private slots:
+    void change();
 };
 
 #endif // MAINWINDOW_H

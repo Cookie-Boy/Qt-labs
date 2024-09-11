@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -30,8 +31,13 @@ public:
     QAction *action_4;
     QAction *action_5;
     QWidget *centralWidget;
-    QLineEdit *lineEdit;
-    QLabel *label;
+    QLineEdit *a_rect;
+    QLabel *square_area;
+    QLineEdit *b_rect;
+    QLabel *label_3;
+    QLabel *label_4;
+    QLabel *square;
+    QComboBox *comboBox;
     QStatusBar *statusBar;
     QMenuBar *menuBar;
     QMenu *menu;
@@ -42,6 +48,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(1304, 633);
+        MainWindow->setStyleSheet(QString::fromUtf8("none"));
         action_3 = new QAction(MainWindow);
         action_3->setObjectName(QString::fromUtf8("action_3"));
         action_4 = new QAction(MainWindow);
@@ -50,13 +57,41 @@ public:
         action_5->setObjectName(QString::fromUtf8("action_5"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        lineEdit = new QLineEdit(centralWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(30, 60, 113, 24));
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(10, 110, 201, 161));
-        label->setPixmap(QPixmap(QString::fromUtf8("../images/KVADROBER.png")));
+        a_rect = new QLineEdit(centralWidget);
+        a_rect->setObjectName(QString::fromUtf8("a_rect"));
+        a_rect->setGeometry(QRect(30, 60, 113, 24));
+        a_rect->setStyleSheet(QString::fromUtf8("0"));
+        square_area = new QLabel(centralWidget);
+        square_area->setObjectName(QString::fromUtf8("square_area"));
+        square_area->setGeometry(QRect(30, 330, 241, 61));
+        QFont font;
+        font.setPointSize(20);
+        square_area->setFont(font);
+        square_area->setAlignment(Qt::AlignCenter);
+        b_rect = new QLineEdit(centralWidget);
+        b_rect->setObjectName(QString::fromUtf8("b_rect"));
+        b_rect->setGeometry(QRect(160, 60, 113, 24));
+        label_3 = new QLabel(centralWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setGeometry(QRect(30, 40, 55, 16));
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(170, 40, 55, 16));
+        square = new QLabel(centralWidget);
+        square->setObjectName(QString::fromUtf8("square"));
+        square->setGeometry(QRect(40, 130, 201, 161));
+        square->setPixmap(QPixmap(QString::fromUtf8("images/KVADROBER.png")));
+        comboBox = new QComboBox(centralWidget);
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBox->setGeometry(QRect(580, 140, 151, 41));
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
@@ -88,8 +123,21 @@ public:
         action_3->setText(QApplication::translate("MainWindow", "\320\220\320\262\321\202\320\276\321\200\321\213", nullptr));
         action_4->setText(QApplication::translate("MainWindow", "\320\236\321\207\320\270\321\201\321\202\320\270\321\202\321\214", nullptr));
         action_5->setText(QApplication::translate("MainWindow", "\320\222\321\213\321\205\320\276\320\264", nullptr));
-        lineEdit->setInputMask(QApplication::translate("MainWindow", "DDDDD", nullptr));
-        label->setText(QString());
+        a_rect->setInputMask(QApplication::translate("MainWindow", "DDDDD", nullptr));
+        square_area->setText(QApplication::translate("MainWindow", "S = 0", nullptr));
+        b_rect->setInputMask(QApplication::translate("MainWindow", "DDDDD", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "a", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "b", nullptr));
+        square->setText(QString());
+        comboBox->setItemText(0, QApplication::translate("MainWindow", "\320\232\320\262\320\260\320\264\321\200\320\260\321\202", nullptr));
+        comboBox->setItemText(1, QApplication::translate("MainWindow", "\320\237\321\200\321\217\320\274\320\276\321\203\320\263\320\276\320\273\321\214\320\275\320\270\320\272", nullptr));
+        comboBox->setItemText(2, QApplication::translate("MainWindow", "\320\237\320\260\321\200\320\260\320\273\320\273\320\265\320\273\320\276\320\263\321\200\320\260\320\274\320\274", nullptr));
+        comboBox->setItemText(3, QApplication::translate("MainWindow", "\320\240\320\276\320\274\320\261", nullptr));
+        comboBox->setItemText(4, QApplication::translate("MainWindow", "\320\242\321\200\320\265\321\203\320\263\320\276\320\273\321\214\320\275\320\270\320\272", nullptr));
+        comboBox->setItemText(5, QApplication::translate("MainWindow", "\320\242\321\200\320\260\320\277\320\265\321\206\320\270\321\217", nullptr));
+        comboBox->setItemText(6, QApplication::translate("MainWindow", "\320\232\321\200\321\203\320\263", nullptr));
+        comboBox->setItemText(7, QApplication::translate("MainWindow", "\320\241\320\265\320\272\321\202\320\276\321\200", nullptr));
+
         menu->setTitle(QApplication::translate("MainWindow", "\320\234\320\265\320\275\321\216", nullptr));
     } // retranslateUi
 
