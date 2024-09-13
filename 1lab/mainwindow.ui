@@ -20,8 +20,8 @@
    <widget class="QLineEdit" name="a_rect">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>60</y>
+      <x>370</x>
+      <y>70</y>
       <width>113</width>
       <height>24</height>
      </rect>
@@ -32,6 +32,9 @@
     <property name="inputMask">
      <string/>
     </property>
+    <property name="text">
+     <string/>
+    </property>
     <property name="maxLength">
      <number>33</number>
     </property>
@@ -39,9 +42,9 @@
    <widget class="QLabel" name="square_area">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>330</y>
-      <width>241</width>
+      <x>540</x>
+      <y>360</y>
+      <width>261</width>
       <height>61</height>
      </rect>
     </property>
@@ -60,8 +63,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>40</y>
+      <x>370</x>
+      <y>50</y>
       <width>55</width>
       <height>16</height>
      </rect>
@@ -73,8 +76,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>40</y>
+      <x>510</x>
+      <y>50</y>
       <width>55</width>
       <height>16</height>
      </rect>
@@ -86,10 +89,10 @@
    <widget class="QLabel" name="square">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>120</y>
-      <width>231</width>
-      <height>181</height>
+      <x>370</x>
+      <y>110</y>
+      <width>271</width>
+      <height>241</height>
      </rect>
     </property>
     <property name="text">
@@ -102,8 +105,8 @@
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>140</y>
+      <x>370</x>
+      <y>380</y>
       <width>151</width>
       <height>41</height>
      </rect>
@@ -115,7 +118,7 @@
     </item>
     <item>
      <property name="text">
-      <string>Прямоугольник</string>
+      <string>Круг</string>
      </property>
     </item>
     <item>
@@ -135,12 +138,7 @@
     </item>
     <item>
      <property name="text">
-      <string>Трапеция</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Круг</string>
+      <string>Прямоугольник</string>
      </property>
     </item>
     <item>
@@ -148,12 +146,17 @@
       <string>Сектор</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Трапеция</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLineEdit" name="b_rect">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>60</y>
+      <x>510</x>
+      <y>70</y>
       <width>113</width>
       <height>24</height>
      </rect>
@@ -168,6 +171,44 @@
      <number>32</number>
     </property>
    </widget>
+   <widget class="QLineEdit" name="c_rect">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>70</y>
+      <width>113</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">0</string>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
+    </property>
+    <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>32767</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>50</y>
+      <width>55</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>с</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QMenuBar" name="menuBar">
@@ -176,7 +217,7 @@
      <x>0</x>
      <y>0</y>
      <width>1304</width>
-     <height>25</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">

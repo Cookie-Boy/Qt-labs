@@ -1,42 +1,72 @@
 #include "figures.h"
 #include <QtMath>
 
-double Figure::getArea(double a)
+double Figure::getArea()
 {
     return 0;
 }
 
-double Figure::getArea(double a, double b)
+void Figure::setA(double a)
 {
-    return 0;
+    this->a = a;
 }
 
-double Figure::getArea(double a, double b, double c)
+void Figure::setB(double b)
 {
-    return 0;
+    this->b = b;
 }
 
-double Rectangle::getArea(double a, double b)
+void Figure::setC(double c)
+{
+    this->c = c;
+}
+
+double Figure::getA()
+{
+    return a;
+}
+
+double Figure::getB()
+{
+    return b;
+}
+
+double Figure::getC()
+{
+    return c;
+}
+
+double Square::getArea()
+{
+    return a * a;
+}
+
+double Rectangle::getArea()
 {
     return a * b;
 }
 
-double Triangle::getArea(double a, double b)
+double Parallelogram::getArea()
+{
+    return a * b;
+}
+
+double Triangle::getArea()
 {
     return (a * b) / 2;
 }
 
-double Trapezium::getArea(double a, double b, double c)
+double Trapezium::getArea()
 {
     return (a + b) * c / 2;
 }
 
-double Circle::getArea(double a)
+double Circle::getArea()
 {
     return M_PI * (a * a);
 }
 
-double Sector::getArea(double a, double b)
+double Sector::getArea()
 {
     return (M_PI * (a * a) * b) / 360;
 }

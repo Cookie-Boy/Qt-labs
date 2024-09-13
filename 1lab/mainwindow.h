@@ -18,11 +18,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    Figure selectedFigure;
+    Figure* figures[8] = {new Square(), new Circle(), new Parallelogram(), new Rhombus, new Triangle, new Rectangle(), new Sector, new Trapezium};
+    int SelectedFigureId = 0;
+
 
 private slots:
     void onComboBoxChanged(int index);
-//    void changeArea();
+    void changeValues();
+    void changeArea();
 };
 
 #endif // MAINWINDOW_H
