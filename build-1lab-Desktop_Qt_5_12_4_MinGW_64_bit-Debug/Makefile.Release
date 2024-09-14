@@ -105,7 +105,14 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_resources.cpp
 release/qrc_resources.cpp: ../1lab/resources.qrc \
 		D:/Programs/Qt/5.12.4/mingw73_64/bin/rcc.exe \
-		../1lab/images/KVADROBER.png
+		../1lab/images/2.png \
+		../1lab/images/6.png \
+		../1lab/images/1.png \
+		../1lab/images/5.png \
+		../1lab/images/0.png \
+		../1lab/images/4.png \
+		../1lab/images/3.png \
+		../1lab/images/7.png
 	D:\Programs\Qt\5.12.4\mingw73_64\bin\rcc.exe -name resources ..\1lab\resources.qrc -o release\qrc_resources.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -227,7 +234,7 @@ release/moc_mainwindow.cpp: ../1lab/mainwindow.h \
 		../1lab/figures.h \
 		release/moc_predefs.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/bin/moc.exe
-	D:\Programs\Qt\5.12.4\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/build-1lab-Desktop_Qt_5_12_4_MinGW_64_bit-Debug/release/moc_predefs.h" -ID:/Programs/Qt/5.12.4/mingw73_64/mkspecs/win32-g++ -I"C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/1lab" -ID:/Programs/Qt/5.12.4/mingw73_64/include -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtGui -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtANGLE -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtCore -I. -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/Programs/Qt/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/Programs/Qt/Tools/mingw730_64/x86_64-w64-mingw32/include ..\1lab\mainwindow.h -o release\moc_mainwindow.cpp
+	D:\Programs\Qt\5.12.4\mingw73_64\bin\moc.exe $(DEFINES) --include "C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/build-1lab-Desktop_Qt_5_12_4_MinGW_64_bit-Debug/release/moc_predefs.h" -ID:/Programs/Qt/5.12.4/mingw73_64/mkspecs/win32-g++ -I"C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/1lab" -ID:/Programs/Qt/5.12.4/mingw73_64/include -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtGui -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtANGLE -ID:/Programs/Qt/5.12.4/mingw73_64/include/QtCore -I. -IC:/Qt/Qt5.12.4/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Qt/Qt5.12.4/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Qt5.12.4/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Qt/Qt5.12.4/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Qt/Qt5.12.4/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Qt/Qt5.12.4/Tools/mingw730_64/x86_64-w64-mingw32/include ..\1lab\mainwindow.h -o release\moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -547,7 +554,10 @@ release/mainwindow.o: ../1lab/mainwindow.cpp ../1lab/mainwindow.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QToolBar \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qtoolbar.h \
 		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QWidget \
-		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/QPixmap
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtGui/QPixmap \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/QMessageBox \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qmessagebox.h \
+		D:/Programs/Qt/5.12.4/mingw73_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\1lab\mainwindow.cpp
 
 release/qrc_resources.o: release/qrc_resources.cpp 

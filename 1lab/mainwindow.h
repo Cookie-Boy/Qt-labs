@@ -26,6 +26,8 @@ private slots:
     void onComboBoxChanged(int index);
     void changeValues();
     void changeArea();
+    void onAuthorsClicked();
+    void onClearClicked();
 };
 
 #endif // MAINWINDOW_H

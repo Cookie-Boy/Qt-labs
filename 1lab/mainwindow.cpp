@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <QPixmap>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -25,6 +26,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->a_rect, &QLineEdit::textEdited, this, &MainWindow::changeValues);
     connect(ui->b_rect, &QLineEdit::textEdited, this, &MainWindow::changeValues);
     connect(ui->c_rect, &QLineEdit::textEdited, this, &MainWindow::changeValues);
+
+    connect(ui->menu->actions().first(), &QAction::triggered, this, &MainWindow::onAuthorsClicked);
+    connect(ui->menu->actions()[1], &QAction::triggered, this, &MainWindow::onClearClicked);
 }
 
 MainWindow::~MainWindow()
@@ -104,4 +108,24 @@ void MainWindow::changeArea()
     ui->a_rect->setText(QString::number(figures[SelectedFigureId]->getA()));
     ui->b_rect->setText(QString::number(figures[SelectedFigureId]->getB()));
     ui->c_rect->setText(QString::number(figures[SelectedFigureId]->getC()));
+}
+
+void MainWindow::onAuthorsClicked()
+{
+    QMessageBox::about(this, "Авторы", "Медведенко Виталий и Ефимов Евгений");
+}
+
+void MainWindow::onClearClicked()
+{
+    for (int i = 0; i < 8; i++)
+    {
+        figures[i]->setA(0);
+        figures[i]->setB(0);
+        figures[i]->setC(0);
+        ui->a_rect->setText("0");
+        ui->b_rect->setText("0");
+        ui->c_rect->setText("0");
+        ui->square_area->setText("S = 0");
+        ui->comboBox->setCurrentIndex(0);
+    }
 }
