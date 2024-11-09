@@ -25,7 +25,7 @@ public:
     QGridLayout *gridLayout_4;
     QGridLayout *gridLayout_3;
     QLineEdit *lineEdit_4;
-    QPushButton *pushButton_4;
+    QPushButton *loginButton;
 
     void setupUi(QWidget *LoginWidget)
     {
@@ -65,16 +65,16 @@ public:
 
         gridLayout_3->addWidget(lineEdit_4, 0, 0, 1, 1);
 
-        pushButton_4 = new QPushButton(gridLayoutWidget_2);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        loginButton = new QPushButton(gridLayoutWidget_2);
+        loginButton->setObjectName(QString::fromUtf8("loginButton"));
         QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Maximum);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
-        pushButton_4->setSizePolicy(sizePolicy2);
-        pushButton_4->setStyleSheet(QString::fromUtf8(""));
+        sizePolicy2.setHeightForWidth(loginButton->sizePolicy().hasHeightForWidth());
+        loginButton->setSizePolicy(sizePolicy2);
+        loginButton->setStyleSheet(QString::fromUtf8(""));
 
-        gridLayout_3->addWidget(pushButton_4, 1, 0, 1, 1);
+        gridLayout_3->addWidget(loginButton, 1, 0, 1, 1);
 
 
         gridLayout_4->addLayout(gridLayout_3, 0, 0, 1, 1);
@@ -90,7 +90,7 @@ public:
         LoginWidget->setWindowTitle(QApplication::translate("LoginWidget", "Form", nullptr));
         lineEdit_4->setText(QString());
         lineEdit_4->setPlaceholderText(QApplication::translate("LoginWidget", "Email \320\270\320\273\320\270 \320\275\320\276\320\274\320\265\321\200 \321\202\320\265\320\273\320\265\321\204\320\276\320\275\320\260", nullptr));
-        pushButton_4->setText(QApplication::translate("LoginWidget", "\320\237\321\200\320\276\320\264\320\276\320\273\320\266\320\270\321\202\321\214", nullptr));
+        loginButton->setText(QApplication::translate("LoginWidget", "\320\237\321\200\320\276\320\264\320\276\320\273\320\266\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

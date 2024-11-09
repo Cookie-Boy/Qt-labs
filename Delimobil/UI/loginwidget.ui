@@ -71,7 +71,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="loginButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
           <horstretch>0</horstretch>

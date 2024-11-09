@@ -28,12 +28,20 @@ CONFIG += c++11
 
 SOURCES += \
         UI/loginwidget.cpp \
+        database/databasemanager.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        models/user.cpp \
+        repositories/userrepository.cpp \
+        services/userservice.cpp
 
 HEADERS += \
         UI/loginwidget.h \
-        mainwindow.h
+        database/databasemanager.h \
+        mainwindow.h \
+        models/user.h \
+        repositories/userrepository.h \
+        services/userservice.h
 
 FORMS += \
         UI/loginwidget.ui \

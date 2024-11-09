@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "ui_loginwidget.h"
+#include "../services/userservice.h"
 
 namespace Ui {
 class LoginWidget;
@@ -21,6 +22,9 @@ protected:
 
 private:
     Ui::LoginWidget *ui;
+
+private slots:
+    void onLoginButtonClicked();
 };
 
 #endif // LOGINWIDGET_H

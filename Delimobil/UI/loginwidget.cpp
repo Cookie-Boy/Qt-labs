@@ -32,6 +32,7 @@ LoginWidget::LoginWidget(QWidget *parent) :
     QRegExp regExp("[0-9]*");  // Разрешает только цифры
     QRegExpValidator *validator = new QRegExpValidator(regExp, this);
     ui->lineEdit_4->setValidator(validator);
+    connect(ui->loginButton, &QPushButton::clicked, this, &LoginWidget::onLoginButtonClicked);
 }
 
 LoginWidget::~LoginWidget()
@@ -62,4 +63,12 @@ void LoginWidget::paintEvent(QPaintEvent *event) {
                  << QPoint(width(), height() / 2) // точка справа в середине высоты
                  << QPoint(width(), height());    // нижний правый угол
     painter.drawPolygon(mintTriangle);
+}
+
+void LoginWidget::onLoginButtonClicked() {
+    QString fullName = "Виталий";
+        QString email = ui->lineEdit_4->text();
+        short drivingExperience = 2;
+
+        UserService::instance().registerUser(fullName, email, drivingExperience);
 }
