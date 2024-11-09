@@ -102,6 +102,7 @@ void MainWindow::changeValues()
     figures[SelectedFigureId]->setC(ui->c_rect->text().toDouble());
     changeArea();
 }
+
 void MainWindow::changeArea()
 {
     ui->square_area->setText("S = " + QString::number(figures[SelectedFigureId]->getArea()));

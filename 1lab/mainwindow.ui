@@ -17,198 +17,158 @@
    <string notr="true">none</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLineEdit" name="a_rect">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>70</y>
-      <width>113</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">0</string>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="maxLength">
-     <number>33</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="square_area">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>360</y>
-      <width>261</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>S = 0</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>50</y>
-      <width>55</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>a</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>50</y>
-      <width>55</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>b</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="square">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>110</y>
-      <width>271</width>
-      <height>241</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>images/KVADROBER.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>380</y>
-      <width>151</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Квадрат</string>
-     </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="a_rect">
+          <property name="styleSheet">
+           <string notr="true">0</string>
+          </property>
+          <property name="inputMask">
+           <string/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="maxLength">
+           <number>33</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>a</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="b_rect">
+          <property name="styleSheet">
+           <string notr="true">0</string>
+          </property>
+          <property name="inputMask">
+           <string/>
+          </property>
+          <property name="maxLength">
+           <number>32</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>b</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="text">
+           <string>с</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="c_rect">
+          <property name="styleSheet">
+           <string notr="true">0</string>
+          </property>
+          <property name="inputMethodHints">
+           <set>Qt::ImhNone</set>
+          </property>
+          <property name="inputMask">
+           <string/>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="maxLength">
+           <number>32767</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="square">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>images/KVADROBER.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QComboBox" name="comboBox">
+          <item>
+           <property name="text">
+            <string>Квадрат</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Круг</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Параллелограмм</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Ромб</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Треугольник</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Прямоугольник</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Сектор</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Трапеция</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="square_area">
+          <property name="font">
+           <font>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>S = 0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </item>
-    <item>
-     <property name="text">
-      <string>Круг</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Параллелограмм</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Ромб</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Треугольник</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Прямоугольник</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Сектор</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Трапеция</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QLineEdit" name="b_rect">
-    <property name="geometry">
-     <rect>
-      <x>510</x>
-      <y>70</y>
-      <width>113</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">0</string>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="maxLength">
-     <number>32</number>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="c_rect">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>70</y>
-      <width>113</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">0</string>
-    </property>
-    <property name="inputMethodHints">
-     <set>Qt::ImhNone</set>
-    </property>
-    <property name="inputMask">
-     <string/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="maxLength">
-     <number>32767</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>50</y>
-      <width>55</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>с</string>
-    </property>
-   </widget>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QMenuBar" name="menuBar">
