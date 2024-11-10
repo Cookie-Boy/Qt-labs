@@ -43,3 +43,12 @@ bool UserRepository::saveUser(const User& user) {
 
     return true;
 }
+
+bool UserRepository::isUserExists(const QString& email) {
+    QSqlQuery query;
+    query.prepare("SELECT * FROM users WHERE email = :email");
+    query.bindValue(":email", email);
+    query.exec();
+
+    return query.next();
+}

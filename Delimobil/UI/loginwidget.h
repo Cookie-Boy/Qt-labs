@@ -2,6 +2,8 @@
 #define LOGINWIDGET_H
 
 #include <QWidget>
+#include <QStackedWidget>
+#include "basewidget.h"
 #include "ui_loginwidget.h"
 #include "../services/userservice.h"
 
@@ -9,12 +11,12 @@ namespace Ui {
 class LoginWidget;
 }
 
-class LoginWidget : public QWidget
+class LoginWidget : public BaseWidget
 {
     Q_OBJECT
 
 public:
-    explicit LoginWidget(QWidget *parent = nullptr);
+    explicit LoginWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
     ~LoginWidget() override;
 
 protected:
@@ -25,6 +27,9 @@ private:
 
 private slots:
     void onLoginButtonClicked();
+
+signals:
+    void userNotFound();
 };
 
 #endif // LOGINWIDGET_H

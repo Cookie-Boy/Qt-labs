@@ -1,12 +1,12 @@
 #include <QApplication>
-#include "UI/loginwidget.h"
 #include <database/databasemanager.h>
+#include "mainwindow.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    LoginWidget loginWidget;
-    loginWidget.show();
+    MainWindow mainWindow;
+    mainWindow.show();
 
     DatabaseManager::instance().openConnection();
 

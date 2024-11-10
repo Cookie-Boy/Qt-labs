@@ -1,0 +1,13 @@
+release/basewidget.o
+release/loginwidget.o
+release/registrationwidget.o
+release/databasemanager.o
+release/main.o
+release/mainwindow.o
+release/user.o
+release/userrepository.o
+release/userservice.o
+release/moc_basewidget.o
+release/moc_loginwidget.o
+release/moc_registrationwidget.o
+release/moc_mainwindow.o

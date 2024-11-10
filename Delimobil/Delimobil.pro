@@ -27,7 +27,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        UI/basewidget.cpp \
         UI/loginwidget.cpp \
+        UI/registrationwidget.cpp \
         database/databasemanager.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -36,7 +38,9 @@ SOURCES += \
         services/userservice.cpp
 
 HEADERS += \
+        UI/basewidget.h \
         UI/loginwidget.h \
+        UI/registrationwidget.h \
         database/databasemanager.h \
         mainwindow.h \
         models/user.h \
@@ -44,7 +48,9 @@ HEADERS += \
         services/userservice.h
 
 FORMS += \
+    UI/basewidget.ui \
         UI/loginwidget.ui \
+    UI/registrationwidget.ui \
         mainwindow.ui \
 
 # Default rules for deployment.

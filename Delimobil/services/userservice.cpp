@@ -25,3 +25,7 @@ void UserService::registerUser(const QString& fullName, const QString& email, sh
         qDebug() << "Ошибка при регистрации пользователя!";
     }
 }
+
+bool UserService::authorizeUser(const QString& email) {
+    return UserRepository::instance().isUserExists(email);
+}

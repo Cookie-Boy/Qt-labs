@@ -89,7 +89,7 @@ public:
     {
         LoginWidget->setWindowTitle(QApplication::translate("LoginWidget", "Form", nullptr));
         lineEdit_4->setText(QString());
-        lineEdit_4->setPlaceholderText(QApplication::translate("LoginWidget", "Email \320\270\320\273\320\270 \320\275\320\276\320\274\320\265\321\200 \321\202\320\265\320\273\320\265\321\204\320\276\320\275\320\260", nullptr));
+        lineEdit_4->setPlaceholderText(QApplication::translate("LoginWidget", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 email", nullptr));
         loginButton->setText(QApplication::translate("LoginWidget", "\320\237\321\200\320\276\320\264\320\276\320\273\320\266\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 

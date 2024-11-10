@@ -4,8 +4,8 @@
 #include <QRegExp>
 #include <QRegExpValidator>
 
-LoginWidget::LoginWidget(QWidget *parent) :
-    QWidget(parent),
+LoginWidget::LoginWidget(QStackedWidget *stackedWidget, QWidget *parent) :
+    BaseWidget(stackedWidget, parent),
     ui(new Ui::LoginWidget)
 {
     ui->setupUi(this);
@@ -29,9 +29,9 @@ LoginWidget::LoginWidget(QWidget *parent) :
         button->setCursor(Qt::PointingHandCursor);
     }
 
-    QRegExp regExp("[0-9]*");  // Разрешает только цифры
-    QRegExpValidator *validator = new QRegExpValidator(regExp, this);
-    ui->lineEdit_4->setValidator(validator);
+//    QRegExp regExp("[0-9]*");  // Разрешает только цифры
+//    QRegExpValidator *validator = new QRegExpValidator(regExp, this);
+//    ui->lineEdit_4->setValidator(validator);
     connect(ui->loginButton, &QPushButton::clicked, this, &LoginWidget::onLoginButtonClicked);
 }
 
@@ -66,9 +66,8 @@ void LoginWidget::paintEvent(QPaintEvent *event) {
 }
 
 void LoginWidget::onLoginButtonClicked() {
-    QString fullName = "Виталий";
-        QString email = ui->lineEdit_4->text();
-        short drivingExperience = 2;
-
-        UserService::instance().registerUser(fullName, email, drivingExperience);
+    QString email = ui->lineEdit_4->text();
+    if (!UserService::instance().authorizeUser(email)) {
+        emit userNotFound();
+    }
 }

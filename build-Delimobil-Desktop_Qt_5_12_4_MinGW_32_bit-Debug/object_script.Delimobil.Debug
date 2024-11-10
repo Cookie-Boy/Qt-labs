@@ -1,0 +1,13 @@
+debug/basewidget.o
+debug/loginwidget.o
+debug/registrationwidget.o
+debug/databasemanager.o
+debug/main.o
+debug/mainwindow.o
+debug/user.o
+debug/userrepository.o
+debug/userservice.o
+debug/moc_basewidget.o
+debug/moc_loginwidget.o
+debug/moc_registrationwidget.o
+debug/moc_mainwindow.o

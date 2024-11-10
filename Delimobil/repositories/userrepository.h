@@ -13,6 +13,7 @@ public:
     static UserRepository& instance();
     long getFreeId();
     bool saveUser(const User &user);
+    bool isUserExists(const QString& email);
 private:
     UserRepository();
 };
