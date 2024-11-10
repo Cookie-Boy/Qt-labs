@@ -3,28 +3,13 @@
 #include <QPainter>
 #include <QRegExp>
 #include <QRegExpValidator>
+#include "../services/userservice.h"
 
 LoginWidget::LoginWidget(QStackedWidget *stackedWidget, QWidget *parent) :
     BaseWidget(stackedWidget, parent),
     ui(new Ui::LoginWidget)
 {
     ui->setupUi(this);
-    QString buttonStyle = R"(
-        QPushButton {
-            background-color: #a6f2d1; /* Основной цвет кнопки */
-            border: 1px solid transparent; /* Прозрачная рамка, чтобы border-radius сработал */
-            border-radius: 20px;
-            padding: 10px;
-            color: black;
-            font-weight: bold;
-        }
-        QPushButton:hover {
-            background-color: #87C4AA; /* Более темный цвет при наведении */
-        }
-    )";
-
-    this->setStyleSheet(buttonStyle);
-    // Устанавливаем курсор для всех QPushButton в MainWindow
     foreach (QPushButton *button, this->findChildren<QPushButton*>()) {
         button->setCursor(Qt::PointingHandCursor);
     }

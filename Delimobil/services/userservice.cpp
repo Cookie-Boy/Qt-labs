@@ -1,6 +1,7 @@
 #include "userservice.h"
 #include "../models/user.h"
 #include "../repositories/userrepository.h"
+#include "../models/authorizeduser.h"
 
 #include <QString>
 
@@ -13,19 +14,36 @@ UserService& UserService::instance() {
     return instance;
 }
 
-void UserService::registerUser(const QString& fullName, const QString& email, short drivingExperience) {
+bool UserService::registerUser(const QString& email,
+                               const QString& lastName,
+                               const QString& firstName,
+                               const QString& middleName,
+                               short drivingExperience) {
+    if (email.length() == 0 || lastName.length() == 0 || firstName.length() == 0 || middleName.length() == 0)
+        return false;
+
     long id = UserRepository::instance().getFreeId();
     QDateTime registrationDate = QDateTime::currentDateTime();
-    User newUser(id, fullName, email, registrationDate, drivingExperience);
+    User newUser(id, firstName, lastName, middleName, email, registrationDate, drivingExperience);
 
     // Сохраняем пользователя через репозиторий
-    if (UserRepository::instance().saveUser(newUser)) {
-        qDebug() << "Пользователь успешно зарегистрирован!";
-    } else {
+    if (!UserRepository::instance().saveUser(newUser)) {
         qDebug() << "Ошибка при регистрации пользователя!";
+        return false;
     }
+    qDebug() << "Пользователь успешно зарегистрирован!";
+    AuthorizedUser::instance().setUser(newUser);
+    return true;
 }
 
 bool UserService::authorizeUser(const QString& email) {
-    return UserRepository::instance().isUserExists(email);
+    User *user = UserRepository::instance().findUserByEmail(email);
+    if (user == nullptr) {
+        User user = User(email);
+        AuthorizedUser::instance().setUser(user);
+        return false;
+    }
+    AuthorizedUser::instance().setUser(*user);
+    qDebug() << "Успешная авторизация";
+    return true;
 }

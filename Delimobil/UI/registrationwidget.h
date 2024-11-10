@@ -14,10 +14,16 @@ class RegistrationWidget : public BaseWidget
 
 public:
     explicit RegistrationWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
-    ~RegistrationWidget();
+    ~RegistrationWidget() override;
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
 
 private:
     Ui::RegistrationWidget *ui;
+
+private slots:
+    void onRegistrationButtonClicked();
 };
 
 #endif // REGISTRATIONWIDGET_H

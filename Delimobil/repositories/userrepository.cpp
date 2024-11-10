@@ -29,9 +29,12 @@ long UserRepository::getFreeId() {
 
 bool UserRepository::saveUser(const User& user) {
     QSqlQuery query;
-    query.prepare("INSERT INTO users (id, fullName, email, registrationDate, drivingExperience) VALUES (?, ?, ?, ?, ?)");
+    query.prepare("INSERT INTO users (id, firstName, lastName, middleName, email, registrationDate, drivingExperience) "
+                  "VALUES (?, ?, ?, ?, ?, ?, ?)");
     query.addBindValue(QVariant::fromValue(static_cast<long>(user.getId())));
-    query.addBindValue(user.getFullName());
+    query.addBindValue(user.getFirstName());
+    query.addBindValue(user.getLastName());
+    query.addBindValue(user.getMiddleName());
     query.addBindValue(user.getEmail());
     query.addBindValue(user.getRegistrationDate());
     query.addBindValue(user.getDrivingExperience());
@@ -44,11 +47,27 @@ bool UserRepository::saveUser(const User& user) {
     return true;
 }
 
-bool UserRepository::isUserExists(const QString& email) {
+User* UserRepository::findUserByEmail(const QString& email) {
     QSqlQuery query;
     query.prepare("SELECT * FROM users WHERE email = :email");
     query.bindValue(":email", email);
-    query.exec();
 
-    return query.next();
+    if (!query.exec()) {
+        qDebug() << "Ошибка при выполнении запроса:" << query.lastError().text();
+        return nullptr; // если запрос не выполнен
+    }
+
+    if (query.next()) {
+        long id = static_cast<long>(query.value("id").toLongLong());
+        QString firstName = query.value("firstName").toString();
+        QString lastName = query.value("lastName").toString();
+        QString middleName = query.value("middleName").toString();
+        QString email = query.value("email").toString();
+        QDateTime registrationDate = query.value("registrationDate").toDateTime();
+        short drivingExperience = static_cast<short>(query.value("drivingExperience").toInt());
+
+        return new User(id, firstName, lastName, middleName, email, registrationDate, drivingExperience);
+        }
+
+    return nullptr; // if user not found
 }

@@ -8,7 +8,11 @@ class UserService
 {
 public:
     static UserService& instance();
-    void registerUser(const QString& fullName, const QString& email, short drivingExperience);
+    bool registerUser(const QString& email,
+                      const QString& lastName,
+                      const QString& firstName,
+                      const QString& middleName,
+                      short drivingExperience);
     bool authorizeUser(const QString &email);
 
 private:

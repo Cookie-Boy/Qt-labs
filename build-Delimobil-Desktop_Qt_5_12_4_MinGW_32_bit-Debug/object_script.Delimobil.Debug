@@ -4,6 +4,7 @@ debug/registrationwidget.o
 debug/databasemanager.o
 debug/main.o
 debug/mainwindow.o
+debug/authorizeduser.o
 debug/user.o
 debug/userrepository.o
 debug/userservice.o

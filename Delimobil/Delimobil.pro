@@ -33,6 +33,7 @@ SOURCES += \
         database/databasemanager.cpp \
         main.cpp \
         mainwindow.cpp \
+        models/authorizeduser.cpp \
         models/user.cpp \
         repositories/userrepository.cpp \
         services/userservice.cpp
@@ -43,6 +44,7 @@ HEADERS += \
         UI/registrationwidget.h \
         database/databasemanager.h \
         mainwindow.h \
+        models/authorizeduser.h \
         models/user.h \
         repositories/userrepository.h \
         services/userservice.h

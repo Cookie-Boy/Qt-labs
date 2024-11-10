@@ -5,7 +5,6 @@
 #include <QStackedWidget>
 #include "basewidget.h"
 #include "ui_loginwidget.h"
-#include "../services/userservice.h"
 
 namespace Ui {
 class LoginWidget;

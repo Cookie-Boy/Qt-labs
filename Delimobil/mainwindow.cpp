@@ -27,10 +27,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setCentralWidget(stackedWidget);
     LoginWidget *loginWidget = new LoginWidget(stackedWidget);
-    RegistrationWidget *registrationWidget = new RegistrationWidget(stackedWidget);
+//    RegistrationWidget *registrationWidget = new RegistrationWidget(stackedWidget);
 
     stackedWidget->addWidget(loginWidget);
-    stackedWidget->addWidget(registrationWidget);
+//    stackedWidget->addWidget(registrationWidget);
 
     // Подключаем сигнал к слоту для обработки переходов
 //    connect(loginWidget, &LoginWidget::switchToRegistration, this, [=]() {
@@ -42,6 +42,8 @@ MainWindow::MainWindow(QWidget *parent) :
     stackedWidget->setCurrentWidget(loginWidget);
 
     connect(loginWidget, &LoginWidget::userNotFound, [=]() {
+            RegistrationWidget *registrationWidget = new RegistrationWidget(stackedWidget);
+            stackedWidget->addWidget(registrationWidget);
             loginWidget->navigateTo(registrationWidget);
         });
 }

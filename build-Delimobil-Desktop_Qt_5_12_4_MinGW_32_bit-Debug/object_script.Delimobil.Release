@@ -4,6 +4,7 @@ release/registrationwidget.o
 release/databasemanager.o
 release/main.o
 release/mainwindow.o
+release/authorizeduser.o
 release/user.o
 release/userrepository.o
 release/userservice.o
