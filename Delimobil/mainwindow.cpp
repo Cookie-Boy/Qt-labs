@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "UI/loginwidget.h"
 #include "UI/registrationwidget.h"
+#include "UI/carlistwidget.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -27,7 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setCentralWidget(stackedWidget);
     LoginWidget *loginWidget = new LoginWidget(stackedWidget);
-//    RegistrationWidget *registrationWidget = new RegistrationWidget(stackedWidget);
 
     stackedWidget->addWidget(loginWidget);
 //    stackedWidget->addWidget(registrationWidget);
@@ -46,6 +46,12 @@ MainWindow::MainWindow(QWidget *parent) :
             stackedWidget->addWidget(registrationWidget);
             loginWidget->navigateTo(registrationWidget);
         });
+
+    connect(loginWidget, &LoginWidget::userFound, [=]() {
+        CarListWidget *carListWidget = new CarListWidget(stackedWidget);
+        stackedWidget->addWidget(carListWidget);
+        loginWidget->navigateTo(carListWidget);
+    });
 }
 
 MainWindow::~MainWindow()

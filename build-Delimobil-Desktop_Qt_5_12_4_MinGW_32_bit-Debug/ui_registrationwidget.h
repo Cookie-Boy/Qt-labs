@@ -65,7 +65,6 @@ public:
 "    padding: 10px;\n"
 "    background-color: white;\n"
 "}"));
-        name->setMaxLength(11);
 
         gridLayout_3->addWidget(name, 4, 0, 1, 1);
 
@@ -79,7 +78,6 @@ public:
 "    padding: 10px;\n"
 "    background-color: white;\n"
 "}"));
-        surname->setMaxLength(11);
 
         gridLayout_3->addWidget(surname, 1, 0, 1, 1);
 
@@ -93,7 +91,6 @@ public:
 "    padding: 10px;\n"
 "    background-color: white;\n"
 "}"));
-        drivingExp->setMaxLength(11);
 
         gridLayout_3->addWidget(drivingExp, 7, 0, 1, 1);
 
@@ -107,7 +104,6 @@ public:
 "    padding: 10px;\n"
 "    background-color: white;\n"
 "}"));
-        email->setMaxLength(11);
 
         gridLayout_3->addWidget(email, 0, 0, 1, 1);
 
@@ -132,7 +128,6 @@ public:
 "    padding: 10px;\n"
 "    background-color: white;\n"
 "}"));
-        surname2->setMaxLength(11);
 
         gridLayout_3->addWidget(surname2, 5, 0, 1, 1);
 

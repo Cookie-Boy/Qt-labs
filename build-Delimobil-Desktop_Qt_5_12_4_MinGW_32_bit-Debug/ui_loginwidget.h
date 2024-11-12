@@ -61,9 +61,8 @@ public:
 "    padding: 10px;\n"
 "    background-color: white;\n"
 "}"));
-        lineEdit_4->setMaxLength(11);
 
-        gridLayout_3->addWidget(lineEdit_4, 0, 0, 1, 1);
+        gridLayout_3->addWidget(lineEdit_4, 1, 0, 1, 1);
 
         loginButton = new QPushButton(gridLayoutWidget_2);
         loginButton->setObjectName(QString::fromUtf8("loginButton"));
@@ -74,7 +73,7 @@ public:
         loginButton->setSizePolicy(sizePolicy2);
         loginButton->setStyleSheet(QString::fromUtf8(""));
 
-        gridLayout_3->addWidget(loginButton, 1, 0, 1, 1);
+        gridLayout_3->addWidget(loginButton, 2, 0, 1, 1);
 
 
         gridLayout_4->addLayout(gridLayout_3, 0, 0, 1, 1);

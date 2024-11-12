@@ -54,5 +54,7 @@ void LoginWidget::onLoginButtonClicked() {
     QString email = ui->lineEdit_4->text();
     if (!UserService::instance().authorizeUser(email)) {
         emit userNotFound();
+        return;
     }
+    emit userFound();
 }

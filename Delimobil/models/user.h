@@ -18,6 +18,9 @@ public:
     User(long id, const QString& firstName, const QString& lastName, const QString& middleName,
                const QString& email, const QDateTime& registrationDate, short drivingExperience);
 
+    User(const QString& firstName, const QString& lastName, const QString& middleName,
+               const QString& email, const QDateTime& registrationDate, short drivingExperience);
+
     User(const QString &email);
 
     User();

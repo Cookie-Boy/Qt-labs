@@ -62,9 +62,6 @@
         <property name="text">
          <string/>
         </property>
-        <property name="maxLength">
-         <number>11</number>
-        </property>
         <property name="placeholderText">
          <string>Имя</string>
         </property>
@@ -88,9 +85,6 @@
         </property>
         <property name="text">
          <string/>
-        </property>
-        <property name="maxLength">
-         <number>11</number>
         </property>
         <property name="placeholderText">
          <string>Фамилия</string>
@@ -116,9 +110,6 @@
         <property name="text">
          <string/>
         </property>
-        <property name="maxLength">
-         <number>11</number>
-        </property>
         <property name="placeholderText">
          <string>Опыт вождения (лет)</string>
         </property>
@@ -142,9 +133,6 @@
         </property>
         <property name="text">
          <string/>
-        </property>
-        <property name="maxLength">
-         <number>11</number>
         </property>
         <property name="placeholderText">
          <string>Email</string>
@@ -185,9 +173,6 @@
         </property>
         <property name="text">
          <string/>
-        </property>
-        <property name="maxLength">
-         <number>11</number>
         </property>
         <property name="placeholderText">
          <string>Отчество</string>

@@ -31,7 +31,12 @@ bool UserRepository::saveUser(const User& user) {
     QSqlQuery query;
     query.prepare("INSERT INTO users (id, firstName, lastName, middleName, email, registrationDate, drivingExperience) "
                   "VALUES (?, ?, ?, ?, ?, ?, ?)");
-    query.addBindValue(QVariant::fromValue(static_cast<long>(user.getId())));
+
+    long id = user.getId();
+    if (id == -1)
+        id = getFreeId();
+
+    query.addBindValue(QVariant::fromValue(static_cast<long>(id)));
     query.addBindValue(user.getFirstName());
     query.addBindValue(user.getLastName());
     query.addBindValue(user.getMiddleName());

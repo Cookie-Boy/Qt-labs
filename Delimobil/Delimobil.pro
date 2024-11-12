@@ -28,29 +28,38 @@ CONFIG += c++11
 
 SOURCES += \
         UI/basewidget.cpp \
+        UI/carlistwidget.cpp \
         UI/loginwidget.cpp \
         UI/registrationwidget.cpp \
         database/databasemanager.cpp \
         main.cpp \
         mainwindow.cpp \
         models/authorizeduser.cpp \
+        models/car.cpp \
         models/user.cpp \
+        repositories/carrepository.cpp \
         repositories/userrepository.cpp \
+        services/carservice.cpp \
         services/userservice.cpp
 
 HEADERS += \
         UI/basewidget.h \
+        UI/carlistwidget.h \
         UI/loginwidget.h \
         UI/registrationwidget.h \
         database/databasemanager.h \
         mainwindow.h \
         models/authorizeduser.h \
+        models/car.h \
         models/user.h \
+        repositories/carrepository.h \
         repositories/userrepository.h \
+        services/carservice.h \
         services/userservice.h
 
 FORMS += \
     UI/basewidget.ui \
+    UI/carlistwidget.ui \
         UI/loginwidget.ui \
     UI/registrationwidget.ui \
         mainwindow.ui \

@@ -11,10 +11,10 @@ class UserRepository
 {
 public:
     static UserRepository& instance();
-    long getFreeId();
     bool saveUser(const User &user);
     User* findUserByEmail(const QString& email);
 private:
+    long getFreeId();
     UserRepository();
 };
 

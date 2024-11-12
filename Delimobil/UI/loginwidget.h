@@ -29,6 +29,7 @@ private slots:
 
 signals:
     void userNotFound();
+    void userFound();
 };
 
 #endif // LOGINWIDGET_H

@@ -3,6 +3,8 @@
 
 
 #include <QString>
+#include "../repositories/userrepository.h"
+#include "../models/authorizeduser.h"
 
 class UserService
 {
@@ -16,6 +18,9 @@ public:
     bool authorizeUser(const QString &email);
 
 private:
+    UserRepository& userRepository;
+    AuthorizedUser& authorizedUser;
+    UserService(UserRepository userRepository);
     UserService();
 };
 

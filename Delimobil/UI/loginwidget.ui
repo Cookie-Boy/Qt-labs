@@ -43,7 +43,7 @@
       <property name="rightMargin">
        <number>500</number>
       </property>
-      <item row="0" column="0">
+      <item row="1" column="0">
        <widget class="QLineEdit" name="lineEdit_4">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -62,15 +62,12 @@
         <property name="text">
          <string/>
         </property>
-        <property name="maxLength">
-         <number>11</number>
-        </property>
         <property name="placeholderText">
          <string>Введите email</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
+      <item row="2" column="0">
        <widget class="QPushButton" name="loginButton">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
