@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QScrollArea>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -20,6 +21,7 @@ QT_BEGIN_NAMESPACE
 class Ui_CarListWidget
 {
 public:
+    QVBoxLayout *verticalLayout;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QGridLayout *layout;
@@ -29,34 +31,32 @@ public:
         if (CarListWidget->objectName().isEmpty())
             CarListWidget->setObjectName(QString::fromUtf8("CarListWidget"));
         CarListWidget->resize(1280, 720);
-        CarListWidget->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	font-size: 18px;\n"
+        CarListWidget->setStyleSheet(QString::fromUtf8("QWidget {\n"
+"	background: transparent;\n"
 "}"));
+        verticalLayout = new QVBoxLayout(CarListWidget);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         scrollArea = new QScrollArea(CarListWidget);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
-        scrollArea->setGeometry(QRect(0, 0, 1280, 720));
         scrollArea->setStyleSheet(QString::fromUtf8("QScrollArea {\n"
-"	margin-top: 70 px;\n"
-"	background: transparent;\n"
 "	border: none;\n"
+"	margin-top: 60px;\n"
 "}"));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1140, 580));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
-        scrollAreaWidgetContents->setSizePolicy(sizePolicy);
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1138, 578));
         scrollAreaWidgetContents->setStyleSheet(QString::fromUtf8("QWidget {\n"
 "	background: transparent;\n"
 "}"));
         layout = new QGridLayout(scrollAreaWidgetContents);
         layout->setObjectName(QString::fromUtf8("layout"));
-        layout->setHorizontalSpacing(25);
-        layout->setVerticalSpacing(40);
+        layout->setHorizontalSpacing(18);
+        layout->setVerticalSpacing(20);
         scrollArea->setWidget(scrollAreaWidgetContents);
+
+        verticalLayout->addWidget(scrollArea);
+
 
         retranslateUi(CarListWidget);
 
@@ -65,7 +65,7 @@ public:
 
     void retranslateUi(QWidget *CarListWidget)
     {
-        CarListWidget->setWindowTitle(QApplication::translate("CarListWidget", "Form", nullptr));
+        CarListWidget->setWindowTitle(QApplication::translate("CarListWidget", "Car List", nullptr));
     } // retranslateUi
 
 };

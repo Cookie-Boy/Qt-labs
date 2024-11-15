@@ -51,7 +51,7 @@ void LoginWidget::paintEvent(QPaintEvent *event) {
 }
 
 void LoginWidget::onLoginButtonClicked() {
-    QString email = ui->lineEdit_4->text();
+    QString email = ui->lineEdit_email->text();
     if (!UserService::instance().authorizeUser(email)) {
         emit userNotFound();
         return;

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ProfileWidget</class>
+ <widget class="QWidget" name="ProfileWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <spacer name="verticalSpacerTop">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayoutCenter">
+     <item>
+      <spacer name="horizontalSpacerLeft">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="centerLayout">
+       <item>
+        <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_lastName">
+           <property name="text">
+            <string>Фамилия:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lastNameEdit"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_firstName">
+           <property name="text">
+            <string>Имя:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="firstNameEdit"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_middleName">
+           <property name="text">
+            <string>Отчество:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="middleNameEdit"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_email">
+           <property name="text">
+            <string>Email:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="emailEdit"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="buttonLayout">
+         <item>
+          <widget class="QPushButton" name="editButton">
+           <property name="text">
+            <string>Редактировать</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="saveButton">
+           <property name="text">
+            <string>Сохранить</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="reviewsButton">
+         <property name="text">
+          <string>Мои отзывы</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="tripsButton">
+         <property name="text">
+          <string>Мои поездки</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacerRight">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacerBottom">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

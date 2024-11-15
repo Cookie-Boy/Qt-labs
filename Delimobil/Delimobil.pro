@@ -6,7 +6,9 @@
 
 QT       += \
          core gui \
-         sql
+         sql \
+         location \
+         positioning
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,10 +29,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        API/mapwindow.cpp \
         UI/basewidget.cpp \
         UI/carlistwidget.cpp \
         UI/loginwidget.cpp \
+        UI/profilewidget.cpp \
         UI/registrationwidget.cpp \
+        UI/rentdialog.cpp \
         database/databasemanager.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -43,10 +48,13 @@ SOURCES += \
         services/userservice.cpp
 
 HEADERS += \
+        API/mapwindow.h \
         UI/basewidget.h \
         UI/carlistwidget.h \
         UI/loginwidget.h \
+        UI/profilewidget.h \
         UI/registrationwidget.h \
+        UI/rentdialog.h \
         database/databasemanager.h \
         mainwindow.h \
         models/authorizeduser.h \
@@ -58,11 +66,16 @@ HEADERS += \
         services/userservice.h
 
 FORMS += \
+    API/mapwindow.ui \
     UI/basewidget.ui \
     UI/carlistwidget.ui \
         UI/loginwidget.ui \
+    UI/profilewidget.ui \
     UI/registrationwidget.ui \
+    UI/rentdialog.ui \
         mainwindow.ui \
+
+RESOURCES += resources.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -21,6 +21,7 @@ protected:
 
 private:
     Ui::CarListWidget *ui;
+    void displayCars();
 };
 
 #endif // CARLISTWIDGET_H

@@ -5,6 +5,7 @@
 #include <QString>
 #include "../models/car.h"
 #include "../repositories/carrepository.h"
+#include "../models/authorizeduser.h"
 
 class CarService
 {
@@ -27,10 +28,13 @@ public:
                 bool hasParkingSensors);
 
     double getOptimalPricePerMinute(const Car& car);
-    double getOptimalPricePerHour(Car& car);
+    double getOptimalPricePerHour(const Car& car);
+
+    void startRent(Car& car);
 
 private:
     CarRepository& carRepository;
+    AuthorizedUser& authorizedUser;
     CarService();
 };
 

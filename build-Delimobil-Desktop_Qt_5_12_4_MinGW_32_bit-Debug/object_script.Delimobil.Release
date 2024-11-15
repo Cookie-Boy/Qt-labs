@@ -1,7 +1,10 @@
+release/mapwindow.o
 release/basewidget.o
 release/carlistwidget.o
 release/loginwidget.o
+release/profilewidget.o
 release/registrationwidget.o
+release/rentdialog.o
 release/databasemanager.o
 release/main.o
 release/mainwindow.o
@@ -12,8 +15,12 @@ release/carrepository.o
 release/userrepository.o
 release/carservice.o
 release/userservice.o
+release/qrc_resources.o
+release/moc_mapwindow.o
 release/moc_basewidget.o
 release/moc_carlistwidget.o
 release/moc_loginwidget.o
+release/moc_profilewidget.o
 release/moc_registrationwidget.o
+release/moc_rentdialog.o
 release/moc_mainwindow.o

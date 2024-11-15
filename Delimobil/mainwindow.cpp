@@ -14,47 +14,52 @@ MainWindow::MainWindow(QWidget *parent) :
     QString buttonStyle = R"(
         QPushButton {
             background-color: #a6f2d1; /* Основной цвет кнопки */
-            border: none;
+            border: 1px solid transparent; /* Прозрачная рамка, чтобы border-radius сработал */
             border-radius: 20px;
             padding: 10px;
             color: black;
             font-weight: bold;
         }
         QPushButton:hover {
-            background-color: #496B5C; /* Более темный цвет при наведении */
+            background-color: #87C4AA; /* Более темный цвет при наведении */
         }
     )";
+
     this->setStyleSheet(buttonStyle);
 
     setCentralWidget(stackedWidget);
-    LoginWidget *loginWidget = new LoginWidget(stackedWidget);
+    BaseWidget *baseWidget = new BaseWidget(stackedWidget);
+    LoginWidget *loginWidget = new LoginWidget(stackedWidget, baseWidget);
+    profileWidget = new ProfileWidget(stackedWidget);
 
     stackedWidget->addWidget(loginWidget);
-//    stackedWidget->addWidget(registrationWidget);
+    stackedWidget->addWidget(profileWidget);
 
-    // Подключаем сигнал к слоту для обработки переходов
-//    connect(loginWidget, &LoginWidget::switchToRegistration, this, [=]() {
-//        switchToWidget(registrationWidget);
-//    });
-
-    // Добавляем начальный виджет
-    widgetHistory.append(loginWidget);
-    stackedWidget->setCurrentWidget(loginWidget);
+//    widgetHistory.append(loginWidget);
 
     connect(loginWidget, &LoginWidget::userNotFound, [=]() {
-            RegistrationWidget *registrationWidget = new RegistrationWidget(stackedWidget);
+            RegistrationWidget *registrationWidget = new RegistrationWidget(stackedWidget, baseWidget);
             stackedWidget->addWidget(registrationWidget);
             loginWidget->navigateTo(registrationWidget);
         });
 
     connect(loginWidget, &LoginWidget::userFound, [=]() {
-        CarListWidget *carListWidget = new CarListWidget(stackedWidget);
+        CarListWidget *carListWidget = new CarListWidget(stackedWidget, baseWidget);
         stackedWidget->addWidget(carListWidget);
+
+        connect(carListWidget, &BaseWidget::profileIconClicked, this, &MainWindow::showProfileWidget);
+
         loginWidget->navigateTo(carListWidget);
     });
+
+    stackedWidget->setCurrentWidget(loginWidget);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::showProfileWidget() {
+    stackedWidget->setCurrentWidget(profileWidget);
 }

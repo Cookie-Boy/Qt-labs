@@ -4,26 +4,35 @@
 
 BaseWidget::BaseWidget(QStackedWidget *stackedWidget, QWidget *parent)
     : QWidget(parent), stackedWidget(stackedWidget) {
-    QString buttonStyle = R"(
-        QPushButton {
-            background-color: #a6f2d1; /* Основной цвет кнопки */
-            border: 1px solid transparent; /* Прозрачная рамка, чтобы border-radius сработал */
-            border-radius: 20px;
-            padding: 10px;
-            color: black;
-            font-weight: bold;
-        }
-        QPushButton:hover {
-            background-color: #87C4AA; /* Более темный цвет при наведении */
-        }
-    )";
-
-    this->setStyleSheet(buttonStyle);
 }
 
 BaseWidget::~BaseWidget()
 {
     delete ui;
+}
+
+void BaseWidget::setAllTools(BaseWidget *widget) {
+    QString projectPath = "C:\\Users\\vital\\OneDrive\\My projects\\5 semester\\Qt projects\\Delimobil";
+    QLabel *profileIcon = new QLabel(widget);
+    QPixmap pixmap(projectPath + "\\images\\user.png");
+    profileIcon->setPixmap(pixmap.scaled(35, 35, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+    profileIcon->setFixedSize(35, 35);
+    profileIcon->move(1200, 10);
+    profileIcon->setAttribute(Qt::WA_Hover);
+    profileIcon->setMouseTracking(true);
+    profileIcon->installEventFilter(widget);
+}
+
+bool BaseWidget::eventFilter(QObject *obj, QEvent *event) {
+    // Проверяем, что событие произошло для QLabel и это клик мыши
+    if (obj->inherits("QLabel") && event->type() == QEvent::MouseButtonPress) {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+        if (mouseEvent->button() == Qt::LeftButton) {
+            emit profileIconClicked();  // Вызываем нужный слот при клике
+            return true;  // Указываем, что событие обработано
+        }
+    }
+    return QWidget::eventFilter(obj, event);  // Обработка остальных событий по умолчанию
 }
 
 void BaseWidget::navigateTo(QWidget *widget) {

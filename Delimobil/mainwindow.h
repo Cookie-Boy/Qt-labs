@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStackedWidget>
+#include "UI/profilewidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,7 +22,11 @@ public:
 private:
     Ui::MainWindow *ui;
     QStackedWidget *stackedWidget;
+    ProfileWidget *profileWidget;
     QList<QWidget*> widgetHistory;
+
+private slots:
+    void showProfileWidget();
 };
 
 #endif // MAINWINDOW_H

@@ -11,62 +11,51 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Car List</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QLabel {
-	font-size: 18px;
+   <string notr="true">QWidget {
+	background: transparent;
 }</string>
   </property>
-  <widget class="QScrollArea" name="scrollArea">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1280</width>
-     <height>720</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QScrollArea {
-	margin-top: 70 px;
-	background: transparent;
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="styleSheet">
+      <string notr="true">QScrollArea {
 	border: none;
+	margin-top: 60px;
 }</string>
-   </property>
-   <property name="widgetResizable">
-    <bool>true</bool>
-   </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>1140</width>
-      <height>580</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QWidget {
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1138</width>
+        <height>578</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget {
 	background: transparent;
 }</string>
-    </property>
-    <layout class="QGridLayout" name="layout">
-     <property name="horizontalSpacing">
-      <number>25</number>
-     </property>
-     <property name="verticalSpacing">
-      <number>40</number>
-     </property>
-    </layout>
-   </widget>
-  </widget>
+      </property>
+      <layout class="QGridLayout" name="layout">
+       <property name="horizontalSpacing">
+        <number>18</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>20</number>
+       </property>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

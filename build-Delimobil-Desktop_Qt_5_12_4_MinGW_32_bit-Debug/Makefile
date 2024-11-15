@@ -247,9 +247,15 @@ Makefile: ../Delimobil/Delimobil.pro D:/Programs/Qt/5.12.4/mingw73_32/mkspecs/wi
 		D:/Programs/Qt/5.12.4/mingw73_32/mkspecs/features/yacc.prf \
 		D:/Programs/Qt/5.12.4/mingw73_32/mkspecs/features/lex.prf \
 		../Delimobil/Delimobil.pro \
+		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Location.prl \
+		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5PositioningQuick.prl \
+		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Quick.prl \
 		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Widgets.prl \
 		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Gui.prl \
 		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Sql.prl \
+		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Positioning.prl \
+		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Qml.prl \
+		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Network.prl \
 		D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Core.prl \
 		D:/Programs/Qt/5.12.4/mingw73_32/lib/qtmain.prl
 	$(QMAKE) -o Makefile ..\Delimobil\Delimobil.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -437,9 +443,15 @@ D:/Programs/Qt/5.12.4/mingw73_32/mkspecs/features/exceptions.prf:
 D:/Programs/Qt/5.12.4/mingw73_32/mkspecs/features/yacc.prf:
 D:/Programs/Qt/5.12.4/mingw73_32/mkspecs/features/lex.prf:
 ../Delimobil/Delimobil.pro:
+D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Location.prl:
+D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5PositioningQuick.prl:
+D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Quick.prl:
 D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Widgets.prl:
 D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Gui.prl:
 D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Sql.prl:
+D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Positioning.prl:
+D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Qml.prl:
+D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Network.prl:
 D:/Programs/Qt/5.12.4/mingw73_32/lib/Qt5Core.prl:
 D:/Programs/Qt/5.12.4/mingw73_32/lib/qtmain.prl:
 qmake: FORCE

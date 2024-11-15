@@ -1,7 +1,8 @@
 #include "carservice.h"
 #include "../models/authorizeduser.h"
 
-CarService::CarService() : carRepository(CarRepository::instance()) { }
+CarService::CarService() : carRepository(CarRepository::instance()),
+    authorizedUser(AuthorizedUser::instance()) { }
 
 CarService& CarService::instance() {
     static CarService instance;
@@ -42,4 +43,24 @@ double CarService::getOptimalPricePerMinute(const Car &car) {
     double drivingExp = AuthorizedUser::instance().getUser().getDrivingExperience();
 
     return startValue * k * (((10 - drivingExp) * 10 + car.getRating() + 100) / 100);
+}
+
+double CarService::getOptimalPricePerHour(const Car &car) {
+    double startValue = 6;
+    QString category = car.getCategory();
+    int k;
+    if (category == "Эконом")
+        k = 1;
+    else if (category == "Комфорт")
+        k = 2;
+    else
+        k = 3;
+
+    double drivingExp = AuthorizedUser::instance().getUser().getDrivingExperience();
+
+    return startValue * k * (((10 - drivingExp) * 10 + car.getRating() + 100) / 100) * 60;
+}
+
+void CarService::startRent(Car& car) {
+    authorizedUser.setCar(&car);
 }
