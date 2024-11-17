@@ -27,22 +27,23 @@ long UserRepository::getFreeId() {
     return freeId;
 }
 
-bool UserRepository::saveUser(const User& user) {
+bool UserRepository::saveUser(const User* user) {
     QSqlQuery query;
-    query.prepare("INSERT INTO users (id, firstName, lastName, middleName, email, registrationDate, drivingExperience) "
-                  "VALUES (?, ?, ?, ?, ?, ?, ?)");
+    query.prepare("INSERT INTO users (id, firstName, lastName, middleName, email, registrationDate, drivingExperience, role) "
+                  "VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-    long id = user.getId();
+    long id = user->getId();
     if (id == -1)
         id = getFreeId();
 
     query.addBindValue(QVariant::fromValue(static_cast<long>(id)));
-    query.addBindValue(user.getFirstName());
-    query.addBindValue(user.getLastName());
-    query.addBindValue(user.getMiddleName());
-    query.addBindValue(user.getEmail());
-    query.addBindValue(user.getRegistrationDate());
-    query.addBindValue(user.getDrivingExperience());
+    query.addBindValue(user->getFirstName());
+    query.addBindValue(user->getLastName());
+    query.addBindValue(user->getMiddleName());
+    query.addBindValue(user->getEmail());
+    query.addBindValue(user->getRegistrationDate());
+    query.addBindValue(user->getDrivingExperience());
+    query.addBindValue(user->getRole());
 
     if (!query.exec()) {
         qDebug() << "Ошибка при сохранении пользователя:" << query.lastError().text();
@@ -70,8 +71,9 @@ User* UserRepository::findUserByEmail(const QString& email) {
         QString email = query.value("email").toString();
         QDateTime registrationDate = query.value("registrationDate").toDateTime();
         short drivingExperience = static_cast<short>(query.value("drivingExperience").toInt());
+        QString role = query.value("role").toString();
 
-        return new User(id, firstName, lastName, middleName, email, registrationDate, drivingExperience);
+        return new User(id, firstName, lastName, middleName, email, registrationDate, drivingExperience, role);
         }
 
     return nullptr; // if user not found

@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 #include "UI/profilewidget.h"
+#include "UI/basewidget.h"
+#include "UI/loginwidget.h"
+#include "UI/registrationwidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,8 +25,14 @@ public:
 private:
     Ui::MainWindow *ui;
     QStackedWidget *stackedWidget;
+
     ProfileWidget *profileWidget;
+    LoginWidget *loginWidget;
+    RegistrationWidget *registrationWidget;
+
     QList<QWidget*> widgetHistory;
+
+    void handleUserFound(BaseWidget *sourceWidget);
 
 private slots:
     void showProfileWidget();

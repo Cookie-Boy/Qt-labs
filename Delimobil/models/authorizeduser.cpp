@@ -9,11 +9,11 @@ AuthorizedUser& AuthorizedUser::instance() {
     return instance;
 }
 
-void AuthorizedUser::setUser(User& user) {
+void AuthorizedUser::setUser(User* user) {
     this->user = user;
 }
 
-User& AuthorizedUser::getUser() {
+User* AuthorizedUser::getUser() {
     return this->user;
 }
 

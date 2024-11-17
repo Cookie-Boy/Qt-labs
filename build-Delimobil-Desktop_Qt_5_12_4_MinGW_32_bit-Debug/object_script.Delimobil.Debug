@@ -1,6 +1,7 @@
 debug/mapwindow.o
 debug/basewidget.o
 debug/carlistwidget.o
+debug/filterdialog.o
 debug/loginwidget.o
 debug/profilewidget.o
 debug/registrationwidget.o
@@ -19,6 +20,7 @@ debug/qrc_resources.o
 debug/moc_mapwindow.o
 debug/moc_basewidget.o
 debug/moc_carlistwidget.o
+debug/moc_filterdialog.o
 debug/moc_loginwidget.o
 debug/moc_profilewidget.o
 debug/moc_registrationwidget.o

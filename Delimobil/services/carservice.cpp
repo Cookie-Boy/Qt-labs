@@ -40,7 +40,7 @@ double CarService::getOptimalPricePerMinute(const Car &car) {
     else
         k = 3;
 
-    double drivingExp = AuthorizedUser::instance().getUser().getDrivingExperience();
+    double drivingExp = AuthorizedUser::instance().getUser()->getDrivingExperience();
 
     return startValue * k * (((10 - drivingExp) * 10 + car.getRating() + 100) / 100);
 }
@@ -56,7 +56,7 @@ double CarService::getOptimalPricePerHour(const Car &car) {
     else
         k = 3;
 
-    double drivingExp = AuthorizedUser::instance().getUser().getDrivingExperience();
+    double drivingExp = AuthorizedUser::instance().getUser()->getDrivingExperience();
 
     return startValue * k * (((10 - drivingExp) * 10 + car.getRating() + 100) / 100) * 60;
 }

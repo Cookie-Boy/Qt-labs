@@ -7,14 +7,14 @@
 class AuthorizedUser
 {
 private:
-    User user;
+    User* user;
     Car* car;
     AuthorizedUser();
 
 public:
     static AuthorizedUser& instance();
-    void setUser(User& user);
-    User& getUser();
+    void setUser(User* user);
+    User* getUser();
     void setCar(Car* car);
     Car* getCar();
 

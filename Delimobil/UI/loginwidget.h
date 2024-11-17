@@ -26,10 +26,6 @@ private:
 
 private slots:
     void onLoginButtonClicked();
-
-signals:
-    void userNotFound();
-    void userFound();
 };
 
 #endif // LOGINWIDGET_H

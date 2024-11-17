@@ -28,6 +28,12 @@ private:
 
 signals:
     void profileIconClicked();
+    void exitIconClicked();
+    void adminIconClicked();
+    void rentIconClicked();
+
+    void userNotFound();
+    void userFound();
 
 public:
     explicit BaseWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);

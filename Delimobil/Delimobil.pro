@@ -32,6 +32,7 @@ SOURCES += \
         API/mapwindow.cpp \
         UI/basewidget.cpp \
         UI/carlistwidget.cpp \
+        UI/filterdialog.cpp \
         UI/loginwidget.cpp \
         UI/profilewidget.cpp \
         UI/registrationwidget.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
         API/mapwindow.h \
         UI/basewidget.h \
         UI/carlistwidget.h \
+        UI/filterdialog.h \
         UI/loginwidget.h \
         UI/profilewidget.h \
         UI/registrationwidget.h \
@@ -69,6 +71,7 @@ FORMS += \
     API/mapwindow.ui \
     UI/basewidget.ui \
     UI/carlistwidget.ui \
+    UI/filterdialog.ui \
         UI/loginwidget.ui \
     UI/profilewidget.ui \
     UI/registrationwidget.ui \

@@ -3,6 +3,7 @@
 #include "UI/loginwidget.h"
 #include "UI/registrationwidget.h"
 #include "UI/carlistwidget.h"
+#include "models/authorizeduser.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -28,32 +29,49 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setStyleSheet(buttonStyle);
 
     setCentralWidget(stackedWidget);
-    BaseWidget *baseWidget = new BaseWidget(stackedWidget);
-    LoginWidget *loginWidget = new LoginWidget(stackedWidget, baseWidget);
+//    BaseWidget *baseWidget = new BaseWidget(stackedWidget);
+    loginWidget = new LoginWidget(stackedWidget);
     profileWidget = new ProfileWidget(stackedWidget);
+    registrationWidget = new RegistrationWidget(stackedWidget);
 
     stackedWidget->addWidget(loginWidget);
     stackedWidget->addWidget(profileWidget);
+    stackedWidget->addWidget(registrationWidget);
+
+    stackedWidget->setCurrentWidget(loginWidget);
 
 //    widgetHistory.append(loginWidget);
 
     connect(loginWidget, &LoginWidget::userNotFound, [=]() {
-            RegistrationWidget *registrationWidget = new RegistrationWidget(stackedWidget, baseWidget);
-            stackedWidget->addWidget(registrationWidget);
+            registrationWidget->fillFields();
             loginWidget->navigateTo(registrationWidget);
         });
 
-    connect(loginWidget, &LoginWidget::userFound, [=]() {
-        CarListWidget *carListWidget = new CarListWidget(stackedWidget, baseWidget);
-        stackedWidget->addWidget(carListWidget);
-
-        connect(carListWidget, &BaseWidget::profileIconClicked, this, &MainWindow::showProfileWidget);
-
-        loginWidget->navigateTo(carListWidget);
+    connect(loginWidget, &BaseWidget::userFound, [=]() {
+        handleUserFound(loginWidget);
     });
 
-    stackedWidget->setCurrentWidget(loginWidget);
+    connect(registrationWidget, &BaseWidget::userFound, [=]() {
+        handleUserFound(registrationWidget);
+    });
 }
+
+void MainWindow::handleUserFound(BaseWidget *sourceWidget) {
+    CarListWidget *carListWidget = new CarListWidget(stackedWidget);
+    stackedWidget->addWidget(carListWidget);
+
+    connect(carListWidget, &BaseWidget::profileIconClicked, this, &MainWindow::showProfileWidget);
+    connect(carListWidget, &BaseWidget::exitIconClicked, [=]() {
+        stackedWidget->setCurrentWidget(loginWidget);
+        AuthorizedUser::instance().setUser(nullptr);
+    });
+    connect(carListWidget, &BaseWidget::adminIconClicked, [=]() {
+        stackedWidget->setCurrentWidget(profileWidget);
+    });
+
+    sourceWidget->navigateTo(carListWidget);
+}
+
 
 MainWindow::~MainWindow()
 {

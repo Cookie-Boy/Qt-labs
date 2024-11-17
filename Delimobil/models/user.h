@@ -13,13 +13,14 @@ private:
     QString email;
     QDateTime registrationDate;
     short drivingExperience;
+    QString role;
 
 public:
     User(long id, const QString& firstName, const QString& lastName, const QString& middleName,
-               const QString& email, const QDateTime& registrationDate, short drivingExperience);
+               const QString& email, const QDateTime& registrationDate, short drivingExperience, QString role);
 
     User(const QString& firstName, const QString& lastName, const QString& middleName,
-               const QString& email, const QDateTime& registrationDate, short drivingExperience);
+               const QString& email, const QDateTime& registrationDate, short drivingExperience, QString role);
 
     User(const QString &email);
 
@@ -79,6 +80,14 @@ public:
    }
    short getDrivingExperience() const {
        return drivingExperience;
+   }
+
+   void setRole(const QString role) {
+       this->role = role;
+   }
+
+   QString getRole() const {
+       return role;
    }
 };
 

@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QDebug>
 #include "../models/authorizeduser.h"
+#include "UI/loginwidget.h"
 
 RegistrationWidget::RegistrationWidget(QStackedWidget *stackedWidget, QWidget *parent) :
     BaseWidget(stackedWidget, parent),
@@ -15,16 +16,17 @@ RegistrationWidget::RegistrationWidget(QStackedWidget *stackedWidget, QWidget *p
         button->setCursor(Qt::PointingHandCursor);
     }
 
-    QString email = AuthorizedUser::instance().getUser().getEmail();
-    qDebug() << email;
-    ui->email->setText(email);
-
     connect(ui->regButton, &QPushButton::clicked, this, &RegistrationWidget::onRegistrationButtonClicked);
 }
 
 RegistrationWidget::~RegistrationWidget()
 {
     delete ui;
+}
+
+void RegistrationWidget::fillFields() {
+    QString email = AuthorizedUser::instance().getUser()->getEmail();
+    ui->email->setText(email);
 }
 
 void RegistrationWidget::paintEvent(QPaintEvent *event) {
@@ -60,6 +62,8 @@ void RegistrationWidget::onRegistrationButtonClicked() {
     short drivingExperience = ui->drivingExp->text().toShort();
 
     if (!UserService::instance().registerUser(email, lastName, firstName, middleName, drivingExperience)) {
-        // emit something;
+        // throw something, because there is an error
+        return;
     }
+    emit userFound();
 }

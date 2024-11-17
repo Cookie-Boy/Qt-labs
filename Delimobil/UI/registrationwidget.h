@@ -16,6 +16,8 @@ public:
     explicit RegistrationWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
     ~RegistrationWidget() override;
 
+    void fillFields();
+
 protected:
     void paintEvent(QPaintEvent *event) override;
 

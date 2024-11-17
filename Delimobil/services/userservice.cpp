@@ -20,7 +20,7 @@ bool UserService::registerUser(const QString& email,
         return false;
 
     QDateTime registrationDate = QDateTime::currentDateTime();
-    User newUser(firstName, lastName, middleName, email, registrationDate, drivingExperience);
+    User *newUser = new User(firstName, lastName, middleName, email, registrationDate, drivingExperience, "User");
 
     // Сохраняем пользователя через репозиторий
     if (!userRepository.saveUser(newUser)) {
@@ -35,11 +35,11 @@ bool UserService::registerUser(const QString& email,
 bool UserService::authorizeUser(const QString& email) {
     User *user = userRepository.findUserByEmail(email);
     if (user == nullptr) {
-        User user = User(email);
+        User *user = new User(email);
         authorizedUser.setUser(user);
         return false;
     }
-    authorizedUser.setUser(*user);
+    authorizedUser.setUser(user);
     qDebug() << "Успешная авторизация";
     return true;
 }
