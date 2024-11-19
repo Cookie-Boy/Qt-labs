@@ -1,7 +1,7 @@
 #include "managecarswidget.h"
 #include "ui_managecarswidget.h"
 #include "../services/carservice.h"
-#include "addcarwidget.h"
+#include "addcardialog.h"
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QGridLayout>
@@ -120,20 +120,12 @@ void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int
 
 void ManageCarsWidget::onAddCarButtonClicked()
 {
-    openAddCarWidget();
-}
-
-void ManageCarsWidget::openAddCarWidget(const Car *car)
-{
-    AddCarWidget *widget = new AddCarWidget(stackedWidget);
-    widget->updateCarDetails(car->getName());
-    stackedWidget->addWidget(widget);
-    navigateTo(widget);
-
-    // Обновление списка после сохранения
-//    connect(widget, &AddCarWidget::carSaved, this, [this]() {
-//        updateCarList(CarService::instance().getAllCars());
-//    });
+    AddCarDialog addCarDialog(this);
+    if (addCarDialog.exec() == QDialog::Accepted) {
+        qDebug() << "Машина подтверждена";
+    } else {
+        qDebug() << "Машина отменена";
+    }
 }
 
 void ManageCarsWidget::confirmDeleteCar(const Car &car)

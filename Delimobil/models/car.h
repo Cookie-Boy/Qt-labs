@@ -15,7 +15,6 @@ private:
     double engineCapacity;
     double power;
     QString imagePath;
-    bool hasSpaciousTrunk;
     bool hasHeatedSeats;
     bool hasHeatedSteeringWheel;
     bool hasParkingSensors;
@@ -25,12 +24,12 @@ public:
     Car();
     Car(long id, const QString &name, short rating, const QString &category,
         const QString &transmission, const QString &driveType,
-        double engineCapacity, double power, QString imagePath, bool hasSpaciousTrunk,
-        bool hasHeatedSeats, bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked);
+        double engineCapacity, double power, QString imagePath, bool hasHeatedSeats,
+        bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked);
     Car(const QString &name, short rating, const QString &category,
         const QString &transmission, const QString &driveType,
-        double engineCapacity, double power, QString imagePath, bool hasSpaciousTrunk,
-        bool hasHeatedSeats, bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked);
+        double engineCapacity, double power, QString imagePath, bool hasHeatedSeats,
+        bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked);
 
     // Getters and Setters
     long getId() const;
@@ -59,9 +58,6 @@ public:
 
     QString getImagePath() const;
     void setImagePath(QString &imagePath);
-
-    bool getHasSpaciousTrunk() const;
-    void setHasSpaciousTrunk(bool hasSpaciousTrunk);
 
     bool getHasHeatedSeats() const;
     void setHasHeatedSeats(bool hasHeatedSeats);

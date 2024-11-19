@@ -21,14 +21,21 @@ bool CarService::addCar(QString &name,
                         double engineCapacity,
                         double power,
                         QString &imagePath,
-                        bool hasSpaciousTrunk,
                         bool hasHeatedSeats,
                         bool hasHeatedSteeringWheel,
                         bool hasParkingSensors,
                         bool isBlocked) {
     Car car = Car(name, rating, category, transmission, driveType, engineCapacity, power, imagePath,
-                  hasSpaciousTrunk, hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors, isBlocked);
+                  hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors, isBlocked);
     return carRepository.saveCar(car);
+}
+
+QVector<QString> CarService::getUniqueCarNames() {
+    return carRepository.getUniqueNames();
+}
+
+Car* CarService::getCarByName(QString name) {
+    return carRepository.findCarByName(name);
 }
 
 double CarService::getOptimalPricePerMinute(const Car &car) {

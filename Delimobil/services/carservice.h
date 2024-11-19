@@ -23,11 +23,14 @@ public:
                 double engineCapacity,
                 double power,
                 QString &imagePath,
-                bool hasSpaciousTrunk,
                 bool hasHeatedSeats,
                 bool hasHeatedSteeringWheel,
                 bool hasParkingSensors,
                 bool isBlocked);
+
+    QVector<QString> getUniqueCarNames();
+
+    Car* getCarByName(QString name);
 
     double getOptimalPricePerMinute(const Car& car);
     double getOptimalPricePerHour(const Car& car);

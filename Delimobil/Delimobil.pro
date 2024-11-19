@@ -30,7 +30,7 @@ CONFIG += c++11
 
 SOURCES += \
         API/mapwindow.cpp \
-        UI/addcarwidget.cpp \
+        UI/addcardialog.cpp \
         UI/basewidget.cpp \
         UI/carlistwidget.cpp \
         UI/filterdialog.cpp \
@@ -52,7 +52,7 @@ SOURCES += \
 
 HEADERS += \
         API/mapwindow.h \
-        UI/addcarwidget.h \
+        UI/addcardialog.h \
         UI/basewidget.h \
         UI/carlistwidget.h \
         UI/filterdialog.h \
@@ -73,7 +73,7 @@ HEADERS += \
 
 FORMS += \
     API/mapwindow.ui \
-    UI/addcarwidget.ui \
+    UI/addcardialog.ui \
     UI/basewidget.ui \
     UI/carlistwidget.ui \
     UI/filterdialog.ui \

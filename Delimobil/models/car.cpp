@@ -5,20 +5,18 @@ Car::Car() {}
 // Constructor with all fields
 Car::Car(long id, const QString &name, short rating, const QString &category,
          const QString &transmission, const QString &driveType,
-         double engineCapacity, double power, QString imagePath, bool hasSpaciousTrunk,
-         bool hasHeatedSeats, bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked)
+         double engineCapacity, double power, QString imagePath, bool hasHeatedSeats,
+         bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked)
     : id(id), name(name), rating(rating), category(category), transmission(transmission),
-      driveType(driveType), engineCapacity(engineCapacity), power(power), imagePath(imagePath),
-      hasSpaciousTrunk(hasSpaciousTrunk), hasHeatedSeats(hasHeatedSeats),
+      driveType(driveType), engineCapacity(engineCapacity), power(power), imagePath(imagePath), hasHeatedSeats(hasHeatedSeats),
       hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors), isBlocked(isBlocked) {}
 
 Car::Car(const QString &name, short rating, const QString &category,
     const QString &transmission, const QString &driveType,
-    double engineCapacity, double power, QString imagePath, bool hasSpaciousTrunk,
-    bool hasHeatedSeats, bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked)
+    double engineCapacity, double power, QString imagePath, bool hasHeatedSeats,
+         bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked)
     : name(name), rating(rating), category(category), transmission(transmission),
-      driveType(driveType), engineCapacity(engineCapacity), power(power), imagePath(imagePath),
-      hasSpaciousTrunk(hasSpaciousTrunk), hasHeatedSeats(hasHeatedSeats),
+      driveType(driveType), engineCapacity(engineCapacity), power(power), imagePath(imagePath), hasHeatedSeats(hasHeatedSeats),
       hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors), isBlocked(isBlocked) {
     this->id = -1;
 }
@@ -50,9 +48,6 @@ void Car::setPower(double power) { this->power = power; }
 
 QString Car::getImagePath() const { return imagePath; }
 void Car::setImagePath(QString &imagePath) { this->imagePath = imagePath; }
-
-bool Car::getHasSpaciousTrunk() const { return hasSpaciousTrunk; }
-void Car::setHasSpaciousTrunk(bool hasSpaciousTrunk) { this->hasSpaciousTrunk = hasSpaciousTrunk; }
 
 bool Car::getHasHeatedSeats() const { return hasHeatedSeats; }
 void Car::setHasHeatedSeats(bool hasHeatedSeats) { this->hasHeatedSeats = hasHeatedSeats; }

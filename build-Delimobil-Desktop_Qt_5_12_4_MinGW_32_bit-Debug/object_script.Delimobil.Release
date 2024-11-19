@@ -1,5 +1,5 @@
 release/mapwindow.o
-release/addcarwidget.o
+release/addcardialog.o
 release/basewidget.o
 release/carlistwidget.o
 release/filterdialog.o
@@ -20,7 +20,7 @@ release/carservice.o
 release/userservice.o
 release/qrc_resources.o
 release/moc_mapwindow.o
-release/moc_addcarwidget.o
+release/moc_addcardialog.o
 release/moc_basewidget.o
 release/moc_carlistwidget.o
 release/moc_filterdialog.o

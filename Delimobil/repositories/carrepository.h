@@ -13,9 +13,12 @@ public:
 
     bool saveCar(const Car& car);
     QVector<Car> findAll();
+    QVector<QString> getUniqueNames();
+    Car* findCarByName(QString name);
 
 private:
     long getFreeId();
+    Car* getCarByQuery(QSqlQuery& query);
     CarRepository();
 };
 
