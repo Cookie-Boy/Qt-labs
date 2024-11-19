@@ -13,19 +13,21 @@ QVector<Car> CarService::getAllCars() {
     return CarRepository::instance().findAll();
 }
 
-bool CarService::addCar(QString name,
+bool CarService::addCar(QString &name,
                         short rating,
-                        QString category,
-                        QString transmission,
-                        QString driveType,
+                        QString &category,
+                        QString &transmission,
+                        QString &driveType,
                         double engineCapacity,
                         double power,
+                        QString &imagePath,
                         bool hasSpaciousTrunk,
                         bool hasHeatedSeats,
                         bool hasHeatedSteeringWheel,
-                        bool hasParkingSensors) {
-    Car car = Car(name, rating, category, transmission, driveType, engineCapacity, power,
-                  hasSpaciousTrunk, hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors);
+                        bool hasParkingSensors,
+                        bool isBlocked) {
+    Car car = Car(name, rating, category, transmission, driveType, engineCapacity, power, imagePath,
+                  hasSpaciousTrunk, hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors, isBlocked);
     return carRepository.saveCar(car);
 }
 

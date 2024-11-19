@@ -7,6 +7,7 @@
 #include "UI/basewidget.h"
 #include "UI/loginwidget.h"
 #include "UI/registrationwidget.h"
+#include "UI/managecarswidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +30,7 @@ private:
     ProfileWidget *profileWidget;
     LoginWidget *loginWidget;
     RegistrationWidget *registrationWidget;
+    ManageCarsWidget *manageCarsWidget;
 
     QList<QWidget*> widgetHistory;
 

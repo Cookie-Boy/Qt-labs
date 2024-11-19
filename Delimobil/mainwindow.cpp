@@ -33,27 +33,38 @@ MainWindow::MainWindow(QWidget *parent) :
     loginWidget = new LoginWidget(stackedWidget);
     profileWidget = new ProfileWidget(stackedWidget);
     registrationWidget = new RegistrationWidget(stackedWidget);
+    manageCarsWidget = new ManageCarsWidget(stackedWidget);
 
     stackedWidget->addWidget(loginWidget);
     stackedWidget->addWidget(profileWidget);
     stackedWidget->addWidget(registrationWidget);
+    stackedWidget->addWidget(manageCarsWidget);
 
     stackedWidget->setCurrentWidget(loginWidget);
 
 //    widgetHistory.append(loginWidget);
 
     connect(loginWidget, &LoginWidget::userNotFound, [=]() {
-            registrationWidget->fillFields();
+            loginWidget->clearFields();
+            registrationWidget->updateFields();
             loginWidget->navigateTo(registrationWidget);
         });
 
     connect(loginWidget, &BaseWidget::userFound, [=]() {
+        loginWidget->clearFields();
         handleUserFound(loginWidget);
     });
 
     connect(registrationWidget, &BaseWidget::userFound, [=]() {
         handleUserFound(registrationWidget);
     });
+
+    connect(manageCarsWidget, &BaseWidget::changeCarButtonClicked, [=]() {
+        qDebug() << "i am stuck";
+//        handleUserFound(registrationWidget);
+    });
+
+    // сделать по аналогии с registrationWidget, чтобы данные загрузились, когда пользователь определен.
 }
 
 void MainWindow::handleUserFound(BaseWidget *sourceWidget) {
@@ -66,7 +77,8 @@ void MainWindow::handleUserFound(BaseWidget *sourceWidget) {
         AuthorizedUser::instance().setUser(nullptr);
     });
     connect(carListWidget, &BaseWidget::adminIconClicked, [=]() {
-        stackedWidget->setCurrentWidget(profileWidget);
+        manageCarsWidget->displayCars();
+        stackedWidget->setCurrentWidget(manageCarsWidget);
     });
 
     sourceWidget->navigateTo(carListWidget);

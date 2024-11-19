@@ -30,10 +30,12 @@ CONFIG += c++11
 
 SOURCES += \
         API/mapwindow.cpp \
+        UI/addcarwidget.cpp \
         UI/basewidget.cpp \
         UI/carlistwidget.cpp \
         UI/filterdialog.cpp \
         UI/loginwidget.cpp \
+        UI/managecarswidget.cpp \
         UI/profilewidget.cpp \
         UI/registrationwidget.cpp \
         UI/rentdialog.cpp \
@@ -50,10 +52,12 @@ SOURCES += \
 
 HEADERS += \
         API/mapwindow.h \
+        UI/addcarwidget.h \
         UI/basewidget.h \
         UI/carlistwidget.h \
         UI/filterdialog.h \
         UI/loginwidget.h \
+        UI/managecarswidget.h \
         UI/profilewidget.h \
         UI/registrationwidget.h \
         UI/rentdialog.h \
@@ -69,10 +73,12 @@ HEADERS += \
 
 FORMS += \
     API/mapwindow.ui \
+    UI/addcarwidget.ui \
     UI/basewidget.ui \
     UI/carlistwidget.ui \
     UI/filterdialog.ui \
         UI/loginwidget.ui \
+    UI/managecarswidget.ui \
     UI/profilewidget.ui \
     UI/registrationwidget.ui \
     UI/rentdialog.ui \

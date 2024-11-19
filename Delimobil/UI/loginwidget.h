@@ -18,6 +18,8 @@ public:
     explicit LoginWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
     ~LoginWidget() override;
 
+    void clearFields();
+
 protected:
     void paintEvent(QPaintEvent *event) override; // Метод для рисования фона
 

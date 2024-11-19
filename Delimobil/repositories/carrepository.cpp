@@ -31,9 +31,9 @@ bool CarRepository::saveCar(const Car& car) {
     query.prepare(R"(
         INSERT INTO cars
         (id, name, rating, category, transmission, driveType, engineCapacity,
-         power, hasSpaciousTrunk, hasHeatedSeats, hasHeatedSteeringWheel,
-         hasParkingSensors)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         power, imagePath, hasSpaciousTrunk, hasHeatedSeats, hasHeatedSteeringWheel,
+         hasParkingSensors, isBlocked)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     )");
 
     long id = car.getId();
@@ -49,10 +49,12 @@ bool CarRepository::saveCar(const Car& car) {
     query.addBindValue(car.getDriveType());
     query.addBindValue(car.getEngineCapacity());
     query.addBindValue(car.getPower());
+    query.addBindValue(car.getImagePath());
     query.addBindValue(car.getHasSpaciousTrunk());
     query.addBindValue(car.getHasHeatedSeats());
     query.addBindValue(car.getHasHeatedSteeringWheel());
     query.addBindValue(car.getHasParkingSensors());
+    query.addBindValue(car.getIsBlocked());
 
     // Выполняем запрос и проверяем на ошибки
     if (!query.exec()) {
@@ -76,12 +78,14 @@ QVector<Car> CarRepository::findAll() {
         QString driveType = query.value("driveType").toString();
         double engineCapacity = query.value("engineCapacity").toDouble();
         double power = query.value("power").toDouble();
+        QString imagePath = query.value("imagePath").toString();
         bool hasSpaciousTrunk = query.value("hasSpaciousTrunk").toBool();
         bool hasHeatedSeats = query.value("hasHeatedSeats").toBool();
         bool hasHeatedSteeringWheel = query.value("hasHeatedSteeringWheel").toBool();
         bool hasParkingSensors = query.value("hasParkingSensors").toBool();
-        cars.append(Car(id, name, rating, category, transmission, driveType, engineCapacity, power,
-                           hasSpaciousTrunk, hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors));
+        bool isBlocked = query.value("isBlocked").toBool();
+        cars.append(Car(id, name, rating, category, transmission, driveType, engineCapacity, power, imagePath,
+                           hasSpaciousTrunk, hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors, isBlocked));
     }
 
     // Выполняем запрос и проверяем на ошибки

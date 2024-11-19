@@ -15,17 +15,19 @@ public:
     bool updateCar(long id,
                    Car& car);
 
-    bool addCar(QString name,
+    bool addCar(QString &name,
                 short rating,
-                QString category,
-                QString transmission,
-                QString driveType,
+                QString &category,
+                QString &transmission,
+                QString &driveType,
                 double engineCapacity,
                 double power,
+                QString &imagePath,
                 bool hasSpaciousTrunk,
                 bool hasHeatedSeats,
                 bool hasHeatedSteeringWheel,
-                bool hasParkingSensors);
+                bool hasParkingSensors,
+                bool isBlocked);
 
     double getOptimalPricePerMinute(const Car& car);
     double getOptimalPricePerHour(const Car& car);

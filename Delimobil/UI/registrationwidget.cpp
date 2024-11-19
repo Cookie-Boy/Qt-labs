@@ -24,9 +24,14 @@ RegistrationWidget::~RegistrationWidget()
     delete ui;
 }
 
-void RegistrationWidget::fillFields() {
+void RegistrationWidget::updateFields() {
     QString email = AuthorizedUser::instance().getUser()->getEmail();
     ui->email->setText(email);
+
+    ui->name->clear();
+    ui->surname->clear();
+    ui->surname2->clear();
+    ui->drivingExp->clear();
 }
 
 void RegistrationWidget::paintEvent(QPaintEvent *event) {

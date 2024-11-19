@@ -1,8 +1,10 @@
 debug/mapwindow.o
+debug/addcarwidget.o
 debug/basewidget.o
 debug/carlistwidget.o
 debug/filterdialog.o
 debug/loginwidget.o
+debug/managecarswidget.o
 debug/profilewidget.o
 debug/registrationwidget.o
 debug/rentdialog.o
@@ -18,10 +20,12 @@ debug/carservice.o
 debug/userservice.o
 debug/qrc_resources.o
 debug/moc_mapwindow.o
+debug/moc_addcarwidget.o
 debug/moc_basewidget.o
 debug/moc_carlistwidget.o
 debug/moc_filterdialog.o
 debug/moc_loginwidget.o
+debug/moc_managecarswidget.o
 debug/moc_profilewidget.o
 debug/moc_registrationwidget.o
 debug/moc_rentdialog.o

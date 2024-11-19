@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QMouseEvent>
 #include <QDebug>
+#include "models/car.h"
 
 namespace Ui {
 class BaseWidget;
@@ -34,6 +35,7 @@ signals:
 
     void userNotFound();
     void userFound();
+    void changeCarButtonClicked(const Car *car);
 
 public:
     explicit BaseWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);

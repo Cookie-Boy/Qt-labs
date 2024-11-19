@@ -1,8 +1,10 @@
 release/mapwindow.o
+release/addcarwidget.o
 release/basewidget.o
 release/carlistwidget.o
 release/filterdialog.o
 release/loginwidget.o
+release/managecarswidget.o
 release/profilewidget.o
 release/registrationwidget.o
 release/rentdialog.o
@@ -18,10 +20,12 @@ release/carservice.o
 release/userservice.o
 release/qrc_resources.o
 release/moc_mapwindow.o
+release/moc_addcarwidget.o
 release/moc_basewidget.o
 release/moc_carlistwidget.o
 release/moc_filterdialog.o
 release/moc_loginwidget.o
+release/moc_managecarswidget.o
 release/moc_profilewidget.o
 release/moc_registrationwidget.o
 release/moc_rentdialog.o

@@ -127,7 +127,7 @@ void CarListWidget::createCarCard(const Car &car, QGridLayout *layout, int row, 
     cardWidget->setStyleSheet("QWidget { background-color: #f5f5f5; border-radius: 20px; }");
 
     QLabel *imageLabel = new QLabel(cardWidget);
-    QPixmap pixmap(projectPath + "\\images\\cars\\" + car.getName() + ".png");
+    QPixmap pixmap(car.getImagePath());
     imageLabel->setPixmap(pixmap.scaled(205, 120, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
     imageLabel->setFixedSize(205, 120);
 

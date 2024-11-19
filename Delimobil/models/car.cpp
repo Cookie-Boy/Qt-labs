@@ -5,21 +5,21 @@ Car::Car() {}
 // Constructor with all fields
 Car::Car(long id, const QString &name, short rating, const QString &category,
          const QString &transmission, const QString &driveType,
-         double engineCapacity, double power, bool hasSpaciousTrunk,
-         bool hasHeatedSeats, bool hasHeatedSteeringWheel, bool hasParkingSensors)
+         double engineCapacity, double power, QString imagePath, bool hasSpaciousTrunk,
+         bool hasHeatedSeats, bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked)
     : id(id), name(name), rating(rating), category(category), transmission(transmission),
-      driveType(driveType), engineCapacity(engineCapacity), power(power),
+      driveType(driveType), engineCapacity(engineCapacity), power(power), imagePath(imagePath),
       hasSpaciousTrunk(hasSpaciousTrunk), hasHeatedSeats(hasHeatedSeats),
-      hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors) {}
+      hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors), isBlocked(isBlocked) {}
 
 Car::Car(const QString &name, short rating, const QString &category,
     const QString &transmission, const QString &driveType,
-    double engineCapacity, double power, bool hasSpaciousTrunk,
-    bool hasHeatedSeats, bool hasHeatedSteeringWheel, bool hasParkingSensors)
+    double engineCapacity, double power, QString imagePath, bool hasSpaciousTrunk,
+    bool hasHeatedSeats, bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked)
     : name(name), rating(rating), category(category), transmission(transmission),
-      driveType(driveType), engineCapacity(engineCapacity), power(power),
+      driveType(driveType), engineCapacity(engineCapacity), power(power), imagePath(imagePath),
       hasSpaciousTrunk(hasSpaciousTrunk), hasHeatedSeats(hasHeatedSeats),
-      hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors) {
+      hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors), isBlocked(isBlocked) {
     this->id = -1;
 }
 
@@ -48,6 +48,9 @@ void Car::setEngineCapacity(double engineCapacity) { this->engineCapacity = engi
 double Car::getPower() const { return power; }
 void Car::setPower(double power) { this->power = power; }
 
+QString Car::getImagePath() const { return imagePath; }
+void Car::setImagePath(QString &imagePath) { this->imagePath = imagePath; }
+
 bool Car::getHasSpaciousTrunk() const { return hasSpaciousTrunk; }
 void Car::setHasSpaciousTrunk(bool hasSpaciousTrunk) { this->hasSpaciousTrunk = hasSpaciousTrunk; }
 
@@ -59,3 +62,6 @@ void Car::setHasHeatedSteeringWheel(bool hasHeatedSteeringWheel) { this->hasHeat
 
 bool Car::getHasParkingSensors() const { return hasParkingSensors; }
 void Car::setHasParkingSensors(bool hasParkingSensors) { this->hasParkingSensors = hasParkingSensors; }
+
+bool Car::getIsBlocked() const { return isBlocked; }
+void Car::setIsBlocked(bool isBlocked) { this->isBlocked = isBlocked; }
