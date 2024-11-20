@@ -11,16 +11,17 @@
 #include <QMessageBox>
 #include <QCheckBox>
 
-AddCarDialog::AddCarDialog(QWidget *parent) :
-    QDialog(parent), // Используем BaseWidget как базовый класс
+AddCarDialog::AddCarDialog(QWidget *parent, const Car *car) :
+    QDialog(parent),
     ui(new Ui::AddCarDialog),
-    carService(CarService::instance())
+    carService(CarService::instance()),
+    editingCar(car)
 {
     ui->setupUi(this);
 
         setWindowTitle("Редактор машины");
-        setMinimumSize(854, 480); // Минимальный размер
-        resize(854, 480);        // Начальный размер
+        setMinimumSize(800, 600); // Минимальный размер
+        resize(800, 600);        // Начальный размер
 
         QVBoxLayout *mainLayout = new QVBoxLayout(this);
         mainLayout->setSpacing(15);
@@ -36,12 +37,12 @@ AddCarDialog::AddCarDialog(QWidget *parent) :
             }
             QLineEdit, QComboBox {
                 color: black;
-                background-color: white;
+                background-;
                 font-size: 14px;
             }
             QPushButton {
                 background-color: #4CAF50;
-                color: white;
+                ;
                 font-size: 14px;
                 padding: 10px;
                 border-radius: 5px;
@@ -57,7 +58,7 @@ AddCarDialog::AddCarDialog(QWidget *parent) :
 
     // Поле для выбора имени машины
     QLabel *nameLabel = new QLabel("Имя машины:", this);
-    nameLabel->setStyleSheet("color: white; font-size: 14px;");
+    nameLabel->setStyleSheet("font-size: 14px;");
     mainLayout->addWidget(nameLabel);
 
     carNameCombo = new QComboBox(this);
@@ -66,7 +67,10 @@ AddCarDialog::AddCarDialog(QWidget *parent) :
     carNameCombo->setCurrentIndex(-1);
     carNameCombo->addItem("");
 
-    connect(carNameCombo, &QComboBox::currentTextChanged, this, &AddCarDialog::updateCarDetails);
+    connect(carNameCombo,
+            QOverload<const QString &>::of(&QComboBox::activated),
+            this,
+            static_cast<void (AddCarDialog::*)(const QString &)>(&AddCarDialog::updateCarDetails));
 
     fillCarNamesBox();
 
@@ -74,11 +78,11 @@ AddCarDialog::AddCarDialog(QWidget *parent) :
 
     // Кнопка выбора фото
     QLabel *photoLabel = new QLabel("Фото машины:", this);
-    photoLabel->setStyleSheet("color: white; font-size: 14px;");
+//    photoLabel->setStyleSheet("; font-size: 14px;");
     mainLayout->addWidget(photoLabel);
 
     photoButton = new QPushButton("Выбрать фото", this);
-    photoButton->setStyleSheet("background-color: #4CAF50; color: white; font-size: 14px; padding: 5px;");
+    photoButton->setStyleSheet("background-color: #4CAF50; font-size: 14px; padding: 5px;");
     mainLayout->addWidget(photoButton);
 
     photoPreview = new QLabel(this);
@@ -94,40 +98,72 @@ AddCarDialog::AddCarDialog(QWidget *parent) :
     detailsLayout->setSpacing(10);
     mainLayout->addLayout(detailsLayout);
 
-    setupDetailField(detailsLayout, "Объем двигателя:", engineCapacityEdit, 0, 0);
-    setupDetailField(detailsLayout, "Мощность:", powerEdit, 1, 0);
-    setupDetailField(detailsLayout, "Категория:", categoryEdit, 2, 0);
-    setupDetailField(detailsLayout, "Трансмиссия:", transmissionEdit, 3, 0);
-    setupDetailField(detailsLayout, "Привод:", driveTypeEdit, 4, 0);
+    QLabel *label = new QLabel("Объем двигателя:", this);
+    label->setStyleSheet("font-size: 14px;");
+    detailsLayout->addWidget(label, 0, 0);
+
+    engineCapacityEdit = new QLineEdit(this);
+    engineCapacityEdit->setStyleSheet("color: black; background-color: white; font-size: 14px;");
+    detailsLayout->addWidget(engineCapacityEdit, 0, 1);
+
+    label = new QLabel("Мощность:", this);
+    label->setStyleSheet("font-size: 14px;");
+    detailsLayout->addWidget(label, 1, 0);
+
+    powerEdit = new QLineEdit(this);
+    powerEdit->setStyleSheet("color: black; background-color: white; font-size: 14px;");
+    detailsLayout->addWidget(powerEdit, 1, 1);
+
+    setupDetailField(detailsLayout, "Категория:", categoryCombo, {"Эконом", "Комфорт", "Бизнес"}, 2, 0);
+    setupDetailField(detailsLayout, "Трансмиссия:", transmissionCombo, {"Автомат", "Робот", "Механика"}, 3, 0);
+    setupDetailField(detailsLayout, "Привод:", driveTypeCombo, {"Передний", "Задний", "Полный"}, 4, 0);
 
     heatedSeatsCheckBox = new QCheckBox("Подогрев сидений", this);
-    heatedSeatsCheckBox->setStyleSheet("color: white; font-size: 14px;");
+    heatedSeatsCheckBox->setStyleSheet("font-size: 14px;");
     detailsLayout->addWidget(heatedSeatsCheckBox, 5, 0);
 
     heatedSteeringWheelCheckBox = new QCheckBox("Подогрев руля", this);
-    heatedSteeringWheelCheckBox->setStyleSheet("color: white; font-size: 14px;");
+    heatedSteeringWheelCheckBox->setStyleSheet("font-size: 14px;");
     detailsLayout->addWidget(heatedSteeringWheelCheckBox, 5, 1);
 
     parkingSensorsCheckBox = new QCheckBox("Парковочные датчики", this);
-    parkingSensorsCheckBox->setStyleSheet("color: white; font-size: 14px;");
+    parkingSensorsCheckBox->setStyleSheet("font-size: 14px;");
     detailsLayout->addWidget(parkingSensorsCheckBox, 6, 0);
 
     // Кнопка добавления машины
-    addButton = new QPushButton("Добавить машину", this);
-    addButton->setStyleSheet("background-color: #4CAF50; color: white; font-size: 16px; padding: 10px;");
+    addButton = new QPushButton(editingCar == nullptr ? "Добавить" : "Изменить", this);
+    addButton->setStyleSheet("background-color: #4CAF50; font-size: 16px; padding: 10px;");
     mainLayout->addWidget(addButton);
 
-    connect(addButton, &QPushButton::clicked, this, &AddCarDialog::addCar);
+    if (editingCar == nullptr) {
+        connect(addButton, &QPushButton::clicked, this, &AddCarDialog::addCar);
+    } else {
+        connect(addButton, &QPushButton::clicked, this, &AddCarDialog::changeCar);
+    }
+
+    foreach (QPushButton *button, this->findChildren<QPushButton*>()) {
+        button->setCursor(Qt::PointingHandCursor);
+        button->setStyleSheet("QPushButton { background-color: #A0EACD; border-radius: 10px; }");
+    }
+
+    carNameCombo->clearFocus();
+    this->setFocus();
 }
 
-void AddCarDialog::setupDetailField(QGridLayout *layout, const QString &labelText, QLineEdit *&editField, int row, int col) {
-    QLabel *label = new QLabel(labelText, this);
-    label->setStyleSheet("color: white; font-size: 14px;");
-    layout->addWidget(label, row, col);
+void AddCarDialog::setupDetailField(QGridLayout *layout, const QString &labelText, QComboBox *&comboBox, QVector<QString> items, int row, int col) {
+    QLabel *nameLabel = new QLabel(labelText, this);
+    nameLabel->setStyleSheet("font-size: 14px;");
+    layout->addWidget(nameLabel, row, col);
 
-    editField = new QLineEdit(this);
-    editField->setStyleSheet("color: black; background-color: white; font-size: 14px;");
-    layout->addWidget(editField, row, col + 1);
+    comboBox = new QComboBox(this);
+    comboBox->setStyleSheet("color: black; background-color: white; font-size: 14px;");
+    comboBox->setCurrentIndex(-1);
+    comboBox->addItem("");
+    for (QString item : items) {
+        comboBox->addItem(item);
+    }
+
+    layout->addWidget(comboBox, row, col + 1);
 }
 
 AddCarDialog::~AddCarDialog() {
@@ -143,6 +179,40 @@ void AddCarDialog::selectPhoto() {
     }
 }
 
+void AddCarDialog::changeCar() {
+    QString carName = carNameCombo->currentText();
+    if (carName.isEmpty()) {
+        QMessageBox::warning(this, "Ошибка", "Введите или выберите имя машины.");
+        return;
+    }
+
+    if (selectedPhotoPath.isEmpty()) {
+        QMessageBox::warning(this, "Ошибка", "Выберите фото для машины");
+        return;
+    }
+
+
+    Car newCar = Car(carNameCombo->currentText(),
+                  0,
+                  categoryCombo->currentText(),
+                  transmissionCombo->currentText(),
+                  driveTypeCombo->currentText(),
+                  engineCapacityEdit->text().toDouble(),
+                  powerEdit->text().toDouble(),
+                  selectedPhotoPath,
+                  heatedSeatsCheckBox->checkState() == Qt::Checked ? true : false,
+                  heatedSteeringWheelCheckBox->checkState() == Qt::Checked ? true : false,
+                  parkingSensorsCheckBox->checkState() == Qt::Checked ? true : false,
+                  false);
+
+    if (carService.changeCar(*editingCar, newCar)) {
+        QMessageBox::information(this, "Успех", "Машина успешно изменена.");
+        accept();
+    } else {
+        QMessageBox::critical(this, "Ошибка", "Не удалось изменить машину.");
+    }
+}
+
 void AddCarDialog::addCar() {
     QString carName = carNameCombo->currentText();
     if (carName.isEmpty()) {
@@ -155,27 +225,10 @@ void AddCarDialog::addCar() {
         return;
     }
 
-    QString photoPath = selectedPhotoPath;
-
-    // Добавляем машину в базу данных
-
-    Car car = Car(carNameCombo->currentText(),
-                  0,
-                  categoryEdit->text(),
-                  transmissionEdit->text(),
-                  driveTypeEdit->text(),
-                  engineCapacityEdit->text().toDouble(),
-                  powerEdit->text().toDouble(),
-                  selectedPhotoPath,
-                  heatedSeatsCheckBox->checkState() == Qt::Checked ? true : false,
-                  heatedSteeringWheelCheckBox->checkState() == Qt::Checked ? true : false,
-                  parkingSensorsCheckBox->checkState() == Qt::Checked ? true : false,
-                  false);
-
     QString name = carNameCombo->currentText();
-    QString category = categoryEdit->text();
-    QString transmission = transmissionEdit->text();
-    QString driveType = driveTypeEdit->text();
+    QString category = categoryCombo->currentText();
+    QString transmission = transmissionCombo->currentText();
+    QString driveType = driveTypeCombo->currentText();
 
     if (carService.addCar(name,
                           0,
@@ -209,16 +262,27 @@ void AddCarDialog::updateCarDetails(const QString &carName) {
     if (car == nullptr)
         return;
 
+    updateCarDetails(car);
+}
+
+void AddCarDialog::updateCarDetails(const Car *car) {
+    QString carName = car->getName();
+    QString currentComboText = carNameCombo->currentText();
+    if (currentComboText != carName) {
+        carNameCombo->setCurrentText(carName);
+    }
+
     // Фото машины
-    QPixmap pixmap(car->getImagePath());
+    selectedPhotoPath = car->getImagePath();
+    QPixmap pixmap(selectedPhotoPath);
     photoPreview->setPixmap(pixmap.scaled(photoPreview->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
 
     // Информация о машине
     engineCapacityEdit->setText(QString::number(car->getEngineCapacity()));
     powerEdit->setText(QString::number(car->getPower()));
-    categoryEdit->setText(car->getCategory());
-    transmissionEdit->setText(car->getDriveType());
-    driveTypeEdit->setText(car->getDriveType());
+    categoryCombo->setCurrentText(car->getCategory());
+    transmissionCombo->setCurrentText(car->getTransmission());
+    driveTypeCombo->setCurrentText(car->getDriveType());
     heatedSeatsCheckBox->setCheckState(car->getHasHeatedSeats() ? Qt::Checked : Qt::Unchecked);
     heatedSteeringWheelCheckBox->setCheckState(car->getHasHeatedSteeringWheel() ? Qt::Checked : Qt::Unchecked);
     parkingSensorsCheckBox->setCheckState(car->getHasParkingSensors() ? Qt::Checked : Qt::Unchecked);

@@ -15,18 +15,18 @@ ManageCarsWidget::ManageCarsWidget(QStackedWidget *stackedWidget, QWidget *paren
 
 //    setAllTools(this);
 
-    foreach (QPushButton *button, this->findChildren<QPushButton*>()) {
-        button->setCursor(Qt::PointingHandCursor);
-    }
-
     // Кнопка "Добавить машину"
     QPushButton *addCarButton = new QPushButton("Добавить машину", this);
     addCarButton->setStyleSheet(
-        "QPushButton { background-color: #A7E6DC; border-radius: 10px; font-size: 14px; padding: 10px; }"
-        "QPushButton:hover { background-color: #8ad3c6; }"
+        "QPushButton { font-size: 14px; padding: 10px; }"
     );
     ui->verticalLayout->addWidget(addCarButton);
     connect(addCarButton, &QPushButton::clicked, this, &ManageCarsWidget::onAddCarButtonClicked);
+
+    foreach (QPushButton *button, this->findChildren<QPushButton*>()) {
+        button->setCursor(Qt::PointingHandCursor);
+        button->setStyleSheet("QPushButton { background-color: #A0EACD; border-radius: 10px; }");
+    }
 }
 
 ManageCarsWidget::~ManageCarsWidget()
@@ -86,6 +86,11 @@ void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int
     cardWidget->setFixedSize(205, 300);
     cardWidget->setStyleSheet("QWidget { background-color: #f5f5f5; border-radius: 20px; }");
 
+    QLabel *imageLabel = new QLabel(cardWidget);
+    QPixmap pixmap(car.getImagePath());
+    imageLabel->setPixmap(pixmap.scaled(205, 120, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+    imageLabel->setFixedSize(205, 120);
+
     QLabel *nameLabel = new QLabel(car.getName(), cardWidget);
     nameLabel->setAlignment(Qt::AlignCenter);
 
@@ -96,12 +101,15 @@ void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int
     infoLabel->setAlignment(Qt::AlignCenter);
 
     QPushButton *editButton = new QPushButton("Изменить", cardWidget);
+    editButton->setStyleSheet("QPushButton { background-color: #A0EACD; border-radius: 10px }");
     QPushButton *deleteButton = new QPushButton("Удалить", cardWidget);
+    deleteButton->setStyleSheet("QPushButton { background-color: #E48F94; border-radius: 10px }");
 
     QVBoxLayout *cardLayout = new QVBoxLayout(cardWidget);
     cardLayout->setSpacing(10);
     cardLayout->setContentsMargins(5, 5, 5, 5);
 
+    cardLayout->addWidget(imageLabel);
     cardLayout->addWidget(nameLabel);
     cardLayout->addWidget(infoLabel);
     cardLayout->addWidget(editButton);

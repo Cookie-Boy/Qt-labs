@@ -21,16 +21,17 @@ class AddCarDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit AddCarDialog(const Car &car, QWidget *parent = nullptr);
-    explicit AddCarDialog(QWidget *parent = nullptr);
+    explicit AddCarDialog(QWidget *parent = nullptr, const Car *car = nullptr);
     ~AddCarDialog() override;
 
     void fillCarNamesBox();
     void updateCarDetails(const QString &carName);
+    void updateCarDetails(const Car *car);
 
 private slots:
     void selectPhoto();
     void addCar();
+    void changeCar();
 
 private:
     QComboBox *carNameCombo;
@@ -40,9 +41,9 @@ private:
 
     QLineEdit *engineCapacityEdit;
     QLineEdit *powerEdit;
-    QLineEdit *categoryEdit;
-    QLineEdit *transmissionEdit;
-    QLineEdit *driveTypeEdit;
+    QComboBox *categoryCombo;
+    QComboBox *transmissionCombo;
+    QComboBox *driveTypeCombo;
     QCheckBox *heatedSeatsCheckBox;
     QCheckBox *heatedSteeringWheelCheckBox;
     QCheckBox *parkingSensorsCheckBox;
@@ -53,12 +54,14 @@ private:
 
     CarService& carService;
 
+    const Car *editingCar;
+
     bool carExistsInDatabase(const QString &carName);
     Car getCarDetailsFromDatabase(const QString &carName);
     QString getPhotoForExistingCar(const QString &carName);
     bool addCarToDatabase(const QString &carName, const QString &photoPath);
 
-    void setupDetailField(QGridLayout *layout, const QString &labelText, QLineEdit *&editField, int row, int col);
+    void setupDetailField(QGridLayout *layout, const QString &labelText, QComboBox *&comboBox, QVector<QString> items, int row, int col);
 };
 
 #endif // ADDCARDIALOG_H

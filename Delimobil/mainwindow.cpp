@@ -4,6 +4,7 @@
 #include "UI/registrationwidget.h"
 #include "UI/carlistwidget.h"
 #include "models/authorizeduser.h"
+#include "UI/addcardialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -59,12 +60,15 @@ MainWindow::MainWindow(QWidget *parent) :
         handleUserFound(registrationWidget);
     });
 
-    connect(manageCarsWidget, &BaseWidget::changeCarButtonClicked, [=]() {
-        qDebug() << "i am stuck";
-//        handleUserFound(registrationWidget);
+    connect(manageCarsWidget, &BaseWidget::changeCarButtonClicked, [=](const Car *car) {
+        AddCarDialog addCarDialog(this, car);
+        addCarDialog.updateCarDetails(car);
+        if (addCarDialog.exec() == QDialog::Accepted) {
+            qDebug() << "Машина подтверждена";
+        } else {
+            qDebug() << "Машина отменена";
+        }
     });
-
-    // сделать по аналогии с registrationWidget, чтобы данные загрузились, когда пользователь определен.
 }
 
 void MainWindow::handleUserFound(BaseWidget *sourceWidget) {

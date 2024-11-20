@@ -12,6 +12,7 @@ public:
     static CarRepository& instance();
 
     bool saveCar(const Car& car);
+    bool updateCar(const Car &oldCar, const Car &newCar);
     QVector<Car> findAll();
     QVector<QString> getUniqueNames();
     Car* findCarByName(QString name);

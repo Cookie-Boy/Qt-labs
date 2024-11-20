@@ -13,6 +13,10 @@ QVector<Car> CarService::getAllCars() {
     return CarRepository::instance().findAll();
 }
 
+bool CarService::changeCar(const Car &oldCar, const Car &newCar) {
+    return carRepository.updateCar(oldCar, newCar);
+}
+
 bool CarService::addCar(QString &name,
                         short rating,
                         QString &category,

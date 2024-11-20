@@ -133,23 +133,27 @@ void CarListWidget::createCarCard(const Car &car, QGridLayout *layout, int row, 
 
     QLabel *nameLabel = new QLabel(car.getName(), cardWidget);
     nameLabel->setAlignment(Qt::AlignCenter);
+    nameLabel->setStyleSheet("QLabel { font-size: 16px; font-weight: bold }");
 
     double pricePerMinute = CarService::instance().getOptimalPricePerMinute(car);
     QLabel *perMinuteLabel = new QLabel(QString::number(pricePerMinute) + " ₽/мин", cardWidget);
     perMinuteLabel->setAlignment(Qt::AlignCenter);
+    perMinuteLabel->setStyleSheet("QLabel { font-size: 14px; }");
 
     double pricePerHour = CarService::instance().getOptimalPricePerHour(car);
     QLabel *perHourLabel = new QLabel(QString::number(pricePerHour) + " ₽/час", cardWidget);
     perHourLabel->setAlignment(Qt::AlignCenter);
+    perHourLabel->setStyleSheet("QLabel { font-size: 14px; }");
 
     QLabel *categoryLabel = new QLabel(car.getCategory(), cardWidget);
     categoryLabel->setAlignment(Qt::AlignCenter);
+    categoryLabel->setStyleSheet("QLabel { font-size: 14px; }");
 
     QPushButton *rentButton = new QPushButton("Арендовать", cardWidget);
     rentButton->setFixedHeight(30);
     rentButton->setStyleSheet(
         "QPushButton {"
-        "   background-color: #A7E6DC;"
+        "   background-color: #A0EACD;"
         "   color: #000000;"
         "   border-radius: 15px;"
         "   font-size: 12px;"
@@ -229,6 +233,3 @@ void CarListWidget::updateCarList(const QVector<Car> &cars)
         }
     }
 }
-
-
-

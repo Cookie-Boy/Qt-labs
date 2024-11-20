@@ -82,6 +82,43 @@ bool CarRepository::saveCar(const Car& car) {
     return true;
 }
 
+bool CarRepository::updateCar(const Car &oldCar, const Car &newCar) {
+    QSqlQuery query;
+    query.prepare(R"(
+        UPDATE cars
+        SET name = ?, rating = ?, category = ?, transmission = ?, driveType = ?,
+            engineCapacity = ?, power = ?, imagePath = ?, hasHeatedSeats = ?,
+            hasHeatedSteeringWheel = ?, hasParkingSensors = ?, isBlocked = ?
+        WHERE id = ?
+    )");
+
+    // Привязываем значения нового объекта Car
+    query.addBindValue(newCar.getName());
+    query.addBindValue(newCar.getRating());
+    query.addBindValue(newCar.getCategory());
+    query.addBindValue(newCar.getTransmission());
+    query.addBindValue(newCar.getDriveType());
+    query.addBindValue(newCar.getEngineCapacity());
+    query.addBindValue(newCar.getPower());
+    query.addBindValue(newCar.getImagePath());
+    query.addBindValue(newCar.getHasHeatedSeats());
+    query.addBindValue(newCar.getHasHeatedSteeringWheel());
+    query.addBindValue(newCar.getHasParkingSensors());
+    query.addBindValue(newCar.getIsBlocked());
+
+    // Привязываем ID старого объекта для поиска записи в базе
+    query.addBindValue(QVariant::fromValue(static_cast<long>(oldCar.getId())));
+
+    // Выполняем запрос и проверяем на ошибки
+    if (!query.exec()) {
+        qDebug() << "Ошибка при обновлении автомобиля:" << query.lastError().text();
+        return false;
+    }
+
+    return true;
+}
+
+
 QVector<QString> CarRepository::getUniqueNames() {
     QVector<QString> names;
     QSqlQuery query("SELECT DISTINCT name FROM cars");

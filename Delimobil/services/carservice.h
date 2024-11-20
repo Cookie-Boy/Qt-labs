@@ -12,8 +12,7 @@ class CarService
 public:
     static CarService& instance();
     QVector<Car> getAllCars();
-    bool updateCar(long id,
-                   Car& car);
+    bool changeCar(const Car &oldCar, const Car &newCar);
 
     bool addCar(QString &name,
                 short rating,
