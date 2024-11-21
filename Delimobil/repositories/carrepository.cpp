@@ -118,6 +118,29 @@ bool CarRepository::updateCar(const Car &oldCar, const Car &newCar) {
     return true;
 }
 
+bool CarRepository::deleteCarById(long id) {
+    QSqlQuery query;
+    query.prepare(R"(
+        DELETE FROM cars
+        WHERE id = ?
+    )");
+
+    query.addBindValue(QVariant::fromValue(static_cast<long>(id)));
+
+    // Выполняем запрос
+    if (!query.exec()) {
+        qDebug() << "Ошибка при удалении автомобиля с ID" << id << ":" << query.lastError().text();
+        return false;
+    }
+
+    // Проверяем, был ли удален автомобиль
+    if (query.numRowsAffected() == 0) {
+        qDebug() << "Автомобиль с ID" << id << "не найден.";
+        return false;
+    }
+
+    return true;
+}
 
 QVector<QString> CarRepository::getUniqueNames() {
     QVector<QString> names;

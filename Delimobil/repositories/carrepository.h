@@ -13,6 +13,7 @@ public:
 
     bool saveCar(const Car& car);
     bool updateCar(const Car &oldCar, const Car &newCar);
+    bool deleteCarById(long id);
     QVector<Car> findAll();
     QVector<QString> getUniqueNames();
     Car* findCarByName(QString name);

@@ -23,6 +23,7 @@ void BaseWidget::setAllTools(BaseWidget *widget) {
     profileIcon->setMouseTracking(true);
     profileIcon->setObjectName("profileIcon");
     profileIcon->installEventFilter(widget);
+    profileIcon->setCursor(Qt::PointingHandCursor);
 
     QLabel *exitIcon = new QLabel(widget);
     pixmap.load(projectPath + "\\images\\exit.png");
@@ -33,8 +34,9 @@ void BaseWidget::setAllTools(BaseWidget *widget) {
     exitIcon->setMouseTracking(true);
     exitIcon->setObjectName("exitIcon");
     exitIcon->installEventFilter(widget);
+    exitIcon->setCursor(Qt::PointingHandCursor);
 
-    if (AuthorizedUser::instance().getUser()->getRole() != "Admin")
+    if (AuthorizedUser::instance().getUser() != nullptr && AuthorizedUser::instance().getUser()->getRole() != "Admin")
         return;
 
     QLabel *adminIcon = new QLabel(widget);
@@ -46,6 +48,37 @@ void BaseWidget::setAllTools(BaseWidget *widget) {
     adminIcon->setMouseTracking(true);
     adminIcon->setObjectName("adminIcon");
     adminIcon->installEventFilter(widget);
+    adminIcon->setCursor(Qt::PointingHandCursor);
+
+    foreach (QPushButton *button, this->findChildren<QPushButton*>()) {
+        button->setCursor(Qt::PointingHandCursor);
+        button->setStyleSheet("QPushButton { background-color: #A0EACD; border-radius: 10px; }");
+    }
+}
+
+void BaseWidget::paintEvent(QPaintEvent *event) {
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+
+    // Установка основного фона
+    painter.fillRect(rect(), QColor("#D3D3D3"));  // светло-серый фон
+
+    // Белый треугольник
+    painter.setBrush(QColor("#ffffff"));
+    painter.setPen(Qt::NoPen);
+    QPolygon greyTriangle;
+    greyTriangle << QPoint(width(), 0)
+                 << QPoint(width() - width() / 3, 0)
+                 << QPoint(width(), height() / 10);
+    painter.drawPolygon(greyTriangle);
+
+    // Мятный треугольник
+    painter.setBrush(QColor("#A0EACD"));
+    QPolygon mintTriangle;
+    mintTriangle << QPoint(0, 0)
+                 << QPoint(width() / 3, 0)
+                 << QPoint(0, height() / 10);
+    painter.drawPolygon(mintTriangle);
 }
 
 bool BaseWidget::eventFilter(QObject *obj, QEvent *event) {

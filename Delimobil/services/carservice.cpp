@@ -34,6 +34,10 @@ bool CarService::addCar(QString &name,
     return carRepository.saveCar(car);
 }
 
+bool CarService::deleteCar(const Car &car) {
+    return carRepository.deleteCarById(car.getId());
+}
+
 QVector<QString> CarService::getUniqueCarNames() {
     return carRepository.getUniqueNames();
 }

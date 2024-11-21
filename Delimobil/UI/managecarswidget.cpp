@@ -13,8 +13,6 @@ ManageCarsWidget::ManageCarsWidget(QStackedWidget *stackedWidget, QWidget *paren
 {
     ui->setupUi(this);
 
-//    setAllTools(this);
-
     // Кнопка "Добавить машину"
     QPushButton *addCarButton = new QPushButton("Добавить машину", this);
     addCarButton->setStyleSheet(
@@ -23,10 +21,7 @@ ManageCarsWidget::ManageCarsWidget(QStackedWidget *stackedWidget, QWidget *paren
     ui->verticalLayout->addWidget(addCarButton);
     connect(addCarButton, &QPushButton::clicked, this, &ManageCarsWidget::onAddCarButtonClicked);
 
-    foreach (QPushButton *button, this->findChildren<QPushButton*>()) {
-        button->setCursor(Qt::PointingHandCursor);
-        button->setStyleSheet("QPushButton { background-color: #A0EACD; border-radius: 10px; }");
-    }
+    setAllTools(this);
 }
 
 ManageCarsWidget::~ManageCarsWidget()
@@ -101,9 +96,11 @@ void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int
     infoLabel->setAlignment(Qt::AlignCenter);
 
     QPushButton *editButton = new QPushButton("Изменить", cardWidget);
-    editButton->setStyleSheet("QPushButton { background-color: #A0EACD; border-radius: 10px }");
+    editButton->setStyleSheet("QPushButton { background-color: #f9ecb6; border-radius: 10px }");
+    editButton->setCursor(Qt::PointingHandCursor);
     QPushButton *deleteButton = new QPushButton("Удалить", cardWidget);
     deleteButton->setStyleSheet("QPushButton { background-color: #E48F94; border-radius: 10px }");
+    deleteButton->setCursor(Qt::PointingHandCursor);
 
     QVBoxLayout *cardLayout = new QVBoxLayout(cardWidget);
     cardLayout->setSpacing(10);
@@ -119,7 +116,6 @@ void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int
 
     connect(editButton, &QPushButton::clicked, [this, car]() {
         emit changeCarButtonClicked(&car);
-//        openAddCarWidget(&car);
     });
     connect(deleteButton, &QPushButton::clicked, [this, car]() {
         confirmDeleteCar(car);
@@ -131,20 +127,55 @@ void ManageCarsWidget::onAddCarButtonClicked()
     AddCarDialog addCarDialog(this);
     if (addCarDialog.exec() == QDialog::Accepted) {
         qDebug() << "Машина подтверждена";
+        updateCarList(CarService::instance().getAllCars());
     } else {
         qDebug() << "Машина отменена";
     }
 }
 
-void ManageCarsWidget::confirmDeleteCar(const Car &car)
-{
-    QMessageBox::StandardButton reply = QMessageBox::question(this, "Удаление машины",
-        QString("Вы уверены, что хотите удалить %1?").arg(car.getName()),
-        QMessageBox::Yes | QMessageBox::No);
+void ManageCarsWidget::confirmDeleteCar(const Car &car) {
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Удаление машины");
+    msgBox.setText(QString("Вы уверены, что хотите удалить %1?").arg(car.getName()));
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
 
-    if (reply == QMessageBox::Yes) {
-        // Удаление машины из базы данных
-//        CarService::instance().deleteCar(car);
+    // Получение кнопок и явное приведение типа
+    QPushButton *yesButton = qobject_cast<QPushButton*>(msgBox.button(QMessageBox::Yes));
+    QPushButton *noButton = qobject_cast<QPushButton*>(msgBox.button(QMessageBox::No));
+
+    // Настройка кнопок
+    if (yesButton) {
+        yesButton->setText("Да");
+        yesButton->setStyleSheet(
+            "background-color: #A0EACD; color: #333; border: none; "
+            "padding: 5px 10px; font-size: 14px; border-radius: 5px;"
+        );
+        yesButton->setCursor(Qt::PointingHandCursor);
+    }
+    if (noButton) {
+        noButton->setText("Нет");
+        noButton->setStyleSheet(
+            "background-color: #A0EACD; color: #333; border: none; "
+            "padding: 5px 10px; font-size: 14px; border-radius: 5px;"
+        );
+        noButton->setCursor(Qt::PointingHandCursor);
+    }
+
+    // Применение стиля ко всему диалогу
+    msgBox.setStyleSheet(
+        "QMessageBox { background-color: #F5F5F5; border-radius: 10px; }"
+        "QMessageBox QLabel { font-size: 14px; color: #333; }"
+        "QPushButton:hover { background-color: #88D4B0; }"
+        "QPushButton:pressed { background-color: #76C7A0; }"
+    );
+
+    // Отображение диалога
+    if (msgBox.exec() == QMessageBox::Yes) {
+        CarService::instance().deleteCar(car);
         updateCarList(CarService::instance().getAllCars());
     }
 }
+
+
+

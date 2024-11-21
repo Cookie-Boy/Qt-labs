@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QMouseEvent>
 #include <QDebug>
+#include <QPainter>
 #include "models/car.h"
 
 namespace Ui {
@@ -20,6 +21,7 @@ class BaseWidget : public QWidget
 protected:
     void setAllTools(BaseWidget *widget);
     bool eventFilter(QObject *obj, QEvent *event) override;
+    void paintEvent(QPaintEvent *event) override;
     QStackedWidget *stackedWidget;
     QStack<QWidget*> history;
     QLabel *profileIcon;

@@ -18,9 +18,6 @@ public:
     explicit CarListWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
     ~CarListWidget() override;
 
-protected:
-    void paintEvent(QPaintEvent *event) override; // Метод для рисования фона
-
 private:
     Ui::CarListWidget *ui;
     void createFilterButton();

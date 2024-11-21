@@ -27,6 +27,8 @@ public:
                 bool hasParkingSensors,
                 bool isBlocked);
 
+    bool deleteCar(const Car &car);
+
     QVector<QString> getUniqueCarNames();
 
     Car* getCarByName(QString name);

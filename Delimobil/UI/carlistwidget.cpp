@@ -17,12 +17,6 @@ CarListWidget::CarListWidget(QStackedWidget *stackedWidget, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setAllTools(this);
-
-    foreach (QPushButton *button, this->findChildren<QPushButton*>()) {
-        button->setCursor(Qt::PointingHandCursor);
-    }
-
     displayCars();
 
     ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -35,6 +29,7 @@ CarListWidget::CarListWidget(QStackedWidget *stackedWidget, QWidget *parent) :
 //                                  1.6, 110, true, true, false, true);
 
     createFilterButton();
+    setAllTools(this);
 }
 
 CarListWidget::~CarListWidget()
@@ -57,31 +52,6 @@ void CarListWidget::createFilterButton() {
     );
     filterButton->move(90, 50);
     connect(filterButton, &QPushButton::clicked, this, &CarListWidget::openFilterDialog);
-}
-
-void CarListWidget::paintEvent(QPaintEvent *event) {
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-
-    // Установка основного фона
-    painter.fillRect(rect(), QColor("#D3D3D3"));  // светло-серый фон
-
-    // Белый треугольник
-    painter.setBrush(QColor("#ffffff"));
-    painter.setPen(Qt::NoPen);
-    QPolygon greyTriangle;
-    greyTriangle << QPoint(width(), 0)
-                 << QPoint(width() - width() / 3, 0)
-                 << QPoint(width(), height() / 10);
-    painter.drawPolygon(greyTriangle);
-
-    // Мятный треугольник
-    painter.setBrush(QColor("#A0EACD"));
-    QPolygon mintTriangle;
-    mintTriangle << QPoint(0, 0)
-                 << QPoint(width() / 3, 0)
-                 << QPoint(0, height() / 10);
-    painter.drawPolygon(mintTriangle);
 }
 
 void CarListWidget::openFilterDialog()
