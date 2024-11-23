@@ -28,9 +28,9 @@ bool CarService::addCar(QString &name,
                         bool hasHeatedSeats,
                         bool hasHeatedSteeringWheel,
                         bool hasParkingSensors,
-                        bool isBlocked) {
+                        QPair<QDate, QDate> blockedPeriod) {
     Car car = Car(name, rating, category, transmission, driveType, engineCapacity, power, imagePath,
-                  hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors, isBlocked);
+                  hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors, blockedPeriod);
     return carRepository.saveCar(car);
 }
 
@@ -76,6 +76,14 @@ double CarService::getOptimalPricePerHour(const Car &car) {
     double drivingExp = AuthorizedUser::instance().getUser()->getDrivingExperience();
 
     return startValue * k * (((10 - drivingExp) * 10 + car.getRating() + 100) / 100) * 60;
+}
+
+bool CarService::isBlockedOnDate(const Car &car, const QDate &date) {
+    auto blockedPeriod = car.getBlockedPeriod();
+    if (blockedPeriod.first.isValid() && blockedPeriod.second.isValid()) {
+        return date >= blockedPeriod.first && date <= blockedPeriod.second;
+    }
+    return false;
 }
 
 void CarService::startRent(Car& car) {

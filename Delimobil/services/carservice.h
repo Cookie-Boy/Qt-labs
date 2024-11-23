@@ -25,7 +25,7 @@ public:
                 bool hasHeatedSeats,
                 bool hasHeatedSteeringWheel,
                 bool hasParkingSensors,
-                bool isBlocked);
+                QPair<QDate, QDate> blockedPeriod);
 
     bool deleteCar(const Car &car);
 
@@ -35,6 +35,8 @@ public:
 
     double getOptimalPricePerMinute(const Car& car);
     double getOptimalPricePerHour(const Car& car);
+
+    bool isBlockedOnDate(const Car &car, const QDate &date);
 
     void startRent(Car& car);
 

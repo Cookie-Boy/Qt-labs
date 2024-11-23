@@ -1,7 +1,7 @@
 #include "managecarswidget.h"
 #include "ui_managecarswidget.h"
 #include "../services/carservice.h"
-#include "addcardialog.h"
+#include "careditordialog.h"
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QGridLayout>
@@ -77,9 +77,18 @@ void ManageCarsWidget::updateCarList(const QVector<Car> &cars)
 
 void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int col)
 {
-    QWidget *cardWidget = new QWidget(this);
-    cardWidget->setFixedSize(205, 300);
-    cardWidget->setStyleSheet("QWidget { background-color: #f5f5f5; border-radius: 20px; }");
+    QString projectPath = "C:\\Users\\vital\\OneDrive\\My projects\\5 semester\\Qt projects\\Delimobil";
+
+    QWidget *commonWidget = new QWidget(this);
+    QVBoxLayout *commonLayout = new QVBoxLayout(commonWidget);
+
+    // Карточка
+    QWidget *cardWidget = new QWidget(commonWidget);
+    cardWidget->setFixedSize(205, 250);
+    if (!car.isBlocked())
+        cardWidget->setStyleSheet("QWidget { background-color: #f5f5f5; border-radius: 20px; }");
+    else
+        cardWidget->setStyleSheet("QWidget { background-color: #CFD8DC; border-radius: 20px; }");
 
     QLabel *imageLabel = new QLabel(cardWidget);
     QPixmap pixmap(car.getImagePath());
@@ -88,12 +97,24 @@ void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int
 
     QLabel *nameLabel = new QLabel(car.getName(), cardWidget);
     nameLabel->setAlignment(Qt::AlignCenter);
+    nameLabel->setStyleSheet("QLabel { font-size: 16px; font-weight: bold }");
 
     QLabel *infoLabel = new QLabel(QString("Класс: %1\nПривод: %2\nМощность: %3 л.с.")
                                        .arg(car.getCategory())
                                        .arg(car.getDriveType())
                                        .arg(car.getPower()), cardWidget);
     infoLabel->setAlignment(Qt::AlignCenter);
+    infoLabel->setStyleSheet("QLabel { font-size: 14px; }");
+
+    QLabel *blockedLabel = nullptr;
+    if (car.isBlocked()) {
+        QPair<QDate, QDate> blockedPeriod = car.getBlockedPeriod();
+        QString blockedLine = "\tЗаблокирована с " + blockedPeriod.first.toString() + " по " + blockedPeriod.second.toString() + "\t";
+        blockedLabel = new QLabel(blockedLine, cardWidget);
+        blockedLabel->setAlignment(Qt::AlignCenter);
+        blockedLabel->setStyleSheet("QLabel { font-weight: bold; font-size: 14px; color: red }");
+        blockedLabel->setWordWrap(true);
+    }
 
     QPushButton *editButton = new QPushButton("Изменить", cardWidget);
     editButton->setStyleSheet("QPushButton { background-color: #f9ecb6; border-radius: 10px }");
@@ -103,19 +124,35 @@ void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int
     deleteButton->setCursor(Qt::PointingHandCursor);
 
     QVBoxLayout *cardLayout = new QVBoxLayout(cardWidget);
-    cardLayout->setSpacing(10);
-    cardLayout->setContentsMargins(5, 5, 5, 5);
+    cardLayout->setSpacing(5);
+    cardLayout->setContentsMargins(0, 0, 0, 0);
 
     cardLayout->addWidget(imageLabel);
     cardLayout->addWidget(nameLabel);
-    cardLayout->addWidget(infoLabel);
-    cardLayout->addWidget(editButton);
-    cardLayout->addWidget(deleteButton);
+    if (blockedLabel == nullptr) {
+//        cardLayout->addStretch();
+        cardLayout->addWidget(infoLabel);
+//        cardLayout->addStretch();
+    } else {
+        cardLayout->addWidget(infoLabel);
+        cardLayout->addWidget(blockedLabel);
+    }
 
-    layout->addWidget(cardWidget, row, col);
+    commonLayout->addWidget(cardWidget);
+    commonLayout->addWidget(editButton);
+    commonLayout->addWidget(deleteButton);
+
+    layout->addWidget(commonWidget, row, col);
 
     connect(editButton, &QPushButton::clicked, [this, car]() {
-        emit changeCarButtonClicked(&car);
+        CarEditorDialog carEditorDialog(this, &car);
+        carEditorDialog.updateCarDetails(&car);
+        if (carEditorDialog.exec() == QDialog::Accepted) {
+            qDebug() << "Машина подтверждена";
+        } else {
+            qDebug() << "Машина отменена";
+        }
+        updateCarList(CarService::instance().getAllCars());
     });
     connect(deleteButton, &QPushButton::clicked, [this, car]() {
         confirmDeleteCar(car);
@@ -124,8 +161,8 @@ void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int
 
 void ManageCarsWidget::onAddCarButtonClicked()
 {
-    AddCarDialog addCarDialog(this);
-    if (addCarDialog.exec() == QDialog::Accepted) {
+    CarEditorDialog carEditorDialog(this);
+    if (carEditorDialog.exec() == QDialog::Accepted) {
         qDebug() << "Машина подтверждена";
         updateCarList(CarService::instance().getAllCars());
     } else {

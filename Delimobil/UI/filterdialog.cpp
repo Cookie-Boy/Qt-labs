@@ -83,6 +83,12 @@ FilterDialog::FilterDialog(QWidget *parent)
     layout->addWidget(heatedSeatsCheck);
     layout->addWidget(parkingSensorsCheck);
 
+    QLabel *dateLabel = new QLabel("Дата:", this);
+    dateEdit = new QDateEdit(QDate::currentDate(), this); // Устанавливаем текущую дату по умолчанию
+    dateEdit->setCalendarPopup(true); // Включаем всплывающее окно календаря
+    layout->addWidget(dateLabel);
+    layout->addWidget(dateEdit);
+
     // Кнопка "Применить"
     applyButton = new QPushButton("Применить", this);
     applyButton->setFixedHeight(40); // Увеличенный размер
@@ -95,3 +101,4 @@ QString FilterDialog::getNameFilter() const { return nameEdit->text(); }
 QString FilterDialog::getCategoryFilter() const { return categoryCombo->currentText(); }
 bool FilterDialog::getHeatedSeatsFilter() const { return heatedSeatsCheck->isChecked(); }
 bool FilterDialog::getParkingSensorsFilter() const { return parkingSensorsCheck->isChecked(); }
+QDate FilterDialog::getDateFilter() const { return dateEdit->date(); }

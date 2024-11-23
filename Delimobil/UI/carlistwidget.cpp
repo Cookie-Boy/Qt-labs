@@ -17,8 +17,6 @@ CarListWidget::CarListWidget(QStackedWidget *stackedWidget, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    displayCars();
-
     ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
 //    CarService::instance().addCar("Hyundai Solaris", 4, "Эконом", "Автомат", "Передний",
@@ -29,7 +27,6 @@ CarListWidget::CarListWidget(QStackedWidget *stackedWidget, QWidget *parent) :
 //                                  1.6, 110, true, true, false, true);
 
     createFilterButton();
-    setAllTools(this);
 }
 
 CarListWidget::~CarListWidget()
@@ -62,6 +59,7 @@ void CarListWidget::openFilterDialog()
         QString categoryFilter = dialog.getCategoryFilter();
         bool heatedSeatsFilter = dialog.getHeatedSeatsFilter();
         bool parkingSensorsFilter = dialog.getParkingSensorsFilter();
+        QDate dateFilter = dialog.getDateFilter();
 
         QVector<Car> allCars = CarService::instance().getAllCars();
         QVector<Car> filteredCars;
@@ -75,6 +73,8 @@ void CarListWidget::openFilterDialog()
                 continue;
             if (parkingSensorsFilter && !car.getHasParkingSensors())
                 continue;
+            if (CarService::instance().isBlockedOnDate(car, dateFilter)) // Проверяем, заблокирована ли машина
+                            continue;
 
             filteredCars.append(car);
         }
@@ -171,6 +171,9 @@ void CarListWidget::displayCars()
     int row = 0, col = 0, maxCols = 5;
 
     for (const Car &car : cars) {
+        if (CarService::instance().isBlockedOnDate(car, QDate::currentDate()))
+            continue;
+
         createCarCard(car, layout, row, col);
 
         col++;

@@ -8,6 +8,7 @@
 #include "UI/loginwidget.h"
 #include "UI/registrationwidget.h"
 #include "UI/managecarswidget.h"
+#include "UI/carlistwidget.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,10 +32,12 @@ private:
     LoginWidget *loginWidget;
     RegistrationWidget *registrationWidget;
     ManageCarsWidget *manageCarsWidget;
+    CarListWidget *carListWidget;
 
     QList<QWidget*> widgetHistory;
 
     void handleUserFound(BaseWidget *sourceWidget);
+    void connectAllBaseWidgetSignals();
 
 private slots:
     void showProfileWidget();

@@ -18,11 +18,12 @@ public:
     explicit CarListWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
     ~CarListWidget() override;
 
+    void displayCars();
+
 private:
     Ui::CarListWidget *ui;
     void createFilterButton();
     void createCarCard(const Car &car, QGridLayout *layout, int row, int col);
-    void displayCars();
     void openFilterDialog();
     void updateCarList(const QVector<Car> &cars);
 };

@@ -1,6 +1,7 @@
 debug/mapwindow.o
-debug/addcardialog.o
 debug/basewidget.o
+debug/calendardialog.o
+debug/careditordialog.o
 debug/carlistwidget.o
 debug/filterdialog.o
 debug/loginwidget.o
@@ -20,8 +21,9 @@ debug/carservice.o
 debug/userservice.o
 debug/qrc_resources.o
 debug/moc_mapwindow.o
-debug/moc_addcardialog.o
 debug/moc_basewidget.o
+debug/moc_calendardialog.o
+debug/moc_careditordialog.o
 debug/moc_carlistwidget.o
 debug/moc_filterdialog.o
 debug/moc_loginwidget.o

@@ -2,6 +2,7 @@
 #define CAR_H
 
 #include <QString>
+#include <QDate>
 
 class Car
 {
@@ -18,19 +19,20 @@ private:
     bool hasHeatedSeats;
     bool hasHeatedSteeringWheel;
     bool hasParkingSensors;
-    bool isBlocked;
+    QPair<QDate, QDate> blockedPeriod; // Новое поле для диапазона дат
 
 public:
     Car();
     Car(long id, const QString &name, short rating, const QString &category,
         const QString &transmission, const QString &driveType,
         double engineCapacity, double power, QString imagePath, bool hasHeatedSeats,
-        bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked);
+        bool hasHeatedSteeringWheel, bool hasParkingSensors, const QPair<QDate, QDate> &blockedPeriod);
     Car(const QString &name, short rating, const QString &category,
         const QString &transmission, const QString &driveType,
         double engineCapacity, double power, QString imagePath, bool hasHeatedSeats,
-        bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked);
+             bool hasHeatedSteeringWheel, bool hasParkingSensors, const QPair<QDate, QDate> &blockedPeriod);
 
+    // Getters and Setters
     // Getters and Setters
     long getId() const;
     void setId(long id);
@@ -68,8 +70,9 @@ public:
     bool getHasParkingSensors() const;
     void setHasParkingSensors(bool hasParkingSensors);
 
-    bool getIsBlocked() const;
-    void setIsBlocked(bool isBlocked);
+    QPair<QDate, QDate> getBlockedPeriod() const;
+    void setBlockedPeriod(const QPair<QDate, QDate> &period);
+    bool isBlocked() const; // Проверяет, заблокирован ли автомобиль на текущую дату
 };
 
 #endif // CAR_H

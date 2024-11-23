@@ -6,18 +6,18 @@ Car::Car() {}
 Car::Car(long id, const QString &name, short rating, const QString &category,
          const QString &transmission, const QString &driveType,
          double engineCapacity, double power, QString imagePath, bool hasHeatedSeats,
-         bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked)
+         bool hasHeatedSteeringWheel, bool hasParkingSensors, const QPair<QDate, QDate> &blockedPeriod)
     : id(id), name(name), rating(rating), category(category), transmission(transmission),
       driveType(driveType), engineCapacity(engineCapacity), power(power), imagePath(imagePath), hasHeatedSeats(hasHeatedSeats),
-      hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors), isBlocked(isBlocked) {}
+      hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors), blockedPeriod(blockedPeriod) {}
 
 Car::Car(const QString &name, short rating, const QString &category,
     const QString &transmission, const QString &driveType,
     double engineCapacity, double power, QString imagePath, bool hasHeatedSeats,
-         bool hasHeatedSteeringWheel, bool hasParkingSensors, bool isBlocked)
+         bool hasHeatedSteeringWheel, bool hasParkingSensors, const QPair<QDate, QDate> &blockedPeriod)
     : name(name), rating(rating), category(category), transmission(transmission),
       driveType(driveType), engineCapacity(engineCapacity), power(power), imagePath(imagePath), hasHeatedSeats(hasHeatedSeats),
-      hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors), isBlocked(isBlocked) {
+      hasHeatedSteeringWheel(hasHeatedSteeringWheel), hasParkingSensors(hasParkingSensors), blockedPeriod(blockedPeriod) {
     this->id = -1;
 }
 
@@ -58,5 +58,15 @@ void Car::setHasHeatedSteeringWheel(bool hasHeatedSteeringWheel) { this->hasHeat
 bool Car::getHasParkingSensors() const { return hasParkingSensors; }
 void Car::setHasParkingSensors(bool hasParkingSensors) { this->hasParkingSensors = hasParkingSensors; }
 
-bool Car::getIsBlocked() const { return isBlocked; }
-void Car::setIsBlocked(bool isBlocked) { this->isBlocked = isBlocked; }
+QPair<QDate, QDate> Car::getBlockedPeriod() const {
+    return blockedPeriod;
+}
+
+void Car::setBlockedPeriod(const QPair<QDate, QDate> &period) {
+    blockedPeriod = period;
+}
+
+bool Car::isBlocked() const {
+    QDate today = QDate::currentDate();
+    return (today >= blockedPeriod.first && today <= blockedPeriod.second);
+}

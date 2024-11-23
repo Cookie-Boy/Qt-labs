@@ -6,13 +6,14 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLabel>
+#include "basewidget.h"
 
-class ProfileWidget : public QWidget
+class ProfileWidget : public BaseWidget
 {
     Q_OBJECT
 
 public:
-    explicit ProfileWidget(QWidget *parent = nullptr);
+    explicit ProfileWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
 
 private slots:
     void onEditButtonClicked();

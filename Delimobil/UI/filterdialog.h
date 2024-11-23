@@ -6,6 +6,7 @@
 #include <QComboBox>
 #include <QCheckBox>
 #include <QPushButton>
+#include <QDateEdit>
 #include "models/car.h"
 
 class FilterDialog : public QDialog
@@ -18,6 +19,7 @@ private:
     QCheckBox *heatedSeatsCheck;
     QCheckBox *parkingSensorsCheck;
     QPushButton *applyButton;
+    QDateEdit *dateEdit;
 
 public:
     explicit FilterDialog(QWidget *parent = nullptr);
@@ -25,6 +27,7 @@ public:
     QString getCategoryFilter() const;
     bool getHeatedSeatsFilter() const;
     bool getParkingSensorsFilter() const;
+    QDate getDateFilter() const;
 };
 
 #endif // FILTERDIALOG_H

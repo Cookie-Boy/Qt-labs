@@ -4,7 +4,7 @@
 #include "UI/registrationwidget.h"
 #include "UI/carlistwidget.h"
 #include "models/authorizeduser.h"
-#include "UI/addcardialog.h"
+#include "UI/careditordialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -35,11 +35,13 @@ MainWindow::MainWindow(QWidget *parent) :
     profileWidget = new ProfileWidget(stackedWidget);
     registrationWidget = new RegistrationWidget(stackedWidget);
     manageCarsWidget = new ManageCarsWidget(stackedWidget);
+    carListWidget = new CarListWidget(stackedWidget);
 
     stackedWidget->addWidget(loginWidget);
     stackedWidget->addWidget(profileWidget);
     stackedWidget->addWidget(registrationWidget);
     stackedWidget->addWidget(manageCarsWidget);
+    stackedWidget->addWidget(carListWidget);
 
     stackedWidget->setCurrentWidget(loginWidget);
 
@@ -60,32 +62,36 @@ MainWindow::MainWindow(QWidget *parent) :
         handleUserFound(registrationWidget);
     });
 
-    connect(manageCarsWidget, &BaseWidget::changeCarButtonClicked, [=](const Car *car) {
-        AddCarDialog addCarDialog(this, car);
-        addCarDialog.updateCarDetails(car);
-        if (addCarDialog.exec() == QDialog::Accepted) {
-            qDebug() << "Машина подтверждена";
-        } else {
-            qDebug() << "Машина отменена";
-        }
-    });
+    connectAllBaseWidgetSignals();
 }
 
 void MainWindow::handleUserFound(BaseWidget *sourceWidget) {
-    CarListWidget *carListWidget = new CarListWidget(stackedWidget);
+    carListWidget->setAllTools(static_cast<BaseWidget*>(carListWidget));
+    carListWidget->displayCars();
     stackedWidget->addWidget(carListWidget);
-
-    connect(carListWidget, &BaseWidget::profileIconClicked, this, &MainWindow::showProfileWidget);
-    connect(carListWidget, &BaseWidget::exitIconClicked, [=]() {
-        stackedWidget->setCurrentWidget(loginWidget);
-        AuthorizedUser::instance().setUser(nullptr);
-    });
-    connect(carListWidget, &BaseWidget::adminIconClicked, [=]() {
-        manageCarsWidget->displayCars();
-        stackedWidget->setCurrentWidget(manageCarsWidget);
-    });
-
     sourceWidget->navigateTo(carListWidget);
+}
+
+void MainWindow::connectAllBaseWidgetSignals() {
+    QList<BaseWidget *> baseWidgets = findChildren<BaseWidget *>();
+    for (BaseWidget *widget : baseWidgets) {
+        connect(widget, &BaseWidget::profileIconClicked, this, &MainWindow::showProfileWidget);
+
+        connect(widget, &BaseWidget::exitIconClicked, [this]() {
+            stackedWidget->setCurrentWidget(loginWidget);
+            AuthorizedUser::instance().setUser(nullptr);
+        });
+
+        connect(widget, &BaseWidget::adminIconClicked, [this]() {
+            qDebug() << "here";
+            manageCarsWidget->displayCars();
+            stackedWidget->setCurrentWidget(manageCarsWidget);
+        });
+
+        connect(widget, &BaseWidget::rentIconClicked, [this]() {
+            // Логика для rentIcon
+        });
+    }
 }
 
 

@@ -1,7 +1,7 @@
 #include "ProfileWidget.h"
 
-ProfileWidget::ProfileWidget(QWidget *parent)
-    : QWidget(parent),
+ProfileWidget::ProfileWidget(QStackedWidget *stackedWidget, QWidget *parent)
+    : BaseWidget(stackedWidget, parent),
       lastNameEdit(new QLineEdit(this)),
       firstNameEdit(new QLineEdit(this)),
       middleNameEdit(new QLineEdit(this)),

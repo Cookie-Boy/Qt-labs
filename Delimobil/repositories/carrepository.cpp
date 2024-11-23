@@ -39,9 +39,26 @@ Car* CarRepository::getCarByQuery(QSqlQuery& query) {
     bool hasHeatedSeats = query.value("hasHeatedSeats").toBool();
     bool hasHeatedSteeringWheel = query.value("hasHeatedSteeringWheel").toBool();
     bool hasParkingSensors = query.value("hasParkingSensors").toBool();
-    bool isBlocked = query.value("isBlocked").toBool();
+    QPair<QDate, QDate> blockedPeriod;
+
+    QVariant value = query.value("blockedPeriod");
+    if (!value.isNull()) {
+        QStringList dates = value.toString().split(',');
+        if (dates.size() == 2) { // Убедитесь, что есть два элемента
+            QDate startDate = QDate::fromString(dates.at(0), Qt::ISODate);
+            QDate endDate = QDate::fromString(dates.at(1), Qt::ISODate);
+            blockedPeriod = qMakePair(startDate, endDate);
+        } else {
+            qWarning() << "blockedPeriod format invalid:" << value.toString();
+            blockedPeriod = qMakePair(QDate(), QDate()); // Значения по умолчанию
+        }
+    } else {
+        qWarning() << "blockedPeriod is NULL";
+        blockedPeriod = qMakePair(QDate(), QDate()); // Значения по умолчанию
+    }
+
     return new Car(id, name, rating, category, transmission, driveType, engineCapacity, power, imagePath,
-                   hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors, isBlocked);
+                   hasHeatedSeats, hasHeatedSteeringWheel, hasParkingSensors, blockedPeriod);
 }
 
 bool CarRepository::saveCar(const Car& car) {
@@ -50,7 +67,7 @@ bool CarRepository::saveCar(const Car& car) {
         INSERT INTO cars
         (id, name, rating, category, transmission, driveType, engineCapacity,
          power, imagePath, hasHeatedSeats, hasHeatedSteeringWheel,
-         hasParkingSensors, isBlocked)
+         hasParkingSensors, blockedPeriod)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     )");
 
@@ -71,7 +88,9 @@ bool CarRepository::saveCar(const Car& car) {
     query.addBindValue(car.getHasHeatedSeats());
     query.addBindValue(car.getHasHeatedSteeringWheel());
     query.addBindValue(car.getHasParkingSensors());
-    query.addBindValue(car.getIsBlocked());
+
+    QPair<QDate, QDate> blockedPeriod = car.getBlockedPeriod();
+    query.addBindValue(blockedPeriod.first.toString(Qt::ISODate) + "," + blockedPeriod.second.toString(Qt::ISODate));
 
     // Выполняем запрос и проверяем на ошибки
     if (!query.exec()) {
@@ -88,7 +107,7 @@ bool CarRepository::updateCar(const Car &oldCar, const Car &newCar) {
         UPDATE cars
         SET name = ?, rating = ?, category = ?, transmission = ?, driveType = ?,
             engineCapacity = ?, power = ?, imagePath = ?, hasHeatedSeats = ?,
-            hasHeatedSteeringWheel = ?, hasParkingSensors = ?, isBlocked = ?
+            hasHeatedSteeringWheel = ?, hasParkingSensors = ?, blockedPeriod = ?
         WHERE id = ?
     )");
 
@@ -104,7 +123,12 @@ bool CarRepository::updateCar(const Car &oldCar, const Car &newCar) {
     query.addBindValue(newCar.getHasHeatedSeats());
     query.addBindValue(newCar.getHasHeatedSteeringWheel());
     query.addBindValue(newCar.getHasParkingSensors());
-    query.addBindValue(newCar.getIsBlocked());
+
+    QPair<QDate, QDate> blockedPeriod = newCar.getBlockedPeriod();
+    if (blockedPeriod.first.isNull() || blockedPeriod.second.isNull())
+        query.addBindValue(NULL);
+    else
+        query.addBindValue(blockedPeriod.first.toString(Qt::ISODate) + "," + blockedPeriod.second.toString(Qt::ISODate));
 
     // Привязываем ID старого объекта для поиска записи в базе
     query.addBindValue(QVariant::fromValue(static_cast<long>(oldCar.getId())));

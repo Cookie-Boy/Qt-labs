@@ -36,21 +36,23 @@ void BaseWidget::setAllTools(BaseWidget *widget) {
     exitIcon->installEventFilter(widget);
     exitIcon->setCursor(Qt::PointingHandCursor);
 
-    if (AuthorizedUser::instance().getUser() != nullptr && AuthorizedUser::instance().getUser()->getRole() != "Admin")
-        return;
+    if (AuthorizedUser::instance().getUser() == nullptr)
+        qDebug() << "nullptr";
 
-    QLabel *adminIcon = new QLabel(widget);
-    pixmap.load(projectPath + "\\images\\admin.png");
-    adminIcon->setPixmap(pixmap.scaled(35, 35, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
-    adminIcon->setFixedSize(35, 35);
-    adminIcon->move(1140, 10);
-    adminIcon->setAttribute(Qt::WA_Hover);
-    adminIcon->setMouseTracking(true);
-    adminIcon->setObjectName("adminIcon");
-    adminIcon->installEventFilter(widget);
-    adminIcon->setCursor(Qt::PointingHandCursor);
+    if (AuthorizedUser::instance().getUser() != nullptr && AuthorizedUser::instance().getUser()->getRole() == "Admin") {
+        QLabel *adminIcon = new QLabel(widget);
+        pixmap.load(projectPath + "\\images\\admin.png");
+        adminIcon->setPixmap(pixmap.scaled(35, 35, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+        adminIcon->setFixedSize(35, 35);
+        adminIcon->move(1140, 10);
+        adminIcon->setAttribute(Qt::WA_Hover);
+        adminIcon->setMouseTracking(true);
+        adminIcon->setObjectName("adminIcon");
+        adminIcon->installEventFilter(widget);
+        adminIcon->setCursor(Qt::PointingHandCursor);
+    }
 
-    foreach (QPushButton *button, this->findChildren<QPushButton*>()) {
+    foreach (QPushButton *button, widget->findChildren<QPushButton*>()) {
         button->setCursor(Qt::PointingHandCursor);
         button->setStyleSheet("QPushButton { background-color: #A0EACD; border-radius: 10px; }");
     }
@@ -88,16 +90,17 @@ bool BaseWidget::eventFilter(QObject *obj, QEvent *event) {
             QLabel *label = qobject_cast<QLabel *>(obj);  // Проверяем, является ли объект QLabel
             if (label) {
                 if (label->objectName() == "profileIcon") {
-                    emit profileIconClicked();  // Сигнал для иконки профиля
+                    emit BaseWidget::profileIconClicked();  // Сигнал для иконки профиля
                     return true;
                 } else if (label->objectName() == "exitIcon") {
-                    emit exitIconClicked();  // Сигнал для иконки выхода
+                    emit BaseWidget::exitIconClicked();  // Сигнал для иконки выхода
                     return true;
                 } else if (label->objectName() == "adminIcon") {
-                    emit adminIconClicked();
+                    qDebug() << "first";
+                    emit BaseWidget::adminIconClicked();
                     return true;
                 } else if (label->objectName() == "rentIcon") {
-                    emit rentIconClicked();
+                    emit BaseWidget::rentIconClicked();
                     return true;
                 }
             }

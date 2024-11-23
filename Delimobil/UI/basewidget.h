@@ -19,12 +19,10 @@ class BaseWidget : public QWidget
     Q_OBJECT
 
 protected:
-    void setAllTools(BaseWidget *widget);
     bool eventFilter(QObject *obj, QEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
     QStackedWidget *stackedWidget;
     QStack<QWidget*> history;
-    QLabel *profileIcon;
 
 private:
     Ui::BaseWidget *ui;
@@ -37,13 +35,13 @@ signals:
 
     void userNotFound();
     void userFound();
-    void changeCarButtonClicked(const Car *car);
 
 public:
     explicit BaseWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
     ~BaseWidget() override;
     void navigateTo(QWidget *widget);
     void goBack();
+    void setAllTools(BaseWidget *widget);
 };
 
 #endif // BASEWIDGET_H

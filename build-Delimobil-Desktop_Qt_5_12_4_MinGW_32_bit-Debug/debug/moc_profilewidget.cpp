@@ -81,7 +81,7 @@ void ProfileWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
 }
 
 QT_INIT_METAOBJECT const QMetaObject ProfileWidget::staticMetaObject = { {
-    &QWidget::staticMetaObject,
+    &BaseWidget::staticMetaObject,
     qt_meta_stringdata_ProfileWidget.data,
     qt_meta_data_ProfileWidget,
     qt_static_metacall,
@@ -100,12 +100,12 @@ void *ProfileWidget::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_ProfileWidget.stringdata0))
         return static_cast<void*>(this);
-    return QWidget::qt_metacast(_clname);
+    return BaseWidget::qt_metacast(_clname);
 }
 
 int ProfileWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QWidget::qt_metacall(_c, _id, _a);
+    _id = BaseWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
