@@ -63,19 +63,11 @@ double CarService::getOptimalPricePerMinute(const Car &car) {
 }
 
 double CarService::getOptimalPricePerHour(const Car &car) {
-    double startValue = 6;
-    QString category = car.getCategory();
-    int k;
-    if (category == "Эконом")
-        k = 1;
-    else if (category == "Комфорт")
-        k = 2;
-    else
-        k = 3;
+    return getOptimalPricePerMinute(car) * 30;
+}
 
-    double drivingExp = AuthorizedUser::instance().getUser()->getDrivingExperience();
-
-    return startValue * k * (((10 - drivingExp) * 10 + car.getRating() + 100) / 100) * 60;
+double CarService::getOptimalPricePerKilometer(const Car &car) {
+    return getOptimalPricePerMinute(car) / 2;
 }
 
 bool CarService::isBlockedOnDate(const Car &car, const QDate &date) {

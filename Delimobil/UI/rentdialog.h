@@ -1,20 +1,36 @@
-#ifndef CONFIRMDIALOG_H
-#define CONFIRMDIALOG_H
+#ifndef RENTDIALOG_H
+#define RENTDIALOG_H
 
 #include <QDialog>
+#include <QLabel>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include "../models/car.h"
 
 class RentDialog : public QDialog {
     Q_OBJECT
+
 public:
-    explicit RentDialog(QWidget *parent = nullptr);
+    explicit RentDialog(const Car &car, QWidget *parent = nullptr);
     bool isConfirmed() const;
+    QString getSelectedTariff() const;
 
 private slots:
-    void onConfirm();
     void onCancel();
 
 private:
     bool confirmed;
+    QString selectedTariff;
+
+    QLabel *carImageLabel;
+    QLabel *carNameLabel;
+    QLabel *carDetailsLabel;
+    QLabel *tariffDescriptionLabel;
+
+    QPushButton *minuteButton;
+    QPushButton *hourButton;
+    QPushButton *cancelButton;
 };
 
-#endif // CONFIRMDIALOG_H
+#endif // RENTDIALOG_H

@@ -1,4 +1,4 @@
-#include "ProfileWidget.h"
+#include "profilewidget.h"
 
 ProfileWidget::ProfileWidget(QStackedWidget *stackedWidget, QWidget *parent)
     : BaseWidget(stackedWidget, parent),

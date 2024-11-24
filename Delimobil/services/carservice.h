@@ -35,6 +35,7 @@ public:
 
     double getOptimalPricePerMinute(const Car& car);
     double getOptimalPricePerHour(const Car& car);
+    double getOptimalPricePerKilometer(const Car& car);
 
     bool isBlockedOnDate(const Car &car, const QDate &date);
 

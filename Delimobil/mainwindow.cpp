@@ -84,6 +84,7 @@ void MainWindow::connectAllBaseWidgetSignals() {
 
         connect(widget, &BaseWidget::adminIconClicked, [this]() {
             qDebug() << "here";
+            manageCarsWidget->setAllTools(static_cast<BaseWidget*>(manageCarsWidget));
             manageCarsWidget->displayCars();
             stackedWidget->setCurrentWidget(manageCarsWidget);
         });

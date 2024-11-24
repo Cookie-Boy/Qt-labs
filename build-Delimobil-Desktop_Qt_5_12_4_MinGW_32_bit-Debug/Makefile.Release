@@ -67,8 +67,7 @@ SOURCES       = ..\Delimobil\API\mapwindow.cpp \
 		..\Delimobil\repositories\carrepository.cpp \
 		..\Delimobil\repositories\userrepository.cpp \
 		..\Delimobil\services\carservice.cpp \
-		..\Delimobil\services\userservice.cpp release\qrc_resources.cpp \
-		release\moc_mapwindow.cpp \
+		..\Delimobil\services\userservice.cpp release\moc_mapwindow.cpp \
 		release\moc_basewidget.cpp \
 		release\moc_calendardialog.cpp \
 		release\moc_careditordialog.cpp \
@@ -101,7 +100,6 @@ OBJECTS       = release/mapwindow.o \
 		release/userrepository.o \
 		release/carservice.o \
 		release/userservice.o \
-		release/qrc_resources.o \
 		release/moc_mapwindow.o \
 		release/moc_basewidget.o \
 		release/moc_calendardialog.o \
@@ -174,10 +172,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) Delimobil.zip $(SOURCES) $(DIST) ..\Delimobil\Delimobil.pro D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\spec_pre.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\qdevice.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\device_config.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\sanitize.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\gcc-base.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\g++-base.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\angle.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\windows-vulkan.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\g++-win32.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\qconfig.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qt_functions.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qt_config.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\win32-g++\qmake.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\exclusive_builds.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\toolchain.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\default_pre.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\win32\default_pre.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\resolve_config.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\exclusive_builds_post.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\default_post.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\build_pass.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qml_debug.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\precompile_header.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\warn_on.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qt.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\resources.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\moc.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\win32\opengl.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\uic.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qmake_use.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\file_copies.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\win32\windows.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\testcase_targets.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\exceptions.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\yacc.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\lex.prf ..\Delimobil\Delimobil.pro ..\Delimobil\resources.qrc D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Location.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5PositioningQuick.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Quick.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Widgets.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Gui.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Sql.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Positioning.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Qml.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Network.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Core.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\qtmain.prl   ..\Delimobil\resources.qrc D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\data\dummy.cpp ..\Delimobil\API\mapwindow.h ..\Delimobil\UI\basewidget.h ..\Delimobil\UI\calendardialog.h ..\Delimobil\UI\careditordialog.h ..\Delimobil\UI\carlistwidget.h ..\Delimobil\UI\filterdialog.h ..\Delimobil\UI\loginwidget.h ..\Delimobil\UI\managecarswidget.h ..\Delimobil\UI\profilewidget.h ..\Delimobil\UI\registrationwidget.h ..\Delimobil\UI\rentdialog.h ..\Delimobil\database\databasemanager.h ..\Delimobil\mainwindow.h ..\Delimobil\models\authorizeduser.h ..\Delimobil\models\car.h ..\Delimobil\models\user.h ..\Delimobil\repositories\carrepository.h ..\Delimobil\repositories\userrepository.h ..\Delimobil\services\carservice.h ..\Delimobil\services\userservice.h  ..\Delimobil\API\mapwindow.cpp ..\Delimobil\UI\basewidget.cpp ..\Delimobil\UI\calendardialog.cpp ..\Delimobil\UI\careditordialog.cpp ..\Delimobil\UI\carlistwidget.cpp ..\Delimobil\UI\filterdialog.cpp ..\Delimobil\UI\loginwidget.cpp ..\Delimobil\UI\managecarswidget.cpp ..\Delimobil\UI\profilewidget.cpp ..\Delimobil\UI\registrationwidget.cpp ..\Delimobil\UI\rentdialog.cpp ..\Delimobil\database\databasemanager.cpp ..\Delimobil\main.cpp ..\Delimobil\mainwindow.cpp ..\Delimobil\models\authorizeduser.cpp ..\Delimobil\models\car.cpp ..\Delimobil\models\user.cpp ..\Delimobil\repositories\carrepository.cpp ..\Delimobil\repositories\userrepository.cpp ..\Delimobil\services\carservice.cpp ..\Delimobil\services\userservice.cpp ..\Delimobil\API\mapwindow.ui ..\Delimobil\UI\basewidget.ui ..\Delimobil\UI\calendardialog.ui ..\Delimobil\UI\careditordialog.ui ..\Delimobil\UI\carlistwidget.ui ..\Delimobil\UI\filterdialog.ui ..\Delimobil\UI\loginwidget.ui ..\Delimobil\UI\managecarswidget.ui ..\Delimobil\UI\profilewidget.ui ..\Delimobil\UI\registrationwidget.ui ..\Delimobil\UI\rentdialog.ui ..\Delimobil\mainwindow.ui    
+	$(ZIP) Delimobil.zip $(SOURCES) $(DIST) ..\Delimobil\Delimobil.pro D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\spec_pre.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\qdevice.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\device_config.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\sanitize.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\gcc-base.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\g++-base.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\angle.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\windows-vulkan.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\common\g++-win32.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\qconfig.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qt_functions.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qt_config.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\win32-g++\qmake.conf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\exclusive_builds.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\toolchain.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\default_pre.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\win32\default_pre.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\resolve_config.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\exclusive_builds_post.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\default_post.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\build_pass.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qml_debug.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\precompile_header.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\warn_on.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qt.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\resources.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\moc.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\win32\opengl.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\uic.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\qmake_use.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\file_copies.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\win32\windows.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\testcase_targets.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\exceptions.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\yacc.prf D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\lex.prf ..\Delimobil\Delimobil.pro D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Location.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5PositioningQuick.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Quick.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Widgets.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Gui.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Sql.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Positioning.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Qml.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Network.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\Qt5Core.prl D:\Programs\Qt\5.12.4\mingw73_32\lib\qtmain.prl    D:\Programs\Qt\5.12.4\mingw73_32\mkspecs\features\data\dummy.cpp ..\Delimobil\API\mapwindow.h ..\Delimobil\UI\basewidget.h ..\Delimobil\UI\calendardialog.h ..\Delimobil\UI\careditordialog.h ..\Delimobil\UI\carlistwidget.h ..\Delimobil\UI\filterdialog.h ..\Delimobil\UI\loginwidget.h ..\Delimobil\UI\managecarswidget.h ..\Delimobil\UI\profilewidget.h ..\Delimobil\UI\registrationwidget.h ..\Delimobil\UI\rentdialog.h ..\Delimobil\database\databasemanager.h ..\Delimobil\mainwindow.h ..\Delimobil\models\authorizeduser.h ..\Delimobil\models\car.h ..\Delimobil\models\user.h ..\Delimobil\repositories\carrepository.h ..\Delimobil\repositories\userrepository.h ..\Delimobil\services\carservice.h ..\Delimobil\services\userservice.h  ..\Delimobil\API\mapwindow.cpp ..\Delimobil\UI\basewidget.cpp ..\Delimobil\UI\calendardialog.cpp ..\Delimobil\UI\careditordialog.cpp ..\Delimobil\UI\carlistwidget.cpp ..\Delimobil\UI\filterdialog.cpp ..\Delimobil\UI\loginwidget.cpp ..\Delimobil\UI\managecarswidget.cpp ..\Delimobil\UI\profilewidget.cpp ..\Delimobil\UI\registrationwidget.cpp ..\Delimobil\UI\rentdialog.cpp ..\Delimobil\database\databasemanager.cpp ..\Delimobil\main.cpp ..\Delimobil\mainwindow.cpp ..\Delimobil\models\authorizeduser.cpp ..\Delimobil\models\car.cpp ..\Delimobil\models\user.cpp ..\Delimobil\repositories\carrepository.cpp ..\Delimobil\repositories\userrepository.cpp ..\Delimobil\services\carservice.cpp ..\Delimobil\services\userservice.cpp ..\Delimobil\API\mapwindow.ui ..\Delimobil\UI\basewidget.ui ..\Delimobil\UI\calendardialog.ui ..\Delimobil\UI\careditordialog.ui ..\Delimobil\UI\carlistwidget.ui ..\Delimobil\UI\filterdialog.ui ..\Delimobil\UI\loginwidget.ui ..\Delimobil\UI\managecarswidget.ui ..\Delimobil\UI\profilewidget.ui ..\Delimobil\UI\registrationwidget.ui ..\Delimobil\UI\rentdialog.ui ..\Delimobil\mainwindow.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\mapwindow.o release\basewidget.o release\calendardialog.o release\careditordialog.o release\carlistwidget.o release\filterdialog.o release\loginwidget.o release\managecarswidget.o release\profilewidget.o release\registrationwidget.o release\rentdialog.o release\databasemanager.o release\main.o release\mainwindow.o release\authorizeduser.o release\car.o release\user.o release\carrepository.o release\userrepository.o release\carservice.o release\userservice.o release\qrc_resources.o release\moc_mapwindow.o release\moc_basewidget.o release\moc_calendardialog.o release\moc_careditordialog.o release\moc_carlistwidget.o release\moc_filterdialog.o release\moc_loginwidget.o release\moc_managecarswidget.o release\moc_profilewidget.o release\moc_registrationwidget.o release\moc_rentdialog.o release\moc_mainwindow.o
+	-$(DEL_FILE) release\mapwindow.o release\basewidget.o release\calendardialog.o release\careditordialog.o release\carlistwidget.o release\filterdialog.o release\loginwidget.o release\managecarswidget.o release\profilewidget.o release\registrationwidget.o release\rentdialog.o release\databasemanager.o release\main.o release\mainwindow.o release\authorizeduser.o release\car.o release\user.o release\carrepository.o release\userrepository.o release\carservice.o release\userservice.o release\moc_mapwindow.o release\moc_basewidget.o release\moc_calendardialog.o release\moc_careditordialog.o release\moc_carlistwidget.o release\moc_filterdialog.o release\moc_loginwidget.o release\moc_managecarswidget.o release\moc_profilewidget.o release\moc_registrationwidget.o release\moc_rentdialog.o release\moc_mainwindow.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -194,14 +192,8 @@ benchmark: first
 
 compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
-compiler_rcc_make_all: release/qrc_resources.cpp
+compiler_rcc_make_all:
 compiler_rcc_clean:
-	-$(DEL_FILE) release\qrc_resources.cpp
-release/qrc_resources.cpp: ../Delimobil/resources.qrc \
-		D:/Programs/Qt/5.12.4/mingw73_32/bin/rcc.exe \
-		../Delimobil/map.qml
-	D:\Programs\Qt\5.12.4\mingw73_32\bin\rcc.exe -name resources ..\Delimobil\resources.qrc -o release\qrc_resources.cpp
-
 compiler_moc_predefs_make_all: release/moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) release\moc_predefs.h
@@ -1030,10 +1022,12 @@ release/moc_filterdialog.cpp: ../Delimobil/UI/filterdialog.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qabstractbutton.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QPushButton \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QDateEdit \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qdatetimeedit.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qdatetime.h \
 		../Delimobil/models/car.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QString \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDate \
-		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qdatetime.h \
 		release/moc_predefs.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/bin/moc.exe
 	D:\Programs\Qt\5.12.4\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/build-Delimobil-Desktop_Qt_5_12_4_MinGW_32_bit-Debug/release/moc_predefs.h" -ID:/Programs/Qt/5.12.4/mingw73_32/mkspecs/win32-g++ -I"C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/Delimobil" -ID:/Programs/Qt/5.12.4/mingw73_32/include -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtLocation -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtPositioningQuick -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtQuick -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtGui -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtANGLE -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtSql -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtPositioning -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtQml -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtNetwork -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtCore -I. -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/Programs/Qt/Tools/mingw730_32/i686-w64-mingw32/include ..\Delimobil\UI\filterdialog.h -o release\moc_filterdialog.cpp
@@ -1442,6 +1436,19 @@ release/moc_profilewidget.cpp: ../Delimobil/UI/profilewidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qgridlayout.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QLabel \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlabel.h \
+		../Delimobil/UI/basewidget.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QStackedWidget \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qstackedwidget.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QStack \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qstack.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/QMouseEvent \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDebug \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/QPainter \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qpainter.h \
+		../Delimobil/models/car.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QString \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDate \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qdatetime.h \
 		release/moc_predefs.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/bin/moc.exe
 	D:\Programs\Qt\5.12.4\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/build-Delimobil-Desktop_Qt_5_12_4_MinGW_32_bit-Debug/release/moc_predefs.h" -ID:/Programs/Qt/5.12.4/mingw73_32/mkspecs/win32-g++ -I"C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/Delimobil" -ID:/Programs/Qt/5.12.4/mingw73_32/include -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtLocation -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtPositioningQuick -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtQuick -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtGui -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtANGLE -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtSql -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtPositioning -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtQml -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtNetwork -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtCore -I. -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/Programs/Qt/Tools/mingw730_32/i686-w64-mingw32/include ..\Delimobil\UI\profilewidget.h -o release\moc_profilewidget.cpp
@@ -1677,6 +1684,23 @@ release/moc_rentdialog.cpp: ../Delimobil/UI/rentdialog.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qfiledevice.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qvector2d.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qtouchdevice.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QLabel \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlabel.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qframe.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QPushButton \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qicon.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QVBoxLayout \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qboxlayout.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlayout.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qgridlayout.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QHBoxLayout \
+		../Delimobil/models/car.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QString \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDate \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qdatetime.h \
 		release/moc_predefs.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/bin/moc.exe
 	D:\Programs\Qt\5.12.4\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/build-Delimobil-Desktop_Qt_5_12_4_MinGW_32_bit-Debug/release/moc_predefs.h" -ID:/Programs/Qt/5.12.4/mingw73_32/mkspecs/win32-g++ -I"C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/Delimobil" -ID:/Programs/Qt/5.12.4/mingw73_32/include -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtLocation -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtPositioningQuick -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtQuick -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtGui -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtANGLE -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtSql -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtPositioning -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtQml -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtNetwork -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtCore -I. -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/Programs/Qt/Tools/mingw730_32/i686-w64-mingw32/include ..\Delimobil\UI\rentdialog.h -o release\moc_rentdialog.cpp
@@ -1836,6 +1860,7 @@ release/moc_mainwindow.cpp: ../Delimobil/mainwindow.h \
 		../Delimobil/UI/managecarswidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QVector \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QGridLayout \
+		../Delimobil/UI/carlistwidget.h \
 		release/moc_predefs.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/bin/moc.exe
 	D:\Programs\Qt\5.12.4\mingw73_32\bin\moc.exe $(DEFINES) --include "C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/build-Delimobil-Desktop_Qt_5_12_4_MinGW_32_bit-Debug/release/moc_predefs.h" -ID:/Programs/Qt/5.12.4/mingw73_32/mkspecs/win32-g++ -I"C:/Users/vital/OneDrive/My projects/5 semester/Qt projects/Delimobil" -ID:/Programs/Qt/5.12.4/mingw73_32/include -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtLocation -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtPositioningQuick -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtQuick -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtGui -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtANGLE -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtSql -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtPositioning -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtQml -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtNetwork -ID:/Programs/Qt/5.12.4/mingw73_32/include/QtCore -I. -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -ID:/Programs/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -ID:/Programs/Qt/Tools/mingw730_32/i686-w64-mingw32/include ..\Delimobil\mainwindow.h -o release\moc_mainwindow.cpp
@@ -1901,7 +1926,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 
 
@@ -2354,8 +2379,34 @@ release/calendardialog.o: ../Delimobil/UI/calendardialog.cpp ../Delimobil/UI/Cal
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDate \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qdatetime.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QPair \
+		ui_calendardialog.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QVariant \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QApplication \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qapplication.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qcoreapplication.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qeventloop.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qdesktopwidget.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qguiapplication.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qinputmethod.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QCalendarWidget \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qcalendarwidget.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QDialogButtonBox \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qdialogbuttonbox.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QHBoxLayout \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qboxlayout.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlayout.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlayoutitem.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qgridlayout.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QLabel \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlabel.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qframe.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QVBoxLayout \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QMessageBox \
-		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qmessagebox.h
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qmessagebox.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QPushButton \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qicon.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\calendardialog.o ..\Delimobil\UI\calendardialog.cpp
 
 release/careditordialog.o: ../Delimobil/UI/careditordialog.cpp ../Delimobil/UI/careditordialog.h \
@@ -2718,7 +2769,10 @@ release/carlistwidget.o: ../Delimobil/UI/carlistwidget.cpp ../Delimobil/UI/carli
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qabstractbutton.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QPushButton \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qpushbutton.h \
-		../Delimobil/UI/rentdialog.h
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QDateEdit \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qdatetimeedit.h \
+		../Delimobil/UI/rentdialog.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QHBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\carlistwidget.o ..\Delimobil\UI\carlistwidget.cpp
 
 release/filterdialog.o: ../Delimobil/UI/filterdialog.cpp ../Delimobil/UI/filterdialog.h \
@@ -2853,10 +2907,12 @@ release/filterdialog.o: ../Delimobil/UI/filterdialog.cpp ../Delimobil/UI/filterd
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qabstractbutton.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QPushButton \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QDateEdit \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qdatetimeedit.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qdatetime.h \
 		../Delimobil/models/car.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QString \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDate \
-		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qdatetime.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QVBoxLayout \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qboxlayout.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlayout.h \
@@ -3194,7 +3250,7 @@ release/managecarswidget.o: ../Delimobil/UI/managecarswidget.cpp ../Delimobil/UI
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\managecarswidget.o ..\Delimobil\UI\managecarswidget.cpp
 
-release/profilewidget.o: ../Delimobil/UI/profilewidget.cpp ../Delimobil/UI/ProfileWidget.h \
+release/profilewidget.o: ../Delimobil/UI/profilewidget.cpp ../Delimobil/UI/profilewidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QWidget \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qwidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qtwidgetsglobal.h \
@@ -3315,7 +3371,20 @@ release/profilewidget.o: ../Delimobil/UI/profilewidget.cpp ../Delimobil/UI/Profi
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlayoutitem.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qgridlayout.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QLabel \
-		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlabel.h
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlabel.h \
+		../Delimobil/UI/basewidget.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QStackedWidget \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qstackedwidget.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QStack \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qstack.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/QMouseEvent \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDebug \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/QPainter \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qpainter.h \
+		../Delimobil/models/car.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QString \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDate \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qdatetime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\profilewidget.o ..\Delimobil\UI\profilewidget.cpp
 
 release/registrationwidget.o: ../Delimobil/UI/registrationwidget.cpp ../Delimobil/UI/registrationwidget.h \
@@ -3585,6 +3654,9 @@ release/rentdialog.o: ../Delimobil/UI/rentdialog.cpp ../Delimobil/UI/rentdialog.
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qfiledevice.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qvector2d.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtGui/qtouchdevice.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QLabel \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlabel.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qframe.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QPushButton \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qpushbutton.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qabstractbutton.h \
@@ -3594,9 +3666,24 @@ release/rentdialog.o: ../Delimobil/UI/rentdialog.cpp ../Delimobil/UI/rentdialog.
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlayout.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlayoutitem.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qgridlayout.h \
-		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QLabel \
-		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qlabel.h \
-		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/qframe.h
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QHBoxLayout \
+		../Delimobil/models/car.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QString \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDate \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/qdatetime.h \
+		../Delimobil/services/carservice.h \
+		../Delimobil/repositories/carrepository.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtSql/QSqlQuery \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtSql/qsqlquery.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtSql/qtsqlglobal.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtSql/qtsql-config.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtSql/qsqldatabase.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtSql/QSqlError \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtSql/qsqlerror.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDebug \
+		../Delimobil/models/authorizeduser.h \
+		../Delimobil/models/user.h \
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDateTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\rentdialog.o ..\Delimobil\UI\rentdialog.cpp
 
 release/databasemanager.o: ../Delimobil/database/databasemanager.cpp D:/Programs/Qt/5.12.4/mingw73_32/include/QtSql/QSqlError \
@@ -3831,7 +3918,8 @@ release/main.o: ../Delimobil/main.cpp D:/Programs/Qt/5.12.4/mingw73_32/include/Q
 		../Delimobil/UI/registrationwidget.h \
 		../Delimobil/UI/managecarswidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QVector \
-		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QGridLayout
+		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QGridLayout \
+		../Delimobil/UI/carlistwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Delimobil\main.cpp
 
 release/mainwindow.o: ../Delimobil/mainwindow.cpp ../Delimobil/mainwindow.h \
@@ -3989,8 +4077,8 @@ release/mainwindow.o: ../Delimobil/mainwindow.cpp ../Delimobil/mainwindow.h \
 		../Delimobil/UI/managecarswidget.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QVector \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtWidgets/QGridLayout \
-		ui_mainwindow.h \
 		../Delimobil/UI/carlistwidget.h \
+		ui_mainwindow.h \
 		../Delimobil/models/authorizeduser.h \
 		../Delimobil/models/user.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDateTime \
@@ -4474,9 +4562,6 @@ release/userservice.o: ../Delimobil/services/userservice.cpp ../Delimobil/servic
 		../Delimobil/models/car.h \
 		D:/Programs/Qt/5.12.4/mingw73_32/include/QtCore/QDate
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\userservice.o ..\Delimobil\services\userservice.cpp
-
-release/qrc_resources.o: release/qrc_resources.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qrc_resources.o release\qrc_resources.cpp
 
 release/moc_mapwindow.o: release/moc_mapwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\moc_mapwindow.o release\moc_mapwindow.cpp

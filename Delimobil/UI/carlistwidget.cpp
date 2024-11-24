@@ -19,13 +19,6 @@ CarListWidget::CarListWidget(QStackedWidget *stackedWidget, QWidget *parent) :
 
     ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
-//    CarService::instance().addCar("Hyundai Solaris", 4, "Эконом", "Автомат", "Передний",
-//                                  1.6, 110, true, true, false, true);
-//    CarService::instance().addCar("ВАЗ 2110", 4, "Эконом", "Механика", "Передний",
-//                                  1.2, 110, true, true, true, true);
-//    CarService::instance().addCar("Volkswagen Polo", 4, "Эконом", "Робот", "Передний",
-//                                  1.6, 110, true, true, false, true);
-
     createFilterButton();
 }
 
@@ -111,7 +104,9 @@ void CarListWidget::createCarCard(const Car &car, QGridLayout *layout, int row, 
     perMinuteLabel->setStyleSheet("QLabel { font-size: 14px; }");
 
     double pricePerHour = CarService::instance().getOptimalPricePerHour(car);
-    QLabel *perHourLabel = new QLabel(QString::number(pricePerHour) + " ₽/час", cardWidget);
+    double pricePerKilometer = CarService::instance().getOptimalPricePerKilometer(car);
+    QLabel *perHourLabel = new QLabel(QString::number(pricePerHour) + " ₽/час и " +
+                                      QString::number(pricePerKilometer) + " ₽/км", cardWidget);
     perHourLabel->setAlignment(Qt::AlignCenter);
     perHourLabel->setStyleSheet("QLabel { font-size: 14px; }");
 
@@ -149,7 +144,7 @@ void CarListWidget::createCarCard(const Car &car, QGridLayout *layout, int row, 
     layout->addWidget(commonWidget, row, col);
 
     connect(rentButton, &QPushButton::clicked, [this, car]() {
-        RentDialog dialog(this);
+        RentDialog dialog(car, this);
         if (dialog.exec() == QDialog::Accepted && dialog.isConfirmed()) {
             CarService::instance().startRent(const_cast<Car &>(car));
             qDebug() << "Аренда подтверждена";

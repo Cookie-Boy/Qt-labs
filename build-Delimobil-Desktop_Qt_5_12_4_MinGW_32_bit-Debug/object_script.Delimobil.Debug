@@ -19,7 +19,6 @@ debug/carrepository.o
 debug/userrepository.o
 debug/carservice.o
 debug/userservice.o
-debug/qrc_resources.o
 debug/moc_mapwindow.o
 debug/moc_basewidget.o
 debug/moc_calendardialog.o
