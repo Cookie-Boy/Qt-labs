@@ -22,7 +22,7 @@ protected:
     bool eventFilter(QObject *obj, QEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
     QStackedWidget *stackedWidget;
-    QStack<QWidget*> history;
+    QStack<QWidget*> *widgetHistory;
 
 private:
     Ui::BaseWidget *ui;
@@ -32,15 +32,16 @@ signals:
     void exitIconClicked();
     void adminIconClicked();
     void rentIconClicked();
+    void arrowIconClicked();
 
     void userNotFound();
     void userFound();
     void rentStarted();
 
 public:
-    explicit BaseWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
+    explicit BaseWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent = nullptr);
     ~BaseWidget() override;
-    void navigateTo(QWidget *widget);
+    void navigateTo(BaseWidget *widget);
     void goBack();
     void setAllTools(BaseWidget *widget);
 };

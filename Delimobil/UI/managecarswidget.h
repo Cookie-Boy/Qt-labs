@@ -15,7 +15,7 @@ class ManageCarsWidget : public BaseWidget
     Q_OBJECT
 
 public:
-    explicit ManageCarsWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
+    explicit ManageCarsWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent = nullptr);
     ~ManageCarsWidget();
 
     void displayCars();

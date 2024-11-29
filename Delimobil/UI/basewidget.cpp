@@ -3,8 +3,8 @@
 #include "models/authorizeduser.h"
 #include <QPushButton>
 
-BaseWidget::BaseWidget(QStackedWidget *stackedWidget, QWidget *parent)
-    : QWidget(parent), stackedWidget(stackedWidget) {
+BaseWidget::BaseWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent)
+    : QWidget(parent), stackedWidget(stackedWidget), widgetHistory(widgetHistory) {
 }
 
 BaseWidget::~BaseWidget()
@@ -69,9 +69,17 @@ void BaseWidget::setAllTools(BaseWidget *widget) {
         rentIcon->setCursor(Qt::PointingHandCursor);
     }
 
-    foreach (QPushButton *button, widget->findChildren<QPushButton*>()) {
-        button->setCursor(Qt::PointingHandCursor);
-        button->setStyleSheet("QPushButton { background-color: #A0EACD; border-radius: 10px; }");
+    if (!widgetHistory->isEmpty()) {
+        QLabel *rentIcon = new QLabel(widget);
+        pixmap.load(projectPath + "\\images\\back-arrow.png");
+        rentIcon->setPixmap(pixmap.scaled(35, 35, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+        rentIcon->setFixedSize(35, 35);
+        rentIcon->move(35, 10);
+        rentIcon->setAttribute(Qt::WA_Hover);
+        rentIcon->setMouseTracking(true);
+        rentIcon->setObjectName("icon_arrow");
+        rentIcon->installEventFilter(widget);
+        rentIcon->setCursor(Qt::PointingHandCursor);
     }
 }
 
@@ -119,6 +127,8 @@ bool BaseWidget::eventFilter(QObject *obj, QEvent *event) {
                 } else if (label->objectName() == "icon_rent") {
                     emit BaseWidget::rentIconClicked();
                     return true;
+                } else if (label->objectName() == "icon_arrow") {
+                    emit BaseWidget::arrowIconClicked();
                 }
             }
         }
@@ -126,16 +136,17 @@ bool BaseWidget::eventFilter(QObject *obj, QEvent *event) {
     return QWidget::eventFilter(obj, event);  // Обработка остальных событий по умолчанию
 }
 
-void BaseWidget::navigateTo(QWidget *widget) {
-    // Добавляем текущий виджет в историю и переходим к новому
-    history.push(stackedWidget->currentWidget());
+void BaseWidget::navigateTo(BaseWidget *widget) {
+    widgetHistory->push(stackedWidget->currentWidget());
+    widget->setAllTools(widget);
     stackedWidget->setCurrentWidget(widget);
 }
 
 void BaseWidget::goBack() {
     // Переход назад, если есть история
-    if (!history.isEmpty()) {
-        QWidget *previousWidget = history.pop();
+    if (!widgetHistory->isEmpty()) {
+        BaseWidget *previousWidget = qobject_cast<BaseWidget*>(widgetHistory->pop());
+        previousWidget->setAllTools(static_cast<BaseWidget*>(previousWidget));
         stackedWidget->setCurrentWidget(previousWidget);
     }
 }

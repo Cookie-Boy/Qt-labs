@@ -15,7 +15,7 @@ class LoginWidget : public BaseWidget
     Q_OBJECT
 
 public:
-    explicit LoginWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
+    explicit LoginWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent = nullptr);
     ~LoginWidget() override;
 
     void clearFields();

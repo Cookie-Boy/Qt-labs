@@ -17,14 +17,14 @@ bool CarService::changeCar(const Car &oldCar, const Car &newCar) {
     return carRepository.updateCar(oldCar, newCar);
 }
 
-bool CarService::addCar(QString &name,
+bool CarService::addCar(QString name,
                         short rating,
-                        QString &category,
-                        QString &transmission,
-                        QString &driveType,
+                        QString category,
+                        QString transmission,
+                        QString driveType,
                         double engineCapacity,
                         double power,
-                        QString &imagePath,
+                        QString imagePath,
                         bool hasHeatedSeats,
                         bool hasHeatedSteeringWheel,
                         bool hasParkingSensors,

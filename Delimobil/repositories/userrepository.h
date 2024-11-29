@@ -13,6 +13,7 @@ public:
     static UserRepository& instance();
     bool saveUser(const User *user);
     User* findUserByEmail(const QString& email);
+    bool updateUser(const QString& id, const User& newUser);
 private:
     long getFreeId();
     UserRepository();

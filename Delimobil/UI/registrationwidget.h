@@ -13,7 +13,7 @@ class RegistrationWidget : public BaseWidget
     Q_OBJECT
 
 public:
-    explicit RegistrationWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
+    explicit RegistrationWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent = nullptr);
     ~RegistrationWidget() override;
 
     void updateFields();

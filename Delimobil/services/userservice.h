@@ -16,6 +16,7 @@ public:
                       const QString& middleName,
                       short drivingExperience);
     bool authorizeUser(const QString &email);
+    bool updateUser(const long id, const User& newUser);
 
 private:
     UserRepository& userRepository;

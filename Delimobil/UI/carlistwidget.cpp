@@ -11,13 +11,14 @@
 #include <QGridLayout>
 #include <QDebug>
 
-CarListWidget::CarListWidget(QStackedWidget *stackedWidget, QWidget *parent) :
-    BaseWidget(stackedWidget, parent),
+CarListWidget::CarListWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent) :
+    BaseWidget(stackedWidget, widgetHistory, parent),
     ui(new Ui::CarListWidget)
 {
     ui->setupUi(this);
 
     ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
 
     createFilterButton();
 }

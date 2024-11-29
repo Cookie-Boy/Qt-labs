@@ -11,7 +11,6 @@
    </rect>
   </property>
   <layout class="QVBoxLayout" name="mainVerticalLayout">
-   <!-- Верхний вертикальный спейсер -->
    <item>
     <spacer name="verticalSpacerTop">
      <property name="orientation">
@@ -20,12 +19,16 @@
      <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
     </spacer>
    </item>
-   <!-- Центрирование содержимого -->
    <item>
     <layout class="QVBoxLayout" name="contentVerticalLayout">
-     <!-- Горизонтальный layout для центрирования -->
      <item>
       <layout class="QHBoxLayout" name="horizontalCenterLayout">
        <item>
@@ -36,11 +39,16 @@
          <property name="sizeType">
           <enum>QSizePolicy::Expanding</enum>
          </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
         </spacer>
        </item>
        <item>
         <layout class="QVBoxLayout" name="centerContentLayout">
-         <!-- Поле ввода email -->
          <item>
           <widget class="QLineEdit" name="lineEdit_email">
            <property name="sizePolicy">
@@ -62,7 +70,6 @@
            </property>
           </widget>
          </item>
-         <!-- Кнопка -->
          <item>
           <widget class="QPushButton" name="loginButton">
            <property name="sizePolicy">
@@ -76,8 +83,8 @@
     border: 1px solid #ddd;
     border-radius: 15px;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #A0EACD;
+	color: black;
 }</string>
            </property>
            <property name="text">
@@ -95,13 +102,18 @@
          <property name="sizeType">
           <enum>QSizePolicy::Expanding</enum>
          </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
         </spacer>
        </item>
       </layout>
      </item>
     </layout>
    </item>
-   <!-- Нижний вертикальный спейсер -->
    <item>
     <spacer name="verticalSpacerBottom">
      <property name="orientation">
@@ -109,6 +121,12 @@
      </property>
      <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
     </spacer>
    </item>

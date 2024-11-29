@@ -7,8 +7,8 @@
 #include "../models/authorizeduser.h"
 #include "UI/loginwidget.h"
 
-RegistrationWidget::RegistrationWidget(QStackedWidget *stackedWidget, QWidget *parent) :
-    BaseWidget(stackedWidget, parent),
+RegistrationWidget::RegistrationWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent) :
+    BaseWidget(stackedWidget, widgetHistory, parent),
     ui(new Ui::RegistrationWidget)
 {
     ui->setupUi(this);

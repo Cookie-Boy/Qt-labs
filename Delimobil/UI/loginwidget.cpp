@@ -6,8 +6,8 @@
 #include "../services/userservice.h"
 #include "../models/authorizeduser.h"
 
-LoginWidget::LoginWidget(QStackedWidget *stackedWidget, QWidget *parent) :
-    BaseWidget(stackedWidget, parent),
+LoginWidget::LoginWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent) :
+    BaseWidget(stackedWidget, widgetHistory, parent),
     ui(new Ui::LoginWidget)
 {
     ui->setupUi(this);
@@ -15,9 +15,6 @@ LoginWidget::LoginWidget(QStackedWidget *stackedWidget, QWidget *parent) :
         button->setCursor(Qt::PointingHandCursor);
     }
 
-//    QRegExp regExp("[0-9]*");  // Разрешает только цифры
-//    QRegExpValidator *validator = new QRegExpValidator(regExp, this);
-//    ui->lineEdit_4->setValidator(validator);
     connect(ui->loginButton, &QPushButton::clicked, this, &LoginWidget::onLoginButtonClicked);
 }
 

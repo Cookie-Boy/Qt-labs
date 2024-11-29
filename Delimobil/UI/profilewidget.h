@@ -7,13 +7,20 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include "basewidget.h"
+#include "../models/user.h"
+#include "../models/authorizeduser.h"
+#include "../services/userservice.h"
 
 class ProfileWidget : public BaseWidget
 {
     Q_OBJECT
 
 public:
-    explicit ProfileWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
+    explicit ProfileWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent = nullptr);
+    void fillFields();
+
+protected:
+    void resizeEvent(QResizeEvent *event) override;
 
 private slots:
     void onEditButtonClicked();
@@ -26,8 +33,8 @@ private:
     QLineEdit *emailEdit;
     QPushButton *editButton;
     QPushButton *saveButton;
-    QPushButton *tripsButton;
-    QPushButton *reviewsButton;
+//    QPushButton *tripsButton;
+//    QPushButton *reviewsButton;
 };
 
 #endif // PROFILEWIDGET_H

@@ -79,8 +79,8 @@ public:
 "    border: 1px solid #ddd;\n"
 "    border-radius: 15px;\n"
 "    padding: 10px;\n"
-"    background-color: #4CAF50;\n"
-"    color: white;\n"
+"    background-color: #A0EACD;\n"
+"	color: black;\n"
 "}"));
 
         centerContentLayout->addWidget(loginButton);

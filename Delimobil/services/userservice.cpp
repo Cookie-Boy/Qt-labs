@@ -43,3 +43,7 @@ bool UserService::authorizeUser(const QString& email) {
     qDebug() << "Успешная авторизация";
     return true;
 }
+
+bool UserService::updateUser(const long id, const User& newUser) {
+    return userRepository.updateUser(QString::number(id), newUser);
+}

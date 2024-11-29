@@ -10,7 +10,8 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    stackedWidget(new QStackedWidget(this))
+    stackedWidget(new QStackedWidget()),
+    widgetHistory(new QStack<QWidget*>())
 {
     ui->setupUi(this);
 
@@ -31,12 +32,11 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setStyleSheet(buttonStyle);
 
     setCentralWidget(stackedWidget);
-//    BaseWidget *baseWidget = new BaseWidget(stackedWidget);
-    loginWidget = new LoginWidget(stackedWidget);
-    profileWidget = new ProfileWidget(stackedWidget);
-    registrationWidget = new RegistrationWidget(stackedWidget);
-    manageCarsWidget = new ManageCarsWidget(stackedWidget);
-    carListWidget = new CarListWidget(stackedWidget);
+    loginWidget = new LoginWidget(stackedWidget, widgetHistory);
+    profileWidget = new ProfileWidget(stackedWidget, widgetHistory);
+    registrationWidget = new RegistrationWidget(stackedWidget, widgetHistory);
+    manageCarsWidget = new ManageCarsWidget(stackedWidget, widgetHistory);
+    carListWidget = new CarListWidget(stackedWidget, widgetHistory);
 
     stackedWidget->addWidget(loginWidget);
     stackedWidget->addWidget(profileWidget);
@@ -51,16 +51,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(loginWidget, &LoginWidget::userNotFound, [=]() {
             loginWidget->clearFields();
             registrationWidget->updateFields();
-            loginWidget->navigateTo(registrationWidget);
+            stackedWidget->setCurrentWidget(registrationWidget);
         });
 
     connect(loginWidget, &BaseWidget::userFound, [=]() {
         loginWidget->clearFields();
-        handleUserFound(loginWidget);
+        handleUserFound();
     });
 
     connect(registrationWidget, &BaseWidget::userFound, [=]() {
-        handleUserFound(registrationWidget);
+        handleUserFound();
     });
 
     connect(carListWidget, &BaseWidget::rentStarted, [=]() {
@@ -75,7 +75,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connectAllBaseWidgetSignals();
 }
 
-void MainWindow::handleUserFound(BaseWidget *sourceWidget) {
+void MainWindow::handleUserFound() {
     carListWidget->setAllTools(carListWidget);
     carListWidget->displayCars();
     stackedWidget->setCurrentWidget(carListWidget);
@@ -84,7 +84,13 @@ void MainWindow::handleUserFound(BaseWidget *sourceWidget) {
 void MainWindow::connectAllBaseWidgetSignals() {
     QList<BaseWidget *> baseWidgets = findChildren<BaseWidget *>();
     for (BaseWidget *widget : baseWidgets) {
-        connect(widget, &BaseWidget::profileIconClicked, this, &MainWindow::showProfileWidget);
+        connect(widget, &BaseWidget::profileIconClicked, [this]() {
+            BaseWidget* currentWidget = qobject_cast<BaseWidget*>(stackedWidget->currentWidget());
+            if (currentWidget == profileWidget)
+                return;
+            profileWidget->fillFields();
+            currentWidget->navigateTo(profileWidget);
+        });
 
         connect(widget, &BaseWidget::exitIconClicked, [this]() {
             stackedWidget->setCurrentWidget(loginWidget);
@@ -93,9 +99,11 @@ void MainWindow::connectAllBaseWidgetSignals() {
         });
 
         connect(widget, &BaseWidget::adminIconClicked, [this]() {
-            manageCarsWidget->setAllTools(static_cast<BaseWidget*>(manageCarsWidget));
+            BaseWidget* currentWidget = qobject_cast<BaseWidget*>(stackedWidget->currentWidget());
+            if (currentWidget == manageCarsWidget)
+                return;
             manageCarsWidget->displayCars();
-            stackedWidget->setCurrentWidget(manageCarsWidget);
+            currentWidget->navigateTo(manageCarsWidget);
         });
 
         connect(widget, &BaseWidget::rentIconClicked, [this]() {
@@ -119,14 +127,23 @@ void MainWindow::connectAllBaseWidgetSignals() {
                 stackedWidget->setCurrentWidget(currentWidget);
             }
         });
+
+        connect(widget, &BaseWidget::arrowIconClicked, [this]() {
+            BaseWidget* currentWidget = qobject_cast<BaseWidget*>(stackedWidget->currentWidget());
+            currentWidget->goBack();
+//            currentWidget->setAllTools(currentWidget);
+            currentWidget = qobject_cast<BaseWidget*>(stackedWidget->currentWidget());
+
+            if (auto* carListWidget = dynamic_cast<CarListWidget*>(currentWidget)) {
+                carListWidget->displayCars();
+            } else if (auto* manageCarsWidget = dynamic_cast<ManageCarsWidget*>(currentWidget)) {
+                manageCarsWidget->displayCars();
+            }
+        });
     }
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-void MainWindow::showProfileWidget() {
-    stackedWidget->setCurrentWidget(profileWidget);
 }

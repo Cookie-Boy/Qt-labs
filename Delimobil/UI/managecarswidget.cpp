@@ -7,8 +7,8 @@
 #include <QGridLayout>
 #include <QMessageBox>
 
-ManageCarsWidget::ManageCarsWidget(QStackedWidget *stackedWidget, QWidget *parent) :
-    BaseWidget(stackedWidget, parent),
+ManageCarsWidget::ManageCarsWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent) :
+    BaseWidget(stackedWidget, widgetHistory, parent),
     ui(new Ui::ManageCarsWidget)
 {
     ui->setupUi(this);
@@ -16,8 +16,10 @@ ManageCarsWidget::ManageCarsWidget(QStackedWidget *stackedWidget, QWidget *paren
     // Кнопка "Добавить машину"
     QPushButton *addCarButton = new QPushButton("Добавить машину", this);
     addCarButton->setStyleSheet(
-        "QPushButton { font-size: 14px; padding: 10px; }"
+        "QPushButton { background-color: #A0EACD; border-radius: 10px; font-size: 14px; padding: 10px; }"
     );
+    addCarButton->setCursor(Qt::PointingHandCursor);
+
     ui->verticalLayout->addWidget(addCarButton);
     connect(addCarButton, &QPushButton::clicked, this, &ManageCarsWidget::onAddCarButtonClicked);
 

@@ -27,6 +27,7 @@ public:
 private:
     Ui::MainWindow *ui;
     QStackedWidget *stackedWidget;
+    QStack<QWidget*> *widgetHistory;
 
     ProfileWidget *profileWidget;
     LoginWidget *loginWidget;
@@ -34,13 +35,8 @@ private:
     ManageCarsWidget *manageCarsWidget;
     CarListWidget *carListWidget;
 
-    QList<QWidget*> widgetHistory;
-
-    void handleUserFound(BaseWidget *sourceWidget);
+    void handleUserFound();
     void connectAllBaseWidgetSignals();
-
-private slots:
-    void showProfileWidget();
 };
 
 #endif // MAINWINDOW_H

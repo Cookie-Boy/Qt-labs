@@ -78,3 +78,30 @@ User* UserRepository::findUserByEmail(const QString& email) {
 
     return nullptr; // if user not found
 }
+
+bool UserRepository::updateUser(const QString& id, const User& newUser) {
+    QSqlQuery query;
+    query.prepare(R"(
+        UPDATE users
+        SET firstName = ?, lastName = ?, middleName = ?, email = ?,
+            registrationDate = ?, drivingExperience = ?, role = ?
+        WHERE id = ?
+    )");
+
+    query.addBindValue(newUser.getFirstName());
+    query.addBindValue(newUser.getLastName());
+    query.addBindValue(newUser.getMiddleName());
+    query.addBindValue(newUser.getEmail());
+    query.addBindValue(newUser.getRegistrationDate());
+    query.addBindValue(newUser.getDrivingExperience());
+    query.addBindValue(newUser.getRole());
+    query.addBindValue(id);
+
+    if (!query.exec()) {
+        qDebug() << "Ошибка при выполнении запроса к базе данных:" << query.lastError().text();
+        return false;
+    }
+
+    return true;
+}
+

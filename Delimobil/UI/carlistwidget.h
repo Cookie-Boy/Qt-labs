@@ -15,7 +15,7 @@ class CarListWidget : public BaseWidget
     Q_OBJECT
 
 public:
-    explicit CarListWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);
+    explicit CarListWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *widgetHistory, QWidget *parent = nullptr);
     ~CarListWidget() override;
 
     void displayCars();
