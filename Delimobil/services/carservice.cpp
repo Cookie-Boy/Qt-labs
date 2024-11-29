@@ -78,6 +78,32 @@ bool CarService::isBlockedOnDate(const Car &car, const QDate &date) {
     return false;
 }
 
-void CarService::startRent(Car& car) {
-    authorizedUser.setCar(&car);
+void CarService::startRent() {
+    Car car = *authorizedUser.getCar();
+    switch (authorizedUser.getRentMode()) {
+    case RentMode::PerHour:
+        authorizedUser.setPriceIncrement(getOptimalPricePerHour(car));
+        authorizedUser.startHourlyTimer();
+        break;
+    case RentMode::PerMinute:
+        authorizedUser.setPriceIncrement(getOptimalPricePerMinute(car));
+        authorizedUser.startMinuteTimer();
+        break;
+    default:
+        qDebug() << "Unexpected rent mode. Please set it to PerHour or PerMinute.";
+    }
+}
+
+void CarService::pauseRent() {
+    authorizedUser.startMinuteTimer();
+    Car car = *authorizedUser.getCar();
+    authorizedUser.setPriceIncrement(getOptimalPricePerMinute(car) / 3);
+}
+
+void CarService::stopRent() {
+    authorizedUser.setCar(nullptr);
+    authorizedUser.setRentMode(RentMode::None);
+    authorizedUser.setTripPrice(0);
+    authorizedUser.setPriceIncrement(0);
+    authorizedUser.stopTimer();
 }

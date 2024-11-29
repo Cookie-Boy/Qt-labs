@@ -73,7 +73,7 @@ FilterDialog::FilterDialog(QWidget *parent)
     categoryCombo->addItem("Любая");
     categoryCombo->addItem("Эконом");
     categoryCombo->addItem("Комфорт");
-    categoryCombo->addItem("Премиум");
+    categoryCombo->addItem("Бизнес"); // Изменил Премиум на Бизнес
     layout->addWidget(categoryLabel);
     layout->addWidget(categoryCombo);
 

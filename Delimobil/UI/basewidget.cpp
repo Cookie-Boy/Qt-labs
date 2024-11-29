@@ -13,6 +13,13 @@ BaseWidget::~BaseWidget()
 }
 
 void BaseWidget::setAllTools(BaseWidget *widget) {
+    const QList<QLabel *> labels = widget->findChildren<QLabel *>();
+    for (QLabel *label : labels) {
+        if (label->objectName().startsWith("icon")) {
+            label->deleteLater();
+        }
+    }
+
     QString projectPath = "C:\\Users\\vital\\OneDrive\\My projects\\5 semester\\Qt projects\\Delimobil";
     QLabel *profileIcon = new QLabel(widget);
     QPixmap pixmap(projectPath + "\\images\\user.png");
@@ -21,7 +28,7 @@ void BaseWidget::setAllTools(BaseWidget *widget) {
     profileIcon->move(1190, 10);
     profileIcon->setAttribute(Qt::WA_Hover);
     profileIcon->setMouseTracking(true);
-    profileIcon->setObjectName("profileIcon");
+    profileIcon->setObjectName("icon_profile");
     profileIcon->installEventFilter(widget);
     profileIcon->setCursor(Qt::PointingHandCursor);
 
@@ -32,12 +39,9 @@ void BaseWidget::setAllTools(BaseWidget *widget) {
     exitIcon->move(1240, 10);
     exitIcon->setAttribute(Qt::WA_Hover);
     exitIcon->setMouseTracking(true);
-    exitIcon->setObjectName("exitIcon");
+    exitIcon->setObjectName("icon_exit");
     exitIcon->installEventFilter(widget);
     exitIcon->setCursor(Qt::PointingHandCursor);
-
-    if (AuthorizedUser::instance().getUser() == nullptr)
-        qDebug() << "nullptr";
 
     if (AuthorizedUser::instance().getUser() != nullptr && AuthorizedUser::instance().getUser()->getRole() == "Admin") {
         QLabel *adminIcon = new QLabel(widget);
@@ -47,9 +51,22 @@ void BaseWidget::setAllTools(BaseWidget *widget) {
         adminIcon->move(1140, 10);
         adminIcon->setAttribute(Qt::WA_Hover);
         adminIcon->setMouseTracking(true);
-        adminIcon->setObjectName("adminIcon");
+        adminIcon->setObjectName("icon_admin");
         adminIcon->installEventFilter(widget);
         adminIcon->setCursor(Qt::PointingHandCursor);
+    }
+
+    if (AuthorizedUser::instance().getCar() != nullptr) {
+        QLabel *rentIcon = new QLabel(widget);
+        pixmap.load(projectPath + "\\images\\car-key.png");
+        rentIcon->setPixmap(pixmap.scaled(35, 35, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation));
+        rentIcon->setFixedSize(35, 35);
+        rentIcon->move(100, 10);
+        rentIcon->setAttribute(Qt::WA_Hover);
+        rentIcon->setMouseTracking(true);
+        rentIcon->setObjectName("icon_rent");
+        rentIcon->installEventFilter(widget);
+        rentIcon->setCursor(Qt::PointingHandCursor);
     }
 
     foreach (QPushButton *button, widget->findChildren<QPushButton*>()) {
@@ -81,6 +98,7 @@ void BaseWidget::paintEvent(QPaintEvent *event) {
                  << QPoint(width() / 3, 0)
                  << QPoint(0, height() / 10);
     painter.drawPolygon(mintTriangle);
+    QWidget::paintEvent(event);
 }
 
 bool BaseWidget::eventFilter(QObject *obj, QEvent *event) {
@@ -89,17 +107,16 @@ bool BaseWidget::eventFilter(QObject *obj, QEvent *event) {
         if (mouseEvent->button() == Qt::LeftButton) {
             QLabel *label = qobject_cast<QLabel *>(obj);  // Проверяем, является ли объект QLabel
             if (label) {
-                if (label->objectName() == "profileIcon") {
+                if (label->objectName() == "icon_profile") {
                     emit BaseWidget::profileIconClicked();  // Сигнал для иконки профиля
                     return true;
-                } else if (label->objectName() == "exitIcon") {
+                } else if (label->objectName() == "icon_exit") {
                     emit BaseWidget::exitIconClicked();  // Сигнал для иконки выхода
                     return true;
-                } else if (label->objectName() == "adminIcon") {
-                    qDebug() << "first";
+                } else if (label->objectName() == "icon_admin") {
                     emit BaseWidget::adminIconClicked();
                     return true;
-                } else if (label->objectName() == "rentIcon") {
+                } else if (label->objectName() == "icon_rent") {
                     emit BaseWidget::rentIconClicked();
                     return true;
                 }
@@ -110,10 +127,10 @@ bool BaseWidget::eventFilter(QObject *obj, QEvent *event) {
 }
 
 void BaseWidget::navigateTo(QWidget *widget) {
-        // Добавляем текущий виджет в историю и переходим к новому
-        history.push(stackedWidget->currentWidget());
-        stackedWidget->setCurrentWidget(widget);
-    }
+    // Добавляем текущий виджет в историю и переходим к новому
+    history.push(stackedWidget->currentWidget());
+    stackedWidget->setCurrentWidget(widget);
+}
 
 void BaseWidget::goBack() {
     // Переход назад, если есть история

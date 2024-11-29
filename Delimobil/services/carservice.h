@@ -39,7 +39,9 @@ public:
 
     bool isBlockedOnDate(const Car &car, const QDate &date);
 
-    void startRent(Car& car);
+    void startRent();
+    void pauseRent();
+    void stopRent();
 
 private:
     CarRepository& carRepository;

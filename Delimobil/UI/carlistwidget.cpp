@@ -77,7 +77,7 @@ void CarListWidget::openFilterDialog()
     }
 }
 
-void CarListWidget::createCarCard(const Car &car, QGridLayout *layout, int row, int col)
+void CarListWidget::createCarCard(Car &car, QGridLayout *layout, int row, int col)
 {
     QString projectPath = "C:\\Users\\vital\\OneDrive\\My projects\\5 semester\\Qt projects\\Delimobil";
 
@@ -116,17 +116,20 @@ void CarListWidget::createCarCard(const Car &car, QGridLayout *layout, int row, 
 
     QPushButton *rentButton = new QPushButton("Арендовать", cardWidget);
     rentButton->setFixedHeight(30);
+    bool hasRent = AuthorizedUser::instance().getCar() != nullptr;
     rentButton->setStyleSheet(
-        "QPushButton {"
-        "   background-color: #A0EACD;"
-        "   color: #000000;"
-        "   border-radius: 15px;"
-        "   font-size: 12px;"
-        "   padding: 5px;"
-        "}"
-        "QPushButton:hover { background-color: #8ad3c6; }"
-        "QPushButton:pressed { background-color: #7ac2b6; }"
+        QString("QPushButton {"
+                "   background-color: %1"
+                "   color: #000000;"
+                "   border-radius: 15px;"
+                "   font-size: 12px;"
+                "   padding: 5px;"
+                "}"
+                "QPushButton:hover { background-color: #8ad3c6; }"
+                "QPushButton:pressed { background-color: #7ac2b6; }")
+            .arg(hasRent ? "#C0C0C0;" : "#A0EACD;")
     );
+    rentButton->setEnabled(!hasRent);
 
     QVBoxLayout *cardLayout = new QVBoxLayout(cardWidget);
     cardLayout->setSpacing(5);
@@ -146,7 +149,8 @@ void CarListWidget::createCarCard(const Car &car, QGridLayout *layout, int row, 
     connect(rentButton, &QPushButton::clicked, [this, car]() {
         RentDialog dialog(car, this);
         if (dialog.exec() == QDialog::Accepted && dialog.isConfirmed()) {
-            CarService::instance().startRent(const_cast<Car &>(car));
+            AuthorizedUser::instance().setCar(const_cast<Car*>(&car));
+            emit rentStarted();
             qDebug() << "Аренда подтверждена";
         } else {
             qDebug() << "Аренда отменена";
@@ -158,6 +162,12 @@ void CarListWidget::displayCars()
 {
     QVector<Car> cars = CarService::instance().getAllCars();
     QGridLayout *layout = ui->layout;
+    while (QLayoutItem *item = layout->takeAt(0)) {
+        if (QWidget *widget = item->widget()) {
+            widget->deleteLater(); // Удаляем виджет
+        }
+        delete item; // Удаляем сам QLayoutItem
+    }
 
     layout->setHorizontalSpacing(18);
     layout->setVerticalSpacing(20);
@@ -165,7 +175,7 @@ void CarListWidget::displayCars()
 
     int row = 0, col = 0, maxCols = 5;
 
-    for (const Car &car : cars) {
+    for (Car &car : cars) {
         if (CarService::instance().isBlockedOnDate(car, QDate::currentDate()))
             continue;
 
@@ -179,7 +189,7 @@ void CarListWidget::displayCars()
     }
 }
 
-void CarListWidget::updateCarList(const QVector<Car> &cars)
+void CarListWidget::updateCarList(QVector<Car> &cars)
 {
     // Очистка текущего отображения
     QLayoutItem *child;
@@ -191,7 +201,7 @@ void CarListWidget::updateCarList(const QVector<Car> &cars)
     // Отображение машин из нового списка
     int row = 0, col = 0, maxCols = 5;
 
-    for (const Car &car : cars) {
+    for (Car &car : cars) {
         createCarCard(car, ui->layout, row, col);
 
         col++;

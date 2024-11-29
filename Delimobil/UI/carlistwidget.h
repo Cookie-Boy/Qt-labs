@@ -23,9 +23,9 @@ public:
 private:
     Ui::CarListWidget *ui;
     void createFilterButton();
-    void createCarCard(const Car &car, QGridLayout *layout, int row, int col);
+    void createCarCard(Car &car, QGridLayout *layout, int row, int col);
     void openFilterDialog();
-    void updateCarList(const QVector<Car> &cars);
+    void updateCarList(QVector<Car> &cars);
 };
 
 #endif // CARLISTWIDGET_H

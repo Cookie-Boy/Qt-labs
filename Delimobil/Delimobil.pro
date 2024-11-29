@@ -29,11 +29,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        models/authorizeduser.cpp \
         API/mapwindow.cpp \
         UI/basewidget.cpp \
         UI/calendardialog.cpp \
         UI/careditordialog.cpp \
         UI/carlistwidget.cpp \
+        UI/currentrentaldialog.cpp \
         UI/filterdialog.cpp \
         UI/loginwidget.cpp \
         UI/managecarswidget.cpp \
@@ -43,7 +45,6 @@ SOURCES += \
         database/databasemanager.cpp \
         main.cpp \
         mainwindow.cpp \
-        models/authorizeduser.cpp \
         models/car.cpp \
         models/user.cpp \
         repositories/carrepository.cpp \
@@ -52,11 +53,13 @@ SOURCES += \
         services/userservice.cpp
 
 HEADERS += \
+        models/authorizeduser.h \
         API/mapwindow.h \
         UI/basewidget.h \
         UI/calendardialog.h \
         UI/careditordialog.h \
         UI/carlistwidget.h \
+        UI/currentrentaldialog.h \
         UI/filterdialog.h \
         UI/loginwidget.h \
         UI/managecarswidget.h \
@@ -65,8 +68,8 @@ HEADERS += \
         UI/rentdialog.h \
         database/databasemanager.h \
         mainwindow.h \
-        models/authorizeduser.h \
         models/car.h \
+        models/rentmode.h \
         models/user.h \
         repositories/carrepository.h \
         repositories/userrepository.h \
@@ -79,6 +82,7 @@ FORMS += \
     UI/calendardialog.ui \
     UI/careditordialog.ui \
     UI/carlistwidget.ui \
+    UI/currentrentaldialog.ui \
     UI/filterdialog.ui \
         UI/loginwidget.ui \
     UI/managecarswidget.ui \

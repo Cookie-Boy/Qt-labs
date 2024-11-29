@@ -35,6 +35,7 @@ signals:
 
     void userNotFound();
     void userFound();
+    void rentStarted();
 
 public:
     explicit BaseWidget(QStackedWidget *stackedWidget, QWidget *parent = nullptr);

@@ -4,6 +4,7 @@
 #include <QRegExp>
 #include <QRegExpValidator>
 #include "../services/userservice.h"
+#include "../models/authorizeduser.h"
 
 LoginWidget::LoginWidget(QStackedWidget *stackedWidget, QWidget *parent) :
     BaseWidget(stackedWidget, parent),
@@ -60,6 +61,7 @@ void LoginWidget::onLoginButtonClicked() {
         emit userNotFound();
         return;
     }
+
     emit userFound();
 }
 

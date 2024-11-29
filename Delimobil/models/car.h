@@ -32,6 +32,8 @@ public:
         double engineCapacity, double power, QString imagePath, bool hasHeatedSeats,
              bool hasHeatedSteeringWheel, bool hasParkingSensors, const QPair<QDate, QDate> &blockedPeriod);
 
+    bool equals(Car &other);
+
     // Getters and Setters
     // Getters and Setters
     long getId() const;

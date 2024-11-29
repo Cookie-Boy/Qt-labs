@@ -5,6 +5,7 @@
 #include "UI/carlistwidget.h"
 #include "models/authorizeduser.h"
 #include "UI/careditordialog.h"
+#include "UI/currentrentaldialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -62,14 +63,22 @@ MainWindow::MainWindow(QWidget *parent) :
         handleUserFound(registrationWidget);
     });
 
+    connect(carListWidget, &BaseWidget::rentStarted, [=]() {
+        stackedWidget->setCurrentWidget(loginWidget);
+        carListWidget->setAllTools(carListWidget);
+        carListWidget->displayCars();
+        stackedWidget->setCurrentWidget(carListWidget);
+
+        CarService::instance().startRent();
+    });
+
     connectAllBaseWidgetSignals();
 }
 
 void MainWindow::handleUserFound(BaseWidget *sourceWidget) {
-    carListWidget->setAllTools(static_cast<BaseWidget*>(carListWidget));
+    carListWidget->setAllTools(carListWidget);
     carListWidget->displayCars();
-    stackedWidget->addWidget(carListWidget);
-    sourceWidget->navigateTo(carListWidget);
+    stackedWidget->setCurrentWidget(carListWidget);
 }
 
 void MainWindow::connectAllBaseWidgetSignals() {
@@ -80,21 +89,38 @@ void MainWindow::connectAllBaseWidgetSignals() {
         connect(widget, &BaseWidget::exitIconClicked, [this]() {
             stackedWidget->setCurrentWidget(loginWidget);
             AuthorizedUser::instance().setUser(nullptr);
+            AuthorizedUser::instance().setCar(nullptr);
         });
 
         connect(widget, &BaseWidget::adminIconClicked, [this]() {
-            qDebug() << "here";
             manageCarsWidget->setAllTools(static_cast<BaseWidget*>(manageCarsWidget));
             manageCarsWidget->displayCars();
             stackedWidget->setCurrentWidget(manageCarsWidget);
         });
 
         connect(widget, &BaseWidget::rentIconClicked, [this]() {
-            // Логика для rentIcon
+            CurrentRentalDialog currentRentalDialog(this);
+            if (currentRentalDialog.exec() == QDialog::Accepted) {
+                BaseWidget* currentWidget = qobject_cast<BaseWidget*>(stackedWidget->currentWidget());
+                if (!currentWidget) {
+                    qDebug() << "Current widget is not a BaseWidget!";
+                    return;
+                }
+
+                currentWidget->setAllTools(currentWidget);
+
+                if (auto* carListWidget = dynamic_cast<CarListWidget*>(currentWidget)) {
+                    carListWidget->displayCars();
+                } else if (auto* manageCarsWidget = dynamic_cast<ManageCarsWidget*>(currentWidget)) {
+                    manageCarsWidget->displayCars();
+                }
+
+                stackedWidget->setCurrentWidget(loginWidget);
+                stackedWidget->setCurrentWidget(currentWidget);
+            }
         });
     }
 }
-
 
 MainWindow::~MainWindow()
 {

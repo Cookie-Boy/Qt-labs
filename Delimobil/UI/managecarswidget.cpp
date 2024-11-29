@@ -116,12 +116,22 @@ void ManageCarsWidget::createCarCard(Car &car, QGridLayout *layout, int row, int
         blockedLabel->setWordWrap(true);
     }
 
+    Car *carPtr = AuthorizedUser::instance().getCar();
+    bool hasRent = carPtr != nullptr && carPtr->equals(car);
+
     QPushButton *editButton = new QPushButton("Изменить", cardWidget);
-    editButton->setStyleSheet("QPushButton { background-color: #f9ecb6; border-radius: 10px }");
+    editButton->setStyleSheet(
+        QString("QPushButton { background-color: %1; border-radius: 10px }")
+            .arg(hasRent ? "#C0C0C0" : "#f9ecb6"));
     editButton->setCursor(Qt::PointingHandCursor);
     QPushButton *deleteButton = new QPushButton("Удалить", cardWidget);
-    deleteButton->setStyleSheet("QPushButton { background-color: #E48F94; border-radius: 10px }");
+    deleteButton->setStyleSheet(
+        QString("QPushButton { background-color: %1; border-radius: 10px }")
+            .arg(hasRent ? "#C0C0C0" : "#E48F94"));
     deleteButton->setCursor(Qt::PointingHandCursor);
+
+    editButton->setEnabled(!hasRent);
+    deleteButton->setEnabled(!hasRent);
 
     QVBoxLayout *cardLayout = new QVBoxLayout(cardWidget);
     cardLayout->setSpacing(5);

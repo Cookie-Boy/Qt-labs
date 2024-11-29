@@ -21,6 +21,24 @@ Car::Car(const QString &name, short rating, const QString &category,
     this->id = -1;
 }
 
+bool Car::equals(Car &other) {
+    const double epsilon = 0.0001; // Погрешность для сравнения чисел с плавающей запятой
+
+    return this->id == other.id &&
+           this->name == other.name &&
+           this->rating == other.rating &&
+           this->category == other.category &&
+           this->transmission == other.transmission &&
+           this->driveType == other.driveType &&
+           qAbs(this->engineCapacity - other.engineCapacity) < epsilon &&
+           qAbs(this->power - other.power) < epsilon &&
+           this->imagePath == other.imagePath &&
+           this->hasHeatedSeats == other.hasHeatedSeats &&
+           this->hasHeatedSteeringWheel == other.hasHeatedSteeringWheel &&
+           this->hasParkingSensors == other.hasParkingSensors &&
+           this->blockedPeriod == other.blockedPeriod;
+}
+
 // Getters and Setters
 long Car::getId() const { return id; }
 void Car::setId(long id) { this->id = id; }

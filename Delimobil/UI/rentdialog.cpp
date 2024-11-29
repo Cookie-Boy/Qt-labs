@@ -94,13 +94,13 @@ RentDialog::RentDialog(const Car &car, QWidget *parent)
 
     // Подключение кнопок
     connect(minuteButton, &QPushButton::clicked, this, [this]() {
-        selectedTariff = "minute";
+        AuthorizedUser::instance().setRentMode(RentMode::PerMinute);
         confirmed = true;
         accept();
     });
 
     connect(hourButton, &QPushButton::clicked, this, [this]() {
-        selectedTariff = "hour";
+        AuthorizedUser::instance().setRentMode(RentMode::PerHour);
         confirmed = true;
         accept();
     });
@@ -117,10 +117,6 @@ RentDialog::RentDialog(const Car &car, QWidget *parent)
 
 bool RentDialog::isConfirmed() const {
     return confirmed;
-}
-
-QString RentDialog::getSelectedTariff() const {
-    return selectedTariff;
 }
 
 void RentDialog::onCancel() {

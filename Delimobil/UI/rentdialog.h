@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include "../models/car.h"
+#include "../models/authorizeduser.h"
 
 class RentDialog : public QDialog {
     Q_OBJECT
@@ -14,14 +15,12 @@ class RentDialog : public QDialog {
 public:
     explicit RentDialog(const Car &car, QWidget *parent = nullptr);
     bool isConfirmed() const;
-    QString getSelectedTariff() const;
 
 private slots:
     void onCancel();
 
 private:
     bool confirmed;
-    QString selectedTariff;
 
     QLabel *carImageLabel;
     QLabel *carNameLabel;
