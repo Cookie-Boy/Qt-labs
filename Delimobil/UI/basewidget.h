@@ -33,6 +33,7 @@ signals:
     void adminIconClicked();
     void rentIconClicked();
     void arrowIconClicked();
+    void filterIconClicked();
 
     void userNotFound();
     void userFound();

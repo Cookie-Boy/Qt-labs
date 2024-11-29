@@ -27,6 +27,8 @@ private:
     void createCarCard(Car &car, QGridLayout *layout, int row, int col);
     void openAddCarWidget(const Car *car = nullptr); // nullptr - для добавления новой машины
     void confirmDeleteCar(const Car &car);
+    void createFilterButton();
+    void openFilterDialog();
 
 private slots:
     void onAddCarButtonClicked();

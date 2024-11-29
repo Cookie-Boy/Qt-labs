@@ -20,6 +20,8 @@ private:
     QCheckBox *parkingSensorsCheck;
     QPushButton *applyButton;
     QDateEdit *dateEdit;
+    QComboBox *transmissionCombo;
+    QComboBox *driveTypeCombo;
 
 public:
     explicit FilterDialog(QWidget *parent = nullptr);
@@ -28,6 +30,8 @@ public:
     bool getHeatedSeatsFilter() const;
     bool getParkingSensorsFilter() const;
     QDate getDateFilter() const;
+    QString getTransmissionFilter() const;
+    QString getDriveTypeFilter() const;
 };
 
 #endif // FILTERDIALOG_H

@@ -129,6 +129,8 @@ bool BaseWidget::eventFilter(QObject *obj, QEvent *event) {
                     return true;
                 } else if (label->objectName() == "icon_arrow") {
                     emit BaseWidget::arrowIconClicked();
+                } else if (label->objectName() == "icon_filter") {
+                    emit BaseWidget::filterIconClicked();
                 }
             }
         }

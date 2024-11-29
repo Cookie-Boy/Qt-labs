@@ -19,7 +19,6 @@ CarListWidget::CarListWidget(QStackedWidget *stackedWidget, QStack<QWidget*> *wi
 
     ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
-
     createFilterButton();
 }
 
@@ -41,7 +40,8 @@ void CarListWidget::createFilterButton() {
         "QPushButton:hover { background-color: #8ad3c6; }"
         "QPushButton:pressed { background-color: #7ac2b6; }"
     );
-    filterButton->move(90, 50);
+    filterButton->move(130, 50);
+    filterButton->setCursor(Qt::PointingHandCursor);
     connect(filterButton, &QPushButton::clicked, this, &CarListWidget::openFilterDialog);
 }
 
@@ -54,6 +54,8 @@ void CarListWidget::openFilterDialog()
         bool heatedSeatsFilter = dialog.getHeatedSeatsFilter();
         bool parkingSensorsFilter = dialog.getParkingSensorsFilter();
         QDate dateFilter = dialog.getDateFilter();
+        QString transmissionFilter = dialog.getTransmissionFilter();
+        QString driveTypeFilter = dialog.getDriveTypeFilter();
 
         QVector<Car> allCars = CarService::instance().getAllCars();
         QVector<Car> filteredCars;
@@ -67,8 +69,12 @@ void CarListWidget::openFilterDialog()
                 continue;
             if (parkingSensorsFilter && !car.getHasParkingSensors())
                 continue;
+            if (transmissionFilter != "Любая" && car.getTransmission() != transmissionFilter)
+                continue;
+            if (driveTypeFilter != "Любой" && car.getDriveType() != driveTypeFilter)
+                continue;
             if (CarService::instance().isBlockedOnDate(car, dateFilter)) // Проверяем, заблокирована ли машина
-                            continue;
+                continue;
 
             filteredCars.append(car);
         }

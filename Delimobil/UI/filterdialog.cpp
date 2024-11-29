@@ -6,7 +6,7 @@ FilterDialog::FilterDialog(QWidget *parent)
     : QDialog(parent)
 {
     setWindowTitle("Фильтр машин");
-    setFixedSize(300, 300);
+    setFixedSize(300, 400);
 
     // Установка стиля для окна и его элементов
     setStyleSheet(
@@ -73,9 +73,29 @@ FilterDialog::FilterDialog(QWidget *parent)
     categoryCombo->addItem("Любая");
     categoryCombo->addItem("Эконом");
     categoryCombo->addItem("Комфорт");
-    categoryCombo->addItem("Бизнес"); // Изменил Премиум на Бизнес
+    categoryCombo->addItem("Бизнес");
     layout->addWidget(categoryLabel);
     layout->addWidget(categoryCombo);
+
+    // Поле для выбора трансмиссии
+    QLabel *transmissionLabel = new QLabel("Трансмиссия:", this);
+    transmissionCombo = new QComboBox(this);
+    transmissionCombo->addItem("Любая");
+    transmissionCombo->addItem("Автомат");
+    transmissionCombo->addItem("Робот");
+    transmissionCombo->addItem("Механика");
+    layout->addWidget(transmissionLabel);
+    layout->addWidget(transmissionCombo);
+
+    // Поле для выбора привода
+    QLabel *driveTypeLabel = new QLabel("Привод:", this);
+    driveTypeCombo = new QComboBox(this);
+    driveTypeCombo->addItem("Любой");
+    driveTypeCombo->addItem("Передний");
+    driveTypeCombo->addItem("Задний");
+    driveTypeCombo->addItem("Полный");
+    layout->addWidget(driveTypeLabel);
+    layout->addWidget(driveTypeCombo);
 
     // Чекбоксы для дополнительных опций
     heatedSeatsCheck = new QCheckBox("Наличие подогрева сидений", this);
@@ -83,6 +103,7 @@ FilterDialog::FilterDialog(QWidget *parent)
     layout->addWidget(heatedSeatsCheck);
     layout->addWidget(parkingSensorsCheck);
 
+    // Поле для выбора даты
     QLabel *dateLabel = new QLabel("Дата:", this);
     dateEdit = new QDateEdit(QDate::currentDate(), this); // Устанавливаем текущую дату по умолчанию
     dateEdit->setCalendarPopup(true); // Включаем всплывающее окно календаря
@@ -99,6 +120,8 @@ FilterDialog::FilterDialog(QWidget *parent)
 
 QString FilterDialog::getNameFilter() const { return nameEdit->text(); }
 QString FilterDialog::getCategoryFilter() const { return categoryCombo->currentText(); }
+QString FilterDialog::getTransmissionFilter() const { return transmissionCombo->currentText(); }
+QString FilterDialog::getDriveTypeFilter() const { return driveTypeCombo->currentText(); }
 bool FilterDialog::getHeatedSeatsFilter() const { return heatedSeatsCheck->isChecked(); }
 bool FilterDialog::getParkingSensorsFilter() const { return parkingSensorsCheck->isChecked(); }
 QDate FilterDialog::getDateFilter() const { return dateEdit->date(); }

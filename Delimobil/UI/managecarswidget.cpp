@@ -2,6 +2,7 @@
 #include "ui_managecarswidget.h"
 #include "../services/carservice.h"
 #include "careditordialog.h"
+#include "filterdialog.h"
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QGridLayout>
@@ -24,11 +25,70 @@ ManageCarsWidget::ManageCarsWidget(QStackedWidget *stackedWidget, QStack<QWidget
     connect(addCarButton, &QPushButton::clicked, this, &ManageCarsWidget::onAddCarButtonClicked);
 
     setAllTools(this);
+
+    createFilterButton();
 }
 
 ManageCarsWidget::~ManageCarsWidget()
 {
     delete ui;
+}
+
+void ManageCarsWidget::createFilterButton() {
+    QPushButton *filterButton = new QPushButton("Фильтр", this);
+    filterButton->setStyleSheet(
+        "QPushButton {"
+        "   background-color: #A7E6DC;"
+        "   color: #000000;"
+        "   border-radius: 15px;"
+        "   font-size: 12px;"
+        "   padding: 5px;"
+        "}"
+        "QPushButton:hover { background-color: #8ad3c6; }"
+        "QPushButton:pressed { background-color: #7ac2b6; }"
+    );
+    filterButton->move(130, 50);
+    filterButton->setCursor(Qt::PointingHandCursor);
+    connect(filterButton, &QPushButton::clicked, this, &ManageCarsWidget::openFilterDialog);
+}
+
+void ManageCarsWidget::openFilterDialog()
+{
+    FilterDialog dialog(this);
+    if (dialog.exec() == QDialog::Accepted) {
+        QString nameFilter = dialog.getNameFilter();
+        QString categoryFilter = dialog.getCategoryFilter();
+        bool heatedSeatsFilter = dialog.getHeatedSeatsFilter();
+        bool parkingSensorsFilter = dialog.getParkingSensorsFilter();
+        QDate dateFilter = dialog.getDateFilter();
+        QString transmissionFilter = dialog.getTransmissionFilter();
+        QString driveTypeFilter = dialog.getDriveTypeFilter();
+
+        QVector<Car> allCars = CarService::instance().getAllCars();
+        QVector<Car> filteredCars;
+
+        for (const Car &car : allCars) {
+            if (!nameFilter.isEmpty() && !car.getName().contains(nameFilter, Qt::CaseInsensitive))
+                continue;
+            if (categoryFilter != "Любая" && car.getCategory() != categoryFilter)
+                continue;
+            if (heatedSeatsFilter && !car.getHasHeatedSeats())
+                continue;
+            if (parkingSensorsFilter && !car.getHasParkingSensors())
+                continue;
+            if (transmissionFilter != "Любая" && car.getTransmission() != transmissionFilter)
+                continue;
+            if (driveTypeFilter != "Любой" && car.getDriveType() != driveTypeFilter)
+                continue;
+            if (CarService::instance().isBlockedOnDate(car, dateFilter)) // Проверяем, заблокирована ли машина
+                continue;
+
+            filteredCars.append(car);
+        }
+
+        updateCarList(filteredCars);
+        createFilterButton();
+    }
 }
 
 void ManageCarsWidget::displayCars()
